@@ -1,0 +1,1150 @@
+[
+  {
+    "id": 1,
+    "cfl": "L = { a²ⁿ b³ⁿ | n ≥ 0 }",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aabbb\", \"ACCEPT\"),\n(\"aaaaaabbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaabbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaabbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaabbb\", \"REJECT\"),\n(\"aaabbbbbb\", \"REJECT\"),\n(\"aaaabbb\", \"REJECT\"),\n(\"aaaaaabbbbbbbbbb\", \"REJECT\"),\n(\"bbbbbbbbb\", \"REJECT\"),\n(\"aaaaaabbbbbbbb\", \"REJECT\"),\n(\"aaaabbbbb\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbb\", \"REJECT\"),\n(\"aabb\", \"REJECT\"),\n(\"aabbbb\", \"REJECT\"),\n(\"bbb\", \"REJECT\"),\n(\"aaaaaaaabbbbbbbbb\", \"REJECT\"),\n(\"bbbbbbbbbaaaaaa\", \"REJECT\"),\n(\"aaaaaabbbbbb\", \"REJECT\"),\n(\"bbbbbb\", \"REJECT\"),\n(\"aaaaaaaaabbbbbbbbb\", \"REJECT\"),\n(\"aaaa\", \"REJECT\"),\n(\"aaaaabbbbbbbbb\", \"REJECT\"),\n(\"bbbaa\", \"REJECT\"),\n(\"aaaaabbbbbb\", \"REJECT\"),\n(\"aa\", \"REJECT\"),\n(\"bbbbbbaaaa\", \"REJECT\"),\n(\"aaaaaa\", \"REJECT\"),\n(\"abbb\", \"REJECT\"),\n(\"aaaabbbbbbb\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n\nQ = {q0, q1, qB0, qB1, qB2, qf}\n\nΣ = {a, b}\n\nΓ = {Z, A}\n\nδ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n\nq₀ = q0\n\nZ₀ = Z\n\nF = {qf}\n\nδ(q0, a, Z) = (q1, Z)  \nδ(q0, a, A) = (q1, A)  \nδ(q1, a, Z) = (q0, AZ)  \nδ(q1, a, A) = (q0, AA)  \n\nδ(q0, b, A) = (qB1, A)  \nδ(qB0, b, A) = (qB1, A)  \nδ(qB1, b, A) = (qB2, A)  \nδ(qB2, b, A) = (qB0, ε)  \n\nδ(q0, ε, Z) = (qf, Z)  \nδ(qB0, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA cannot be constructed.",
+        "build_status": "Fail",
+        "test_cases_failed": "",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA cannot be constructed.",
+        "build_status": "Fail",
+        "test_cases_failed": "",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "cfl": " L = {0ⁿ1ᵐ | n >= 1, m >= 1, m > n+2}",
+    "test_cases": "(\"01111111111111111111111\", \"ACCEPT\"),\n(\"01111\", \"ACCEPT\"),\n(\"011111111111111111111111\", \"ACCEPT\"),\n(\"0111111111111111111\", \"ACCEPT\"),\n(\"0111111111111111\", \"ACCEPT\"),\n(\"0111111111111111111111111\", \"ACCEPT\"),\n(\"0111111111\", \"ACCEPT\"),\n(\"0111111\", \"ACCEPT\"),\n(\"011111111111111111111\", \"ACCEPT\"),\n(\"011111111111111111\", \"ACCEPT\"),\n(\"011111\", \"ACCEPT\"),\n(\"01111111111111\", \"ACCEPT\"),\n(\"0011111\", \"ACCEPT\"),\n(\"0111111111111111111111\", \"ACCEPT\"),\n(\"00111111\", \"ACCEPT\"),\n(\"01111111111111111\", \"ACCEPT\"),\n(\"011111111111\", \"ACCEPT\"),\n(\"011111111111111\", \"ACCEPT\"),\n(\"011111111\", \"ACCEPT\"),\n(\"001111111\", \"ACCEPT\"),\n(\"01111111\", \"ACCEPT\"),\n(\"01111111111\", \"ACCEPT\"),\n(\"01111111111111111111111111\", \"ACCEPT\"),\n(\"01111111111111111111\", \"ACCEPT\"),\n(\"0111111111111\", \"ACCEPT\"),\n(\"000111\", \"REJECT\"),\n(\"0001\", \"REJECT\"),\n(\"00011\", \"REJECT\"),\n(\"1111111110000\", \"REJECT\"),\n(\"001\", \"REJECT\"),\n(\"00011111\", \"REJECT\"),\n(\"0001111\", \"REJECT\"),\n(\"00001111\", \"REJECT\"),\n(\"011\", \"REJECT\"),\n(\"11111111000\", \"REJECT\"),\n(\"1111110\", \"REJECT\"),\n(\"0\", \"REJECT\"),\n(\"1111111\", \"REJECT\"),\n(\"01\", \"REJECT\"),\n(\"0011\", \"REJECT\"),\n(\"000\", \"REJECT\"),\n(\"0111\", \"REJECT\"),\n(\"0000111111\", \"REJECT\"),\n(\"001111\", \"REJECT\"),\n(\"111111100\", \"REJECT\"),\n(\"11111111\", \"REJECT\"),\n(\"00\", \"REJECT\"),\n(\"111111\", \"REJECT\"),\n(\"0000111\", \"REJECT\"),\n(\"000011111\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n\nQ = {q₀, q₁, q₂, q₃, q₄, q_f}\nΣ = {0, 1}\nΓ = {Z, A, B}\nq₀ = q₀\nZ₀ = Z\nF = {q_f}\n\nδ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n\nδ(q₀, 0, Z) = (q₁, AZ)\n\nδ(q₁, 0, A) = (q₁, AA)\nδ(q₁, 1, A) = (q₂, ε)\n\nδ(q₂, 1, A) = (q₂, ε)\nδ(q₂, 1, Z) = (q₃, BZ)\n\nδ(q₃, 1, B) = (q₄, ε)\n\nδ(q₄, 1, Z) = (q₄, Z)\nδ(q₄, 1, B) = (q₄, B)\nδ(q₄, ε, Z) = (q_f, Z)\n",
+        "build_status": "Pass",
+        "test_cases_failed": "4",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, q₄, q₅} \n Σ = {'0', '1'} \n Γ = {Z, A} \n q₀ = q₀ \n Z₀ = Z \n F = {q₅} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ* \n \n δ(q₀, 0, Z) = (q₁, AZ) \n \n δ(q₁, 0, A) = (q₁, AA) \n δ(q₁, 1, A) = (q₂, ε) \n \n δ(q₂, 1, A) = (q₂, ε) \n δ(q₂, 1, Z) = (q₃, Z) \n \n δ(q₃, 1, Z) = (q₄, Z) \n δ(q₄, 1, Z) = (q₅, Z) \n δ(q₅, 1, Z) = (q₅, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n\nQ = {q₀, q₁, q₂, q₃, q₄, q₅}\nΣ = {0, 1}\nΓ = {Z, A}\nq₀ = q₀\nZ₀ = Z\nF = {q₅}\n\nδ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n\nδ(q₀, 0, Z) = (q₀, AZ)\nδ(q₀, 0, A) = (q₀, AA)\n\nδ(q₀, 1, A) = (q₁, ε)\n\nδ(q₁, 1, A) = (q₁, ε)\nδ(q₁, 1, Z) = (q₂, Z)\n\nδ(q₂, 1, Z) = (q₃, Z)\nδ(q₃, 1, Z) = (q₄, Z)\nδ(q₄, 1, Z) = (q₅, Z)\n\nδ(q₅, 1, Z) = (q₅, Z)\n",
+        "build_status": "Pass",
+        "test_cases_failed": "2",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "cfl": "L = { wwᴿ | w ∈ {0,1}* }",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"001011110100\", \"ACCEPT\"),\n(\"1\", \"REJECT\"),\n(\"0100000101111001111010000010\", \"ACCEPT\"),\n(\"11\", \"ACCEPT\"),\n(\"010101100001101010\", \"ACCEPT\"),\n(\"00111000011100\", \"ACCEPT\"),\n(\"0\", \"REJECT\"),\n(\"0000\", \"ACCEPT\"),\n(\"01110100111100111100101110\", \"ACCEPT\"),\n(\"0000000000\", \"ACCEPT\"),\n(\"010\", \"REJECT\"),\n(\"001100\", \"ACCEPT\"),\n(\"0010110011111000000001111100110100\", \"ACCEPT\"),\n(\"0110100001111000010110\", \"ACCEPT\"),\n(\"00100011111111000100\", \"ACCEPT\"),\n(\"101000111001100111000101\", \"ACCEPT\"),\n(\"100001\", \"ACCEPT\"),\n(\"101\", \"REJECT\"),\n(\"00\", \"ACCEPT\"),\n(\"011011010100100001001010110110\", \"ACCEPT\"),\n(\"110011\", \"ACCEPT\"),\n(\"1001011111101001\", \"ACCEPT\"),\n(\"00011000\", \"ACCEPT\"),\n(\"10011001100000100100000110011001\", \"ACCEPT\"),\n(\"0111110000101\", \"REJECT\"),\n(\"0010110001\", \"REJECT\"),\n(\"10\", \"REJECT\"),\n(\"00000011\", \"REJECT\"),\n(\"0000000001011110111\", \"REJECT\"),\n(\"000010001000111001111111\", \"REJECT\"),\n(\"00111000000011101\", \"REJECT\"),\n(\"11101101000\", \"REJECT\"),\n(\"011\", \"REJECT\"),\n(\"11111000000101\", \"REJECT\"),\n(\"0101101\", \"REJECT\"),\n(\"010010000001110101001\", \"REJECT\"),\n(\"1100101111001101001011\", \"REJECT\"),\n(\"01\", \"REJECT\"),\n(\"11110\", \"REJECT\"),\n(\"001100100000110\", \"REJECT\"),\n(\"0110000001011000\", \"REJECT\"),\n(\"00100110010010101100000\", \"REJECT\"),\n(\"000011110\", \"REJECT\"),\n(\"11001111011110010111\", \"REJECT\"),\n(\"101000101111111110\", \"REJECT\"),\n(\"1110\", \"REJECT\"),\n(\"000100\", \"REJECT\"),\n(\"0111001000010100011010011\", \"REJECT\"),\n(\"101100000001\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n\nQ = {q0, q1, qf}\n\nΣ = {'0','1'}\n\nΓ = {Z,'0','1'}\n\nq₀ = q0\n\nZ₀ = Z\n\nF = {qf}\n\nδ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n\nδ(q0, '0', Z) = (q0, '0'Z)  \nδ(q0, '0', '0') = (q0, '0''0')  \nδ(q0, '0', '1') = (q0, '0''1')  \nδ(q0, '1', Z) = (q0, '1'Z)  \nδ(q0, '1', '0') = (q0, '1''0')  \nδ(q0, '1', '1') = (q0, '1''1')  \n\nδ(q0, ε, Z) = (q1, Z)  \nδ(q0, ε, '0') = (q1, '0')  \nδ(q0, ε, '1') = (q1, '1')  \n\nδ(q1, '0', '0') = (q1, ε)  \nδ(q1, '1', '1') = (q1, ε)  \n\nδ(q1, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "20",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf}\n \n Σ = {'0','1'}\n \n Γ = {'Z','0','1'}\n \n q₀ = q₀\n \n Z₀ = 'Z'\n \n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, '0', 'Z') = (q₀, '0Z') \n δ(q₀, '0', '0') = (q₀, '00') \n δ(q₀, '0', '1') = (q₀, '01') \n δ(q₀, '1', 'Z') = (q₀, '1Z') \n δ(q₀, '1', '0') = (q₀, '10') \n δ(q₀, '1', '1') = (q₀, '11') \n \n δ(q₀, ε, 'Z') = (q₁, 'Z') \n δ(q₀, ε, '0') = (q₁, '0') \n δ(q₀, ε, '1') = (q₁, '1') \n \n δ(q₁, '0', '0') = (q₁, ε) \n δ(q₁, '1', '1') = (q₁, ε) \n \n δ(q₁, ε, 'Z') = (qf, 'Z')",
+        "build_status": "Fail",
+        "test_cases_failed": "-",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf}\n \n Σ = {'0', '1'}\n \n Γ = {Z, '0', '1'}\n \n q₀ = q₀\n \n Z₀ = Z\n \n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, '0', Z) = (q₀, '0'Z) \n δ(q₀, '1', Z) = (q₀, '1'Z) \n δ(q₀, '0', '0') = (q₀, '0''0') \n δ(q₀, '0', '1') = (q₀, '0''1') \n δ(q₀, '1', '0') = (q₀, '1''0') \n δ(q₀, '1', '1') = (q₀, '1''1') \n \n δ(q₀, ε, Z) = (q₁, Z) \n δ(q₀, ε, '0') = (q₁, '0') \n δ(q₀, ε, '1') = (q₁, '1') \n \n δ(q₁, '0', '0') = (q₁, ε) \n δ(q₁, '1', '1') = (q₁, ε) \n \n δ(q₁, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "20",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "cfl": "L = { 0ⁿ1ᵐ0ⁿ | n,m ≥ 0}",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"1111111111111111111\", \"ACCEPT\"),\n(\"11111111111111111\", \"ACCEPT\"),\n(\"1\", \"ACCEPT\"),\n(\"111111111\", \"ACCEPT\"),\n(\"11\", \"ACCEPT\"),\n(\"11111111111111\", \"ACCEPT\"),\n(\"1111111\", \"ACCEPT\"),\n(\"1111111111111\", \"ACCEPT\"),\n(\"010\", \"ACCEPT\"),\n(\"1111\", \"ACCEPT\"),\n(\"011110\", \"ACCEPT\"),\n(\"1111111111\", \"ACCEPT\"),\n(\"01110\", \"ACCEPT\"),\n(\"0110\", \"ACCEPT\"),\n(\"11111111111\", \"ACCEPT\"),\n(\"111\", \"ACCEPT\"),\n(\"1111111111111111\", \"ACCEPT\"),\n(\"11111111\", \"ACCEPT\"),\n(\"111111111111111\", \"ACCEPT\"),\n(\"00\", \"ACCEPT\"),\n(\"111111\", \"ACCEPT\"),\n(\"111111111111\", \"ACCEPT\"),\n(\"11111\", \"ACCEPT\"),\n(\"111111111111111111\", \"ACCEPT\"),\n(\"11100\", \"REJECT\"),\n(\"0100\", \"REJECT\"),\n(\"01111\", \"REJECT\"),\n(\"110\", \"REJECT\"),\n(\"00110\", \"REJECT\"),\n(\"1111100\", \"REJECT\"),\n(\"10\", \"REJECT\"),\n(\"0011110\", \"REJECT\"),\n(\"011\", \"REJECT\"),\n(\"0111100\", \"REJECT\"),\n(\"00111110\", \"REJECT\"),\n(\"1100\", \"REJECT\"),\n(\"01\", \"REJECT\"),\n(\"01111100\", \"REJECT\"),\n(\"100\", \"REJECT\"),\n(\"011111\", \"REJECT\"),\n(\"011100\", \"REJECT\"),\n(\"11110\", \"REJECT\"),\n(\"0111\", \"REJECT\"),\n(\"0010\", \"REJECT\"),\n(\"01100\", \"REJECT\"),\n(\"1110\", \"REJECT\"),\n(\"111100\", \"REJECT\"),\n(\"001110\", \"REJECT\"),\n(\"111110\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n\nQ = {q₀, q₁, q₂, q₃}\nΣ = {0, 1}\nΓ = {Z, A}\n\nq₀ = q₀\nZ₀ = Z\nF = {q₃}\n\nδ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n\nδ(q₀, 0, Z) = (q₀, AZ)\nδ(q₀, 0, A) = (q₀, AA)\nδ(q₀, 1, Z) = (q₁, Z)\nδ(q₀, 1, A) = (q₁, A)\nδ(q₀, ε, Z) = (q₃, Z)\n\nδ(q₁, 1, Z) = (q₁, Z)\nδ(q₁, 1, A) = (q₁, A)\nδ(q₁, 0, A) = (q₂, ε)\nδ(q₁, ε, Z) = (q₃, Z)\n\nδ(q₂, 0, A) = (q₂, ε)\nδ(q₂, ε, Z) = (q₃, Z)\n",
+        "build_status": "Pass",
+        "test_cases_failed": "1",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n\nQ = {q₀, q₁, q₂, q₃}\nΣ = {0, 1}\nΓ = {Z, A}\nq₀ = q₀\nZ₀ = Z\nF = {q₃}\n\nδ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n\nδ(q₀, 0, Z) = (q₀, AZ)\nδ(q₀, 0, A) = (q₀, AA)\n\nδ(q₀, 1, Z) = (q₁, Z)\nδ(q₀, 1, A) = (q₁, A)\nδ(q₀, ε, Z) = (q₂, Z)\n\nδ(q₁, 1, Z) = (q₁, Z)\nδ(q₁, 1, A) = (q₁, A)\nδ(q₁, 0, A) = (q₂, ε)\nδ(q₁, ε, Z) = (q₃, Z)\n\nδ(q₂, 0, A) = (q₂, ε)\nδ(q₂, ε, Z) = (q₃, Z)\n",
+        "build_status": "Pass",
+        "test_cases_failed": "1",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n\nQ = {q₀, q₁, q₂, q₃}\nΣ = {0, 1}\nΓ = {Z, A}\nq₀ = q₀\nZ₀ = Z\nF = {q₃}\n\nδ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n\nδ(q₀, 0, Z) = (q₀, AZ)\nδ(q₀, 0, A) = (q₀, AA)\nδ(q₀, 1, Z) = (q₁, Z)\nδ(q₀, 1, A) = (q₁, A)\nδ(q₁, 1, Z) = (q₁, Z)\nδ(q₁, 1, A) = (q₁, A)\nδ(q₁, 0, A) = (q₂, ε)\nδ(q₂, 0, A) = (q₂, ε)\nδ(q₂, ε, Z) = (q₃, Z)\nδ(q₁, ε, Z) = (q₃, Z)\nδ(q₀, ε, Z) = (q₃, Z)\n",
+        "build_status": "Pass",
+        "test_cases_failed": "1",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "cfl": "L = { xⁿy²ⁿ | n ≥ 1 }",
+    "test_cases": "(\"xxxxyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxyyyy\", \"ACCEPT\"),\n(\"xxxxxxxyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxxxxxxxxxxxxyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxxxyyyyyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxxxxyyyyyyyyyyyy\", \"ACCEPT\"),\n(\"xxxyyyyyy\", \"ACCEPT\"),\n(\"xxxxyyyyyy\", \"REJECT\"),\n(\"yyyyyyxxx\", \"REJECT\"),\n(\"xyyy\", \"REJECT\"),\n(\"yyyy\", \"REJECT\"),\n(\"xy\", \"REJECT\"),\n(\"xxyyyyy\", \"REJECT\"),\n(\"xxxxyyyyyyy\", \"REJECT\"),\n(\"xxxxyyyyyyyyy\", \"REJECT\"),\n(\"yyyyxx\", \"REJECT\"),\n(\"xxxxxyyyyyyyy\", \"REJECT\"),\n(\"x\", \"REJECT\"),\n(\"xxxyyyyyyyyy\", \"REJECT\"),\n(\"xyyyy\", \"REJECT\"),\n(\"xxxyyyyyyy\", \"REJECT\"),\n(\"yy\", \"REJECT\"),\n(\"xxx\", \"REJECT\"),\n(\"xxyyyyyy\", \"REJECT\"),\n(\"yyx\", \"REJECT\"),\n(\"xxyy\", \"REJECT\"),\n(\"xx\", \"REJECT\"),\n(\"xxxyyy\", \"REJECT\"),\n(\"xxxyyyyy\", \"REJECT\"),\n(\"yyyyyy\", \"REJECT\"),\n(\"xxxyyyy\", \"REJECT\"),\n(\"xxyyy\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n\nQ = {q0, q1, q2, qf}  \nΣ = {x, y}  \nΓ = {Z, A}  \nq₀ = q0  \nZ₀ = Z  \nF = {qf}  \n\nδ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*  \n\nδ(q0, x, Z) = (q1, AAZ)  \nδ(q1, x, A) = (q1, AAA)  \nδ(q1, x, Z) = (q1, AAZ)  \nδ(q1, y, A) = (q2, ε)  \nδ(q2, y, A) = (q2, ε)  \nδ(q2, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qx, qy, qf} \n Σ = {x, y} \n Γ = {Z, A} \n q₀ = q₀ \n Z₀ = Z \n F = {qf} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ* \n \n δ(q₀, x, Z) = (qx, AAZ) \n δ(qx, x, A) = (qx, AAA) \n δ(qx, y, A) = (qy, ε) \n δ(qy, y, A) = (qy, ε) \n δ(qy, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q0, q1, q2, qf} \n Σ = {x, y} \n Γ = {Z, A} \n q₀ = q0 \n Z₀ = Z \n F = {qf} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ* \n \n δ(q0, x, Z) = (q1, AAZ) \n δ(q1, x, A) = (q1, AAA) \n δ(q1, y, A) = (q2, ε) \n δ(q2, y, A) = (q2, ε) \n δ(q2, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "cfl": "L = { aⁱbʲ | i > j ≥ 0 }",
+    "test_cases": "(\"aaabb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaabbbb\", \"ACCEPT\"),\n(\"a\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaabbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaabbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaabbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaab\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaa\", \"ACCEPT\"),\n(\"aab\", \"ACCEPT\"),\n(\"aaaaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaa\", \"ACCEPT\"),\n(\"aaabbb\", \"REJECT\"),\n(\"abb\", \"REJECT\"),\n(\"aabbb\", \"REJECT\"),\n(\"aaaaaabbbbbbb\", \"REJECT\"),\n(\"aaaabbbbb\", \"REJECT\"),\n(\"aaaabbbb\", \"REJECT\"),\n(\"aabb\", \"REJECT\"),\n(\"bbbb\", \"REJECT\"),\n(\"aaabbbb\", \"REJECT\"),\n(\"b\", \"REJECT\"),\n(\"bbb\", \"REJECT\"),\n(\"aaaabbaab\", \"REJECT\"),\n(\"aaaaaaabbbbbbb\", \"REJECT\"),\n(\"bbbbbb\", \"REJECT\"),\n(\"bbaaa\", \"REJECT\"),\n(\"bbbbb\", \"REJECT\"),\n(\"bbbbbbb\", \"REJECT\"),\n(\"bbbbbbaaaaaaa\", \"REJECT\"),\n(\"bb\", \"REJECT\"),\n(\"aaaaabbbbb\", \"REJECT\"),\n(\"ab\", \"REJECT\"),\n(\"bbbaaaa\", \"REJECT\"),\n(\"aaaaabbbbbb\", \"REJECT\"),\n(\"bbbbaaaaa\", \"REJECT\"),\n(\"\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n\nQ = {q0, q1, qf}\n\nΣ = {a, b}\n\nΓ = {Z, X, Y}\n\nq₀ = q0\n\nZ₀ = Z\n\nF = {qf}\n\nδ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n\nδ(q0, a, Z) = (q0, XZ)\nδ(q0, a, X) = (q0, XX)\n\nδ(q0, b, X) = (q1, Y)\n\nδ(q1, b, X) = (q1, ε)\n\nδ(q1, ε, Y) = (qf, Y)",
+        "build_status": "Pass",
+        "test_cases_failed": "24",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q0, q1, qf} \n Σ = {a, b} \n Γ = {Z, A} \n q₀ = q0 \n Z₀ = Z \n F = {qf} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ* \n \n δ(q0, a, Z) = (q0, AZ) \n δ(q0, a, A) = (q0, AA) \n δ(q0, b, A) = (q1, ε) \n δ(q1, b, A) = (q1, ε) \n δ(q0, ε, A) = (qf, A) \n δ(q1, ε, A) = (qf, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf} \n Σ = {a, b} \n Γ = {Z, A} \n q₀ = q₀ \n Z₀ = Z \n F = {qf} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ* \n \n δ(q₀, a, Z) = (q₀, AZ) \n δ(q₀, a, A) = (q₀, AA) \n δ(q₀, b, A) = (q₁, ε) \n \n δ(q₁, b, A) = (q₁, ε) \n \n δ(q₀, ε, A) = (qf, A) \n δ(q₁, ε, A) = (qf, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "cfl": "L = { 0ⁿ1ⁿ2ᵐ | n ≥ 1, m ≥ 1 }",
+    "test_cases": "(\"000111222\", \"ACCEPT\"),\n(\"0000111122\", \"ACCEPT\"),\n(\"00112\", \"ACCEPT\"),\n(\"012222222222\", \"ACCEPT\"),\n(\"00011122222\", \"ACCEPT\"),\n(\"0122\", \"ACCEPT\"),\n(\"0122222\", \"ACCEPT\"),\n(\"00001111222\", \"ACCEPT\"),\n(\"00011122\", \"ACCEPT\"),\n(\"0011222\", \"ACCEPT\"),\n(\"000001111122\", \"ACCEPT\"),\n(\"0001112\", \"ACCEPT\"),\n(\"000011112\", \"ACCEPT\"),\n(\"00000111112222222222\", \"ACCEPT\"),\n(\"000011112222222222\", \"ACCEPT\"),\n(\"0001112222222222\", \"ACCEPT\"),\n(\"0000111122222\", \"ACCEPT\"),\n(\"01222\", \"ACCEPT\"),\n(\"00000111112\", \"ACCEPT\"),\n(\"012\", \"ACCEPT\"),\n(\"000001111122222\", \"ACCEPT\"),\n(\"001122222\", \"ACCEPT\"),\n(\"001122\", \"ACCEPT\"),\n(\"0000011111222\", \"ACCEPT\"),\n(\"00112222222222\", \"ACCEPT\"),\n(\"0222221\", \"REJECT\"),\n(\"00122222\", \"REJECT\"),\n(\"0012\", \"REJECT\"),\n(\"00122\", \"REJECT\"),\n(\"022222\", \"REJECT\"),\n(\"021\", \"REJECT\"),\n(\"0012222\", \"REJECT\"),\n(\"011222\", \"REJECT\"),\n(\"02\", \"REJECT\"),\n(\"0112222\", \"REJECT\"),\n(\"022221\", \"REJECT\"),\n(\"011222222\", \"REJECT\"),\n(\"01\", \"REJECT\"),\n(\"001222222\", \"REJECT\"),\n(\"01122\", \"REJECT\"),\n(\"022\", \"REJECT\"),\n(\"0112\", \"REJECT\"),\n(\"02221\", \"REJECT\"),\n(\"01122222\", \"REJECT\"),\n(\"0221\", \"REJECT\"),\n(\"0222\", \"REJECT\"),\n(\"0222222\", \"REJECT\"),\n(\"001222\", \"REJECT\"),\n(\"02222221\", \"REJECT\"),\n(\"02222\", \"REJECT\"),",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n\nQ = {q₀, q₁, q₂, q₃}\nΣ = {'0','1','2'}\nΓ = {Z, A}\nq₀ = q₀\nZ₀ = Z\nF = {q₃}\n\nδ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n\nδ(q₀, '0', Z) = (q₁, AZ)\nδ(q₀, '0', A) = (q₁, AA)\n\nδ(q₁, '0', A) = (q₁, AA)\nδ(q₁, '1', A) = (q₂, ε)\n\nδ(q₂, '1', A) = (q₂, ε)\nδ(q₂, '2', Z) = (q₃, Z)\n\nδ(q₃, '2', Z) = (q₃, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, qf} \n Σ = {'0', '1', '2'} \n Γ = {Z, A} \n q₀ = q₀ \n Z₀ = Z \n F = {qf} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ* \n \n δ(q₀, '0', Z) = (q₁, AZ) \n δ(q₁, '0', A) = (q₁, AA) \n δ(q₁, '1', A) = (q₂, ε) \n δ(q₂, '1', A) = (q₂, ε) \n δ(q₂, '2', Z) = (q₃, Z) \n δ(q₃, '2', Z) = (q₃, Z) \n δ(q₃, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z, F)\n \n Q = {q₀, q₁, q₂, q₃, qf} \n Σ = {0, 1, 2} \n Γ = {Z, A} \n q₀ = q₀ \n Z₀ = Z \n F = {qf} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ* \n \n δ(q₀, 0, Z) = (q₁, AZ) \n δ(q₁, 0, A) = (q₁, AA) \n \n δ(q₁, 1, A) = (q₂, ε) \n δ(q₂, 1, A) = (q₂, ε) \n \n δ(q₂, 2, Z) = (q₃, Z) \n δ(q₃, 2, Z) = (q₃, Z) \n \n δ(q₃, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "cfl": "L = { w | n₀(w) = n₁(w), n ≥ 1, w ∈ {0,1}* }",
+    "test_cases": "(\"0011\", \"ACCEPT\"),\n(\"11010001110100\", \"ACCEPT\"),\n(\"0110100101\", \"ACCEPT\"),\n(\"110001\", \"ACCEPT\"),\n(\"001011110010\", \"ACCEPT\"),\n(\"01011000111100\", \"ACCEPT\"),\n(\"1010\", \"ACCEPT\"),\n(\"1100\", \"ACCEPT\"),\n(\"10\", \"ACCEPT\"),\n(\"0111001100\", \"ACCEPT\"),\n(\"0011110011011000\", \"ACCEPT\"),\n(\"011010100101\", \"ACCEPT\"),\n(\"11010111100000\", \"ACCEPT\"),\n(\"01111110000010\", \"ACCEPT\"),\n(\"01101001\", \"ACCEPT\"),\n(\"111000\", \"ACCEPT\"),\n(\"0110\", \"ACCEPT\"),\n(\"1001\", \"ACCEPT\"),\n(\"1010100011\", \"ACCEPT\"),\n(\"010101\", \"ACCEPT\"),\n(\"01110001\", \"ACCEPT\"),\n(\"0101\", \"ACCEPT\"),\n(\"01\", \"ACCEPT\"),\n(\"11010100\", \"ACCEPT\"),\n\n(\"0\", \"REJECT\"),\n(\"00\", \"REJECT\"),\n(\"000001111\", \"REJECT\"),\n(\"0000111\", \"REJECT\"),\n(\"00011\", \"REJECT\"),\n(\"011\", \"REJECT\"),\n(\"0000001111111\", \"REJECT\"),\n(\"0000000111111\", \"REJECT\"),\n(\"1\", \"REJECT\"),\n(\"11111\", \"REJECT\"),\n(\"00111\", \"REJECT\"),\n(\"000011111\", \"REJECT\"),\n(\"000000\", \"REJECT\"),\n(\"111111\", \"REJECT\"),\n(\"000000011111111\", \"REJECT\"),\n(\"11\", \"REJECT\"),\n(\"111\", \"REJECT\"),\n(\"0001111\", \"REJECT\"),\n(\"1111111\", \"REJECT\"),\n(\"1111\", \"REJECT\"),\n(\"00000011111\", \"REJECT\"),\n(\"001\", \"REJECT\"),\n(\"00000\", \"REJECT\"),\n(\"000000001111111\", \"REJECT\"),\n(\"00000111111\", \"REJECT\")\n(\"0111001100110111\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n\nQ = {q0, q1, qf}\n\nΣ = {'0', '1'}\n\nΓ = {Z, A, B}\n\nq₀ = q0\n\nZ₀ = Z\n\nF = {qf}\n\nδ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n\nδ(q0, '0', Z) = (q1, AZ)  \nδ(q0, '1', Z) = (q1, BZ)  \n\nδ(q1, '0', Z) = (q1, AZ)  \nδ(q1, '0', A) = (q1, AA)  \nδ(q1, '0', B) = (q1, ε)  \n\nδ(q1, '1', Z) = (q1, BZ)  \nδ(q1, '1', B) = (q1, BB)  \nδ(q1, '1', A) = (q1, ε)  \n\nδ(q1, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q0, q1, qacc} \n Σ = {'0', '1'} \n Γ = {Z, A, B} \n q₀ = q0 \n Z₀ = Z \n F = {qacc} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ* \n \n δ(q0, '0', Z) = (q1, AZ) \n δ(q0, '1', Z) = (q1, BZ) \n \n δ(q1, '0', Z) = (q1, AZ) \n δ(q1, '0', A) = (q1, AA) \n δ(q1, '0', B) = (q1, ε) \n \n δ(q1, '1', Z) = (q1, BZ) \n δ(q1, '1', B) = (q1, BB) \n δ(q1, '1', A) = (q1, ε) \n \n δ(q1, ε, Z) = (qacc, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q0, Z, F)\n \n Q = {q0, q1, qf} \n Σ = {0, 1} \n Γ = {Z, 0, 1} \n q0 = q0 \n Z0 = Z \n F = {qf} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ* \n \n δ(q0, 0, Z) = (q1, 0Z) \n δ(q0, 0, 0) = (q1, 00) \n δ(q0, 0, 1) = (q1, ε) \n δ(q0, 1, Z) = (q1, 1Z) \n δ(q0, 1, 1) = (q1, 11) \n δ(q0, 1, 0) = (q1, ε) \n \n δ(q1, 0, Z) = (q1, 0Z) \n δ(q1, 0, 0) = (q1, 00) \n δ(q1, 0, 1) = (q1, ε) \n δ(q1, 1, Z) = (q1, 1Z) \n δ(q1, 1, 1) = (q1, 11) \n δ(q1, 1, 0) = (q1, ε) \n \n δ(q1, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "cfl": "L={wxwᴿ ∣  x∈{a,b}, w ∈ {a,b}*}",
+    "test_cases": "    (\"a\", \"ACCEPT\"),\n    (\"b\", \"ACCEPT\"),\n    (\"aaa\", \"ACCEPT\"),\n    (\"bab\", \"ACCEPT\"),\n    (\"aaaaa\", \"ACCEPT\"),\n    (\"ababa\", \"ACCEPT\"),\n    (\"aaaaaaa\", \"ACCEPT\"),\n    (\"aababaa\", \"ACCEPT\"),\n    (\"bbaabaabb\", \"ACCEPT\"),\n    (\"bbaabaabb\", \"ACCEPT\"),\n    (\"aababbbabaa\", \"ACCEPT\"),\n    (\"bababababab\", \"ACCEPT\"),\n    (\"bbaaaabaaaabb\", \"ACCEPT\"),\n    (\"aaabbbbbbbaaa\", \"ACCEPT\"),\n    (\"abbabaaaaababba\", \"ACCEPT\"),\n    (\"abbbabaaababbba\", \"ACCEPT\"),\n    (\"abbbaabababaabbba\", \"ACCEPT\"),\n    (\"bbabaabbbbbaababb\", \"ACCEPT\"),\n    (\"baabaaaaabaaaaabaab\", \"ACCEPT\"),\n    (\"abbbbaabbabbaabbbba\", \"ACCEPT\"),\n    (\"bbababaabaaabaabababb\", \"ACCEPT\"),\n    (\"baabbaabbaaabbaabbaab\", \"ACCEPT\"),\n    (\"aa\", \"REJECT\"),\n    (\"ab\", \"REJECT\"),\n    (\"aaab\", \"REJECT\"),\n    (\"abba\", \"REJECT\"),\n    (\"abbbbb\", \"REJECT\"),\n    (\"aaaaba\", \"REJECT\"),\n    (\"aaaaaaaa\", \"REJECT\"),\n    (\"baabbaab\", \"REJECT\"),\n    (\"abbaaabbbb\", \"REJECT\"),\n    (\"baaabbaaaa\", \"REJECT\"),\n    (\"baa\", \"REJECT\"),\n    (\"abb\", \"REJECT\"),\n    (\"aabab\", \"REJECT\"),\n    (\"aaaab\", \"REJECT\"),\n    (\"bbabaab\", \"REJECT\"),\n    (\"abbbbbb\", \"REJECT\"),\n    (\"aabaaabab\", \"REJECT\"),\n    (\"baaaaaaaa\", \"REJECT\"),\n    (\"aaaabbbabab\", \"REJECT\"),\n    (\"babbbaabaaa\", \"REJECT\"),\n    (\"\", \"REJECT\"),\n    (\"aaabbb\", \"REJECT\"),\n    (\"abcba\", \"REJECT\"),     \n    (\"aaabaab\", \"REJECT\"),\n    (\"aabaaab\", \"REJECT\"),\n    (\"ababaaa\", \"REJECT\"),\n    (\"abaaba\",  \"REJECT\")",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n\nQ = {q0, q1, qf}  \nΣ = {a, b}  \nΓ = {Z, A, B}  \nq₀ = q0  \nZ₀ = Z  \nF = {qf}  \n\nδ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*  \n\nδ(q0, a, Z) = (q0, AZ)  \nδ(q0, a, A) = (q0, AA)  \nδ(q0, a, B) = (q0, AB)  \nδ(q0, b, Z) = (q0, BZ)  \nδ(q0, b, A) = (q0, BA)  \nδ(q0, b, B) = (q0, BB)  \n\nδ(q0, a, Z) = (q1, Z)  \nδ(q0, a, A) = (q1, A)  \nδ(q0, a, B) = (q1, B)  \nδ(q0, b, Z) = (q1, Z)  \nδ(q0, b, A) = (q1, A)  \nδ(q0, b, B) = (q1, B)  \n\nδ(q1, a, A) = (q1, ε)  \nδ(q1, b, B) = (q1, ε)  \n\nδ(q1, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "20",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf}\n \n Σ = {a, b}\n \n Γ = {Z, A, B}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ) \n δ(q₀, a, A) = (q₀, AA) \n δ(q₀, a, B) = (q₀, AB) \n δ(q₀, b, Z) = (q₀, BZ) \n δ(q₀, b, A) = (q₀, BA) \n δ(q₀, b, B) = (q₀, BB) \n \n δ(q₀, a, Z) = (q₁, Z) \n δ(q₀, a, A) = (q₁, A) \n δ(q₀, a, B) = (q₁, B) \n δ(q₀, b, Z) = (q₁, Z) \n δ(q₀, b, A) = (q₁, A) \n δ(q₀, b, B) = (q₁, B) \n \n δ(q₁, a, A) = (q₁, ε) \n δ(q₁, b, B) = (q₁, ε) \n δ(q₁, ε, Z) = (qf, Z)\n \n q₀ = q₀\n \n Z₀ = Z\n \n F = {qf}",
+        "build_status": "Pass",
+        "test_cases_failed": "20",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf} \n Σ = {a, b} \n Γ = {Z, A, B} \n q₀ = q₀ \n Z₀ = Z \n F = {qf} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ* \n \n δ(q₀, a, Z) = (q₀, AZ) \n δ(q₀, a, A) = (q₀, AA) \n δ(q₀, a, B) = (q₀, AB) \n δ(q₀, b, Z) = (q₀, BZ) \n δ(q₀, b, A) = (q₀, BA) \n δ(q₀, b, B) = (q₀, BB) \n \n δ(q₀, a, Z) = (q₁, Z) \n δ(q₀, a, A) = (q₁, A) \n δ(q₀, a, B) = (q₁, B) \n δ(q₀, b, Z) = (q₁, Z) \n δ(q₀, b, A) = (q₁, A) \n δ(q₀, b, B) = (q₁, B) \n \n δ(q₁, a, A) = (q₁, ε) \n δ(q₁, b, B) = (q₁, ε) \n \n δ(q₁, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "20",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "cfl": "L = { 0ⁿ1ᵐ2ᵐ3ⁿ | n ≥ 1, m ≥ 1 }",
+    "test_cases": "(\"00112233\", \"ACCEPT\"),\n(\"0011122233\", \"ACCEPT\"),\n(\"0011111122222233\", \"ACCEPT\"),\n(\"01111112222223\", \"ACCEPT\"),\n(\"00001112223333\", \"ACCEPT\"),\n(\"0001122333\", \"ACCEPT\"),\n(\"001111222233\", \"ACCEPT\"),\n(\"0111122223\", \"ACCEPT\"),\n(\"001233\", \"ACCEPT\"),\n(\"00011111112222222333\", \"ACCEPT\"),\n(\"0000111122223333\", \"ACCEPT\"),\n(\"00012333\", \"ACCEPT\"),\n(\"001111111222222233\", \"ACCEPT\"),\n(\"011111222223\", \"ACCEPT\"),\n(\"01112223\", \"ACCEPT\"),\n(\"000011223333\", \"ACCEPT\"),\n(\"0000123333\", \"ACCEPT\"),\n(\"000111222333\", \"ACCEPT\"),\n(\"0123\", \"ACCEPT\"),\n(\"00111112222233\", \"ACCEPT\"),\n(\"0111111122222223\", \"ACCEPT\"),\n(\"0001111122222333\", \"ACCEPT\"),\n(\"000111111222222333\", \"ACCEPT\"),\n(\"00011112222333\", \"ACCEPT\"),\n(\"011223\", \"ACCEPT\"),\n(\"0112223\", \"REJECT\"),\n(\"0011111222223\", \"REJECT\"),\n(\"022113\", \"REJECT\"),\n(\"01111222233\", \"REJECT\"),\n(\"00111122223\", \"REJECT\"),\n(\"022222111113\", \"REJECT\"),\n(\"011112223\", \"REJECT\"),\n(\"0111112222233\", \"REJECT\"),\n(\"0111112222223\", \"REJECT\"),\n(\"00123\", \"REJECT\"),\n(\"0111223\", \"REJECT\"),\n(\"01233\", \"REJECT\"),\n(\"01223\", \"REJECT\"),\n(\"0011223\", \"REJECT\"),\n(\"011122233\", \"REJECT\"),\n(\"01111222223\", \"REJECT\"),\n(\"02221113\", \"REJECT\"),\n(\"011122223\", \"REJECT\"),\n(\"0112233\", \"REJECT\"),\n(\"0111111222223\", \"REJECT\"),\n(\"01111122223\", \"REJECT\"),\n(\"001112223\", \"REJECT\"),\n(\"0222211113\", \"REJECT\"),\n(\"0213\", \"REJECT\"),\n(\"01123\", \"REJECT\"),",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, q₄, qf}\n Σ = {0, 1, 2, 3}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, 0, Z) = (q₁, AZ)\n \n δ(q₁, 0, A) = (q₁, AA)\n δ(q₁, 1, A) = (q₂, BA)\n \n δ(q₂, 1, B) = (q₂, BB)\n δ(q₂, 2, B) = (q₃, ε)\n \n δ(q₃, 2, B) = (q₃, ε)\n δ(q₃, 3, A) = (q₄, ε)\n \n δ(q₄, 3, A) = (q₄, ε)\n δ(q₄, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": " PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, q₄, qf}\n Σ = {0, 1, 2, 3}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, 0, Z) = (q₁, AZ)\n \n δ(q₁, 0, A) = (q₁, AA)\n δ(q₁, 1, A) = (q₂, BA)\n \n δ(q₂, 1, B) = (q₂, BB)\n δ(q₂, 2, B) = (q₃, ε)\n \n δ(q₃, 2, B) = (q₃, ε)\n δ(q₃, 3, A) = (q₄, ε)\n \n δ(q₄, 3, A) = (q₄, ε)\n δ(q₄, ε, Z) = (qf, Z)\n",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, q₄, qf}\n Σ = {0, 1, 2, 3}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, 0, Z) = (q₁, AZ)\n \n δ(q₁, 0, A) = (q₁, AA)\n δ(q₁, 1, A) = (q₂, BA)\n \n δ(q₂, 1, B) = (q₂, BB)\n δ(q₂, 2, B) = (q₃, ε)\n \n δ(q₃, 2, B) = (q₃, ε)\n δ(q₃, 3, A) = (q₄, ε)\n \n δ(q₄, 3, A) = (q₄, ε)\n δ(q₄, ε, Z) = (qf, Z)\n",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "cfl": "L = { aⁿbᵐcⁿ⁺ᵐ | n ≥ 1, m ≥ 1 }",
+    "test_cases": "(\"abcc\", \"ACCEPT\"),\n(\"aaabbbbccccccc\", \"ACCEPT\"),\n(\"aaaabbcccccc\", \"ACCEPT\"),\n(\"aabbbccccc\", \"ACCEPT\"),\n(\"abbbbccccc\", \"ACCEPT\"),\n(\"abbbcccc\", \"ACCEPT\"),\n(\"aaabcccc\", \"ACCEPT\"),\n(\"aaabbbbbcccccccc\", \"ACCEPT\"),\n(\"abbccc\", \"ACCEPT\"),\n(\"aabbbbbccccccc\", \"ACCEPT\"),\n(\"aaaabbbccccccc\", \"ACCEPT\"),\n(\"aaaabbbbcccccccc\", \"ACCEPT\"),\n(\"aaabbccccc\", \"ACCEPT\"),\n(\"aabbbbbbbccccccccc\", \"ACCEPT\"),\n(\"aabbbbbbcccccccc\", \"ACCEPT\"),\n(\"aabbbbcccccc\", \"ACCEPT\"),\n(\"aabccc\", \"ACCEPT\"),\n(\"aaabbbcccccc\", \"ACCEPT\"),\n(\"abbbbbbccccccc\", \"ACCEPT\"),\n(\"abbbbbcccccc\", \"ACCEPT\"),\n(\"aaabbbbbbbcccccccccc\", \"ACCEPT\"),\n(\"abbbbbbbcccccccc\", \"ACCEPT\"),\n(\"aaaabccccc\", \"ACCEPT\"),\n(\"aaabbbbbbccccccccc\", \"ACCEPT\"),\n(\"aabbcccc\", \"ACCEPT\"),\n(\"abbbbcccc\", \"REJECT\"),\n(\"accb\", \"REJECT\"),\n(\"abbbbb\", \"REJECT\"),\n(\"abbbbbbcccccc\", \"REJECT\"),\n(\"abbbccccc\", \"REJECT\"),\n(\"abbbbbccccccc\", \"REJECT\"),\n(\"abbbbbbbccccccc\", \"REJECT\"),\n(\"abbbbbccccc\", \"REJECT\"),\n(\"abbcc\", \"REJECT\"),\n(\"abccc\", \"REJECT\"),\n(\"accccbbb\", \"REJECT\"),\n(\"abb\", \"REJECT\"),\n(\"abbbbcccccc\", \"REJECT\"),\n(\"abbbbbb\", \"REJECT\"),\n(\"acccbb\", \"REJECT\"),\n(\"accccccbbbbb\", \"REJECT\"),\n(\"accccccccbbbbbbb\", \"REJECT\"),\n(\"abbbbbbb\", \"REJECT\"),\n(\"abc\", \"REJECT\"),\n(\"acccccccbbbbbb\", \"REJECT\"),\n(\"abbbbbbbccccccccc\", \"REJECT\"),\n(\"abbcccc\", \"REJECT\"),\n(\"abbbb\", \"REJECT\"),\n(\"acccccbbbb\", \"REJECT\"),\n(\"abbbccc\", \"REJECT\"),",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA, qB, qC, qf}\n Σ = {a, b, c}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qA, AZ)\n \n δ(qA, a, Z) = (qA, AZ)\n δ(qA, a, A) = (qA, AA)\n δ(qA, b, Z) = (qB, AZ)\n δ(qA, b, A) = (qB, AA)\n \n δ(qB, b, A) = (qB, AA)\n δ(qB, c, A) = (qC, ε)\n \n δ(qC, c, A) = (qC, ε)\n δ(qC, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": " PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, qf}\n Σ = {a, b, c}\n Γ = {Z, X}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₁, XZ)\n \n δ(q₁, a, X) = (q₁, XX)\n δ(q₁, b, X) = (q₂, XX)\n \n δ(q₂, b, X) = (q₂, XX)\n δ(q₂, c, X) = (q₃, ε)\n \n δ(q₃, c, X) = (q₃, ε)\n δ(q₃, ε, Z) = (qf, Z)\n",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA, qB, qC, qf}\n Σ = {a, b, c}\n Γ = {Z, X}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qA, XZ)\n \n δ(qA, a, X) = (qA, XX)\n δ(qA, b, X) = (qB, XX)\n \n δ(qB, b, X) = (qB, XX)\n δ(qB, c, X) = (qC, ε)\n \n δ(qC, c, X) = (qC, ε)\n δ(qC, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "cfl": "L = { aⁱbʲcᵏ | i, j, k ≥ 0 and i + j = k }",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"abcc\", \"ACCEPT\"),\n(\"aabbbccccc\", \"ACCEPT\"),\n(\"ac\", \"ACCEPT\"),\n(\"abbbbccccc\", \"ACCEPT\"),\n(\"abbbcccc\", \"ACCEPT\"),\n(\"bbbccc\", \"ACCEPT\"),\n(\"abbccc\", \"ACCEPT\"),\n(\"aabbbbbccccccc\", \"ACCEPT\"),\n(\"aabbbbbbbccccccccc\", \"ACCEPT\"),\n(\"aabbbbbbcccccccc\", \"ACCEPT\"),\n(\"aabbbbcccccc\", \"ACCEPT\"),\n(\"aabccc\", \"ACCEPT\"),\n(\"aacc\", \"ACCEPT\"),\n(\"aaaccc\", \"ACCEPT\"),\n(\"abbbbbbccccccc\", \"ACCEPT\"),\n(\"bbbbbbcccccc\", \"ACCEPT\"),\n(\"abbbbbcccccc\", \"ACCEPT\"),\n(\"bbcc\", \"ACCEPT\"),\n(\"abbbbbbbcccccccc\", \"ACCEPT\"),\n(\"bbbbbccccc\", \"ACCEPT\"),\n(\"bc\", \"ACCEPT\"),\n(\"bbbbcccc\", \"ACCEPT\"),\n(\"bbbbbbbccccccc\", \"ACCEPT\"),\n(\"aabbcccc\", \"ACCEPT\"),\n(\"bbbbbbccccccc\", \"REJECT\"),\n(\"a\", \"REJECT\"),\n(\"bbbbbbbcccccc\", \"REJECT\"),\n(\"abbbccccc\", \"REJECT\"),\n(\"bbbbbbccccc\", \"REJECT\"),\n(\"bcc\", \"REJECT\"),\n(\"abbcc\", \"REJECT\"),\n(\"bbbbccccc\", \"REJECT\"),\n(\"abccc\", \"REJECT\"),\n(\"bbbbbbbcccccccc\", \"REJECT\"),\n(\"bbccc\", \"REJECT\"),\n(\"bbbcc\", \"REJECT\"),\n(\"bbbbbcccccc\", \"REJECT\"),\n(\"b\", \"REJECT\"),\n(\"bbbbccc\", \"REJECT\"),\n(\"abc\", \"REJECT\"),\n(\"bbbcccc\", \"REJECT\"),\n(\"bbaccc\", \"REJECT\"),\n(\"abbcccc\", \"REJECT\"),\n(\"acc\", \"REJECT\"),\n(\"bbbacccc\", \"REJECT\"),\n(\"bbbbbcccc\", \"REJECT\"),\n(\"bbc\", \"REJECT\"),\n(\"bacc\", \"REJECT\"),\n(\"abbbccc\", \"REJECT\"),",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {a, b, c}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, b, Z) = (q₁, AZ)\n δ(q₀, b, A) = (q₁, AA)\n δ(q₀, c, A) = (q₂, ε)\n δ(q₁, b, Z) = (q₁, AZ)\n δ(q₁, b, A) = (q₁, AA)\n δ(q₁, c, A) = (q₂, ε)\n δ(q₂, c, A) = (q₂, ε)\n δ(q₀, ε, Z) = (qf, Z)\n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {a, b, c}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n \n δ(q₀, b, Z) = (q₁, AZ)\n δ(q₀, b, A) = (q₁, AA)\n \n δ(q₁, b, Z) = (q₁, AZ)\n δ(q₁, b, A) = (q₁, AA)\n \n δ(q₀, c, A) = (q₂, ε)\n δ(q₁, c, A) = (q₂, ε)\n δ(q₂, c, A) = (q₂, ε)\n \n δ(q₀, ε, Z) = (qf, Z)\n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {a, b, c}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, b, Z) = (q₁, AZ)\n δ(q₀, b, A) = (q₁, AA)\n δ(q₀, c, A) = (q₂, ε)\n δ(q₀, ε, Z) = (qf, Z)\n \n δ(q₁, b, Z) = (q₁, AZ)\n δ(q₁, b, A) = (q₁, AA)\n δ(q₁, c, A) = (q₂, ε)\n \n δ(q₂, c, A) = (q₂, ε)\n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "cfl": "L = { xy | x, y ∈ {0, 1}*, |x| = |y|, x ≠ y }",
+    "test_cases": "(\"110001000011001001001101\", \"ACCEPT\"),\n(\"01000011100110011101100111100100\", \"ACCEPT\"),\n(\"0011\", \"ACCEPT\"),\n(\"1010101000110101110111\", \"ACCEPT\"),\n(\"101111\", \"ACCEPT\"),\n(\"1100\", \"ACCEPT\"),\n(\"0100\", \"ACCEPT\"),\n(\"1011011101111110110110101011100110\", \"ACCEPT\"),\n(\"11110000\", \"ACCEPT\"),\n(\"1111100000\", \"ACCEPT\"),\n(\"1001001000\", \"ACCEPT\"),\n(\"0000011111\", \"ACCEPT\"),\n(\"101100111100\", \"ACCEPT\"),\n(\"10\", \"ACCEPT\"),\n(\"0101111001111011\", \"ACCEPT\"),\n(\"101011101001111001\", \"ACCEPT\"),\n(\"00001111\", \"ACCEPT\"),\n(\"10001010101101\", \"ACCEPT\"),\n(\"111000\", \"ACCEPT\"),\n(\"000111\", \"ACCEPT\"),\n(\"01\", \"ACCEPT\"),\n(\"001111110100001011010100001011\", \"ACCEPT\"),\n(\"01111111000011100010\", \"ACCEPT\"),\n(\"01001101101000100001110010\", \"ACCEPT\"),\n(\"0110110000011101000111100111\", \"ACCEPT\"),\n(\"01110100100111010010\", \"REJECT\"),\n(\"00010\", \"REJECT\"),\n(\"10101011010011110\", \"REJECT\"),\n(\"010111010010111010\", \"REJECT\"),\n(\"0101111101101011111011\", \"REJECT\"),\n(\"0101\", \"REJECT\"),\n(\"1111111111\", \"REJECT\"),\n(\"00001011110110011011010\", \"REJECT\"),\n(\"11110001111000\", \"REJECT\"),\n(\"11111111\", \"REJECT\"),\n(\"0000110011011001010\", \"REJECT\"),\n(\"011001011100101\", \"REJECT\"),\n(\"101\", \"REJECT\"),\n(\"101101010001010110111\", \"REJECT\"),\n(\"011011\", \"REJECT\"),\n(\"0010001000101100100010001011\", \"REJECT\"),\n(\"001111001110001111001110\", \"REJECT\"),\n(\"0101001010011\", \"REJECT\"),\n(\"0110000\", \"REJECT\"),\n(\"000100010\", \"REJECT\"),\n(\"01110101101\", \"REJECT\"),\n(\"00\", \"REJECT\"),\n(\"100110100110\", \"REJECT\"),\n(\"1000010110000101\", \"REJECT\"),\n(\"01011010000010101101000001\", \"REJECT\"),",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {0, 1}\n Γ = {Z, 0, 1}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, 0, Z) = (q₀, 0Z)\n δ(q₀, 0, 0) = (q₀, 00)\n δ(q₀, 0, 1) = (q₀, 01)\n δ(q₀, 1, Z) = (q₀, 1Z)\n δ(q₀, 1, 0) = (q₀, 10)\n δ(q₀, 1, 1) = (q₀, 11)\n \n δ(q₀, ε, Z) = (q₁, Z)\n δ(q₀, ε, 0) = (q₁, 0)\n δ(q₀, ε, 1) = (q₁, 1)\n \n δ(q₁, 0, 0) = (q₁, ε)\n δ(q₁, 1, 1) = (q₁, ε)\n δ(q₁, 0, 1) = (q₂, ε)\n δ(q₁, 1, 0) = (q₂, ε)\n \n δ(q₂, 0, 0) = (q₂, ε)\n δ(q₂, 0, 1) = (q₂, ε)\n δ(q₂, 1, 0) = (q₂, ε)\n δ(q₂, 1, 1) = (q₂, ε)\n \n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "10",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA cannot be constructed.",
+        "build_status": "Fail",
+        "test_cases_failed": "",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q_f}\n Σ = {0, 1}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {q_f}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, 0, Z) = (q₀, AZ)\n δ(q₀, 0, A) = (q₀, AA)\n δ(q₀, 0, B) = (q₀, AB)\n δ(q₀, 1, Z) = (q₀, BZ)\n δ(q₀, 1, A) = (q₀, BA)\n δ(q₀, 1, B) = (q₀, BB)\n \n δ(q₀, ε, Z) = (q₁, Z)\n δ(q₀, ε, A) = (q₁, A)\n δ(q₀, ε, B) = (q₁, B)\n \n δ(q₁, 0, A) = (q₁, ε)\n δ(q₁, 1, B) = (q₁, ε)\n δ(q₁, 0, B) = (q₂, ε)\n δ(q₁, 1, A) = (q₂, ε)\n \n δ(q₂, 0, A) = (q₂, ε)\n δ(q₂, 0, B) = (q₂, ε)\n δ(q₂, 1, A) = (q₂, ε)\n δ(q₂, 1, B) = (q₂, ε)\n \n δ(q₂, ε, Z) = (q_f, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "10",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "cfl": "L = { aᵐb⁽²ᵐ ⁺ ¹⁾ | m ≥ 1 }",
+    "test_cases": "(\"aaaaaaaaabbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaabbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaabbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aabbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"abbb\", \"ACCEPT\"),\n(\"aaabbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaabbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaabbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaabbbbbbbbb\", \"REJECT\"),\n(\"bbbbbbbbbbbaaaaa\", \"REJECT\"),\n(\"aaaaabbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaabbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaabbbbbbbbbbbb\", \"REJECT\"),\n(\"aabbbbbb\", \"REJECT\"),\n(\"aaaabbbbbbbbbb\", \"REJECT\"),\n(\"abb\", \"REJECT\"),\n(\"aabbbb\", \"REJECT\"),\n(\"aaaabbbbbbbb\", \"REJECT\"),\n(\"aaabbbbbbbb\", \"REJECT\"),\n(\"aabbb\", \"REJECT\"),\n(\"bbbbbaa\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaabbbbb\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbbbbb\", \"REJECT\"),\n(\"bbba\", \"REJECT\"),\n(\"abbbb\", \"REJECT\"),\n(\"bbbbbbbbbaaaa\", \"REJECT\"),\n(\"bbbbbbbbbbbbbaaaaaa\", \"REJECT\"),\n(\"bbbbbbbaaa\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaabbbbbbbbbbbb\", \"REJECT\"),\n(\"aaabbbbbb\", \"REJECT\"),\n(\"aaaaaabbbbbbbbbbb\", \"REJECT\"),",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA cannot be constructed.",
+        "build_status": "Fail",
+        "test_cases_failed": "",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃}\n Σ = {a, b}\n Γ = {Z, X}\n q₀ = q₀\n Z₀ = Z\n F = {q₃}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₁, XXZ)\n δ(q₁, a, X) = (q₁, XXX)\n δ(q₁, b, X) = (q₂, ε)\n δ(q₂, b, X) = (q₂, ε)\n δ(q₂, b, Z) = (q₃, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA cannot be constructed.",
+        "build_status": "Fail",
+        "test_cases_failed": "",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "cfl": "L = { aⁱbʲcᵏdˡ | i = k or j = l, i ≥ 1, j ≥ 1 }",
+    "test_cases": "(\"abbbbcd\", \"ACCEPT\"),\n(\"aabd\", \"ACCEPT\"),\n(\"abd\", \"ACCEPT\"),\n(\"aaabcd\", \"ACCEPT\"),\n(\"abbbcddd\", \"ACCEPT\"),\n(\"abc\", \"ACCEPT\"),\n(\"abcccd\", \"ACCEPT\"),\n(\"abbbbcdd\", \"ACCEPT\"),\n(\"abbc\", \"ACCEPT\"),\n(\"aaabccd\", \"ACCEPT\"),\n(\"aabcccd\", \"ACCEPT\"),\n(\"aabcd\", \"ACCEPT\"),\n(\"abcd\", \"ACCEPT\"),\n(\"abbbc\", \"ACCEPT\"),\n(\"abcddd\", \"ACCEPT\"),\n(\"abbbcd\", \"ACCEPT\"),\n(\"abbcddd\", \"ACCEPT\"),\n(\"aaabd\", \"ACCEPT\"),\n(\"abbbbc\", \"ACCEPT\"),\n(\"abbcdd\", \"ACCEPT\"),\n(\"abccd\", \"ACCEPT\"),\n(\"abbcd\", \"ACCEPT\"),\n(\"aabccd\", \"ACCEPT\"),\n(\"abbbcdd\", \"ACCEPT\"),\n(\"abcdd\", \"ACCEPT\"),\n(\"abbbbbbbccdddddddd\", \"REJECT\"),\n(\"aabcccdd\", \"REJECT\"),\n(\"aabbbbcccddddd\", \"REJECT\"),\n(\"aaabbbbccccddddd\", \"REJECT\"),\n(\"abbbbbccdddddd\", \"REJECT\"),\n(\"aabbbbbcccdddddd\", \"REJECT\"),\n(\"aaabbbbbccccdddddd\", \"REJECT\"),\n(\"aaabbbccccdddd\", \"REJECT\"),\n(\"aaaabbbcccccdddd\", \"REJECT\"),\n(\"abbbbccddddd\", \"REJECT\"),\n(\"aaabccccdd\", \"REJECT\"),\n(\"abbbbbbccddddddd\", \"REJECT\"),\n(\"abbbccdddd\", \"REJECT\"),\n(\"aabbbbbbcccddddddd\", \"REJECT\"),\n(\"aaabbbbbbccccddddddd\", \"REJECT\"),\n(\"aaabbbbbbbccccdddddddd\", \"REJECT\"),\n(\"aaaabcccccdd\", \"REJECT\"),\n(\"abccdd\", \"REJECT\"),\n(\"aabbbcccdddd\", \"REJECT\"),\n(\"abbccddd\", \"REJECT\"),\n(\"aaaabbbbcccccddddd\", \"REJECT\"),\n(\"aaaabbcccccddd\", \"REJECT\"),\n(\"aabbbbbbbcccdddddddd\", \"REJECT\"),\n(\"aaabbccccddd\", \"REJECT\"),\n(\"aabbcccddd\", \"REJECT\"),",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA1, qA2, qA3, qA4, qB1, qB2, qB3, qB4, qf}\n Σ = {a, b, c, d}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qA1, AZ)\n δ(q₀, a, Z) = (qB1, Z)\n \n δ(qA1, a, A) = (qA1, AA)\n δ(qA1, a, Z) = (qA1, AZ)\n δ(qA1, b, A) = (qA2, A)\n \n δ(qA2, b, A) = (qA2, A)\n δ(qA2, c, A) = (qA3, ε)\n \n δ(qA3, c, A) = (qA3, ε)\n δ(qA3, d, Z) = (qA4, Z)\n δ(qA3, ε, Z) = (qf, Z)\n \n δ(qA4, d, Z) = (qA4, Z)\n δ(qA4, ε, Z) = (qf, Z)\n \n δ(qB1, a, Z) = (qB1, Z)\n δ(qB1, b, Z) = (qB2, BZ)\n \n δ(qB2, b, B) = (qB2, BB)\n δ(qB2, c, B) = (qB3, B)\n δ(qB2, d, B) = (qB4, ε)\n \n δ(qB3, c, B) = (qB3, B)\n δ(qB3, d, B) = (qB4, ε)\n \n δ(qB4, d, B) = (qB4, ε)\n δ(qB4, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "12",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA0, q₁, q₂, q₃, qd, qB0, q₄, q₅, q₆, q₇, qf1, qf2}\n Σ = {a, b, c, d}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf1, qf2}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (qA0, Z)\n δ(q₀, ε, Z) = (qB0, Z)\n \n δ(qA0, a, Z) = (q₁, AZ)\n δ(q₁, a, A) = (q₁, AA)\n δ(q₁, b, A) = (q₂, A)\n δ(q₂, b, A) = (q₂, A)\n δ(q₂, c, A) = (q₃, ε)\n δ(q₃, c, A) = (q₃, ε)\n δ(q₃, d, Z) = (qd, Z)\n δ(q₃, ε, Z) = (qf1, Z)\n δ(qd, d, Z) = (qd, Z)\n δ(qd, ε, Z) = (qf1, Z)\n \n δ(qB0, a, Z) = (q₄, Z)\n δ(q₄, a, Z) = (q₄, Z)\n δ(q₄, b, Z) = (q₅, BZ)\n δ(q₅, b, B) = (q₅, BB)\n δ(q₅, c, B) = (q₆, B)\n δ(q₆, c, B) = (q₆, B)\n δ(q₅, d, B) = (q₇, ε)\n δ(q₆, d, B) = (q₇, ε)\n δ(q₇, d, B) = (q₇, ε)\n δ(q₇, ε, Z) = (qf2, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "12",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q1s, q1A, q1B, q1C, q1D, q2s, q2A, q2B, q2C, q2D, qF}\n Σ = {a, b, c, d}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qF}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (q1s, Z)\n δ(q₀, ε, Z) = (q2s, Z)\n \n δ(q1s, a, Z) = (q1A, AZ)\n δ(q1A, a, A) = (q1A, AA)\n δ(q1A, b, A) = (q1B, A)\n δ(q1B, b, A) = (q1B, A)\n δ(q1B, c, A) = (q1C, ε)\n δ(q1C, c, A) = (q1C, ε)\n δ(q1C, ε, Z) = (q1D, Z)\n δ(q1D, d, Z) = (q1D, Z)\n δ(q1D, ε, Z) = (qF, Z)\n \n δ(q2s, a, Z) = (q2A, Z)\n δ(q2A, a, Z) = (q2A, Z)\n δ(q2A, b, Z) = (q2B, BZ)\n δ(q2B, b, B) = (q2B, BB)\n δ(q2B, c, B) = (q2C, B)\n δ(q2C, c, B) = (q2C, B)\n δ(q2B, d, B) = (q2D, ε)\n δ(q2C, d, B) = (q2D, ε)\n δ(q2D, d, B) = (q2D, ε)\n δ(q2D, ε, Z) = (qF, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "12",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "cfl": "L = { a²ᵐc⁴ⁿdⁿbᵐ | m, n ≥ 0 }",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"aab\", \"ACCEPT\"),\n(\"aaaabb\", \"ACCEPT\"),\n(\"aaaaaabbb\", \"ACCEPT\"),\n(\"ccccd\", \"ACCEPT\"),\n(\"ccccccccdd\", \"ACCEPT\"),\n(\"ccccccccccccddd\", \"ACCEPT\"),\n(\"aaccccdb\", \"ACCEPT\"),\n(\"aaccccccccddb\", \"ACCEPT\"),\n(\"aaccccccccccccdddb\", \"ACCEPT\"),\n(\"aaaaccccdbb\", \"ACCEPT\"),\n(\"aaaaccccccccddbb\", \"ACCEPT\"),\n(\"aaaaccccccccccccdddbb\", \"ACCEPT\"),\n(\"aaaaaaccccdbbb\", \"ACCEPT\"),\n(\"aaaaaaccccccccddbbb\", \"ACCEPT\"),\n(\"aaaaaaccccccccccccdddbbb\", \"ACCEPT\"),\n(\"aaaaaaaabbbb\", \"ACCEPT\"),\n(\"aaaaaaaaccccdbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaccccdbbbbb\", \"ACCEPT\"),\n(\"aaccccccccccccccccddddb\", \"ACCEPT\"),\n(\"aaccccccccccccccccccccdddddb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaccccccccddbbbbbb\", \"ACCEPT\"),\n(\"aaaaccccccccccccccccddddbb\", \"ACCEPT\"),\n(\"aaaaaaccccccccccccccccddddbbb\", \"ACCEPT\"),\n(\"aacdb\", \"REJECT\"),\n(\"aaddccb\", \"REJECT\"),\n(\"aadcb\", \"REJECT\"),\n(\"aaddddccccb\", \"REJECT\"),\n(\"aadddcccb\", \"REJECT\"),\n(\"aadddddcccccb\", \"REJECT\"),\n(\"aaacdb\", \"REJECT\"),\n(\"aaaccccddddb\", \"REJECT\"),\n(\"aaacccdddb\", \"REJECT\"),\n(\"aaacccccdddddb\", \"REJECT\"),\n(\"aacdbb\", \"REJECT\"),\n(\"aaccddbb\", \"REJECT\"),\n(\"aacddb\", \"REJECT\"),\n(\"aaccdb\", \"REJECT\"),\n(\"aacccddb\", \"REJECT\"),\n(\"aacccdddb\", \"REJECT\"),\n(\"aacccddddb\", \"REJECT\"),\n(\"aacccdddbb\", \"REJECT\"),\n(\"aacccccddddb\", \"REJECT\"),\n(\"aacccccddddddb\", \"REJECT\"),\n(\"aacccccdddddbb\", \"REJECT\"),\n(\"aaccccdddddb\", \"REJECT\"),\n(\"aaccccdddb\", \"REJECT\"),\n(\"aaccccddddbb\", \"REJECT\"),\n(\"aaccccccdddddb\", \"REJECT\")\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {qA0, qA1, qC0, qC1, qC2, qC3, qD, qB, qF}\n Σ = {a, b, c, d}\n Γ = {Z, M, N}\n q₀ = qA0\n Z₀ = Z\n F = {qF}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(qA0, a, Z) = (qA1, Z)\n δ(qA0, a, M) = (qA1, M)\n \n δ(qA1, a, Z) = (qA0, MZ)\n δ(qA1, a, M) = (qA0, MM)\n \n δ(qA0, ε, Z) = (qC0, Z)\n δ(qA0, ε, M) = (qC0, M)\n \n δ(qC0, c, Z) = (qC1, Z)\n δ(qC0, c, M) = (qC1, M)\n δ(qC0, c, N) = (qC1, N)\n \n δ(qC1, c, Z) = (qC2, Z)\n δ(qC1, c, M) = (qC2, M)\n δ(qC1, c, N) = (qC2, N)\n \n δ(qC2, c, Z) = (qC3, Z)\n δ(qC2, c, M) = (qC3, M)\n δ(qC2, c, N) = (qC3, N)\n \n δ(qC3, c, Z) = (qC0, NZ)\n δ(qC3, c, M) = (qC0, NM)\n δ(qC3, c, N) = (qC0, NN)\n \n δ(qC0, ε, N) = (qD, N)\n δ(qC0, ε, M) = (qB, M)\n δ(qC0, ε, Z) = (qB, Z)\n \n δ(qD, d, N) = (qD, ε)\n δ(qD, ε, M) = (qB, M)\n δ(qD, ε, Z) = (qB, Z)\n \n δ(qB, b, M) = (qB, ε)\n δ(qB, ε, Z) = (qF, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {qA0, qA1, qc0, qc1, qc2, qc3, qd, qb, qf} \n Σ = {a, b, c, d} \n Γ = {Z, A, C} \n q₀ = qA0 \n Z₀ = Z \n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(qA0, a, Z) = (qA1, Z) \n δ(qA0, a, A) = (qA1, A) \n δ(qA1, a, Z) = (qA0, AZ) \n δ(qA1, a, A) = (qA0, AA) \n \n δ(qA0, ε, Z) = (qc0, Z) \n δ(qA0, ε, A) = (qc0, A) \n \n δ(qc0, c, Z) = (qc1, Z) \n δ(qc0, c, A) = (qc1, A) \n δ(qc0, c, C) = (qc1, C) \n \n δ(qc1, c, Z) = (qc2, Z) \n δ(qc1, c, A) = (qc2, A) \n δ(qc1, c, C) = (qc2, C) \n \n δ(qc2, c, Z) = (qc3, Z) \n δ(qc2, c, A) = (qc3, A) \n δ(qc2, c, C) = (qc3, C) \n \n δ(qc3, c, Z) = (qc0, CZ) \n δ(qc3, c, A) = (qc0, CA) \n δ(qc3, c, C) = (qc0, CC) \n \n δ(qc0, ε, Z) = (qd, Z) \n δ(qc0, ε, A) = (qd, A) \n δ(qc0, ε, C) = (qd, C) \n \n δ(qd, d, C) = (qd, ε) \n \n δ(qd, ε, A) = (qb, A) \n δ(qd, ε, Z) = (qb, Z) \n \n δ(qb, b, A) = (qb, ε) \n δ(qb, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {qA0, qA1, qC0, qC1, qC2, qC3, qD, qB, qF}\n Σ = {a, c, d, b}\n Γ = {Z, B, N}\n q₀ = qA0\n Z₀ = Z\n F = {qF}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(qA0, a, Z) = (qA1, Z)\n δ(qA0, a, B) = (qA1, B)\n δ(qA1, a, Z) = (qA0, BZ)\n δ(qA1, a, B) = (qA0, BB)\n \n δ(qA0, ε, Z) = (qC0, Z)\n δ(qA0, ε, B) = (qC0, B)\n \n δ(qC0, c, Z) = (qC1, Z)\n δ(qC0, c, B) = (qC1, B)\n δ(qC0, c, N) = (qC1, N)\n \n δ(qC1, c, Z) = (qC2, Z)\n δ(qC1, c, B) = (qC2, B)\n δ(qC1, c, N) = (qC2, N)\n \n δ(qC2, c, Z) = (qC3, Z)\n δ(qC2, c, B) = (qC3, B)\n δ(qC2, c, N) = (qC3, N)\n \n δ(qC3, c, Z) = (qC0, NZ)\n δ(qC3, c, B) = (qC0, NB)\n δ(qC3, c, N) = (qC0, NN)\n \n δ(qC0, ε, Z) = (qD, Z)\n δ(qC0, ε, B) = (qD, B)\n δ(qC0, ε, N) = (qD, N)\n \n δ(qD, d, N) = (qD, ε)\n \n δ(qD, ε, Z) = (qB, Z)\n δ(qD, ε, B) = (qB, B)\n \n δ(qB, b, B) = (qB, ε)\n \n δ(qB, ε, Z) = (qF, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "cfl": "L = {aᵐbⁿcᵖdˡ  | m+n = p+l; m,n,p,l ≥ 1}",
+    "test_cases": "(\"abbbbbbcccccdd\", \"ACCEPT\"),\n(\"abbbbbcccddd\", \"ACCEPT\"),\n(\"abbbbbbcccdddd\", \"ACCEPT\"),\n(\"abbbbbbbccdddddd\", \"ACCEPT\"),\n(\"abbbbbbccccccd\", \"ACCEPT\"),\n(\"abbbbcdddd\", \"ACCEPT\"),\n(\"abbbbcccdd\", \"ACCEPT\"),\n(\"abbbbbbbcccddddd\", \"ACCEPT\"),\n(\"abbbcddd\", \"ACCEPT\"),\n(\"abbbbbbbccccdddd\", \"ACCEPT\"),\n(\"abbbbccccd\", \"ACCEPT\"),\n(\"abbbbbbccddddd\", \"ACCEPT\"),\n(\"abbbccdd\", \"ACCEPT\"),\n(\"abbbcccd\", \"ACCEPT\"),\n(\"abbccd\", \"ACCEPT\"),\n(\"abbbbbbccccddd\", \"ACCEPT\"),\n(\"abbbbbbcdddddd\", \"ACCEPT\"),\n(\"abcd\", \"ACCEPT\"),\n(\"abbbbbcccccd\", \"ACCEPT\"),\n(\"abbbbccddd\", \"ACCEPT\"),\n(\"abbcdd\", \"ACCEPT\"),\n(\"abbbbbcddddd\", \"ACCEPT\"),\n(\"abbbbbccdddd\", \"ACCEPT\"),\n(\"abbbbbccccdd\", \"ACCEPT\"),\n(\"abbbbbbbcddddddd\", \"ACCEPT\"),\n(\"abbbbbcccdd\", \"REJECT\"),\n(\"abbbccd\", \"REJECT\"),\n(\"abbbbbbcccddddd\", \"REJECT\"),\n(\"aabbccd\", \"REJECT\"),\n(\"abbbbbbcccddd\", \"REJECT\"),\n(\"aabcddd\", \"REJECT\"),\n(\"abbbbccdddd\", \"REJECT\"),\n(\"aabbbbcccdd\", \"REJECT\"),\n(\"aabbbbbcccddddd\", \"REJECT\"),\n(\"aabbbbbcccddd\", \"REJECT\"),\n(\"aabbbbcccdddd\", \"REJECT\"),\n(\"abbbbccdd\", \"REJECT\"),\n(\"aabbbccdd\", \"REJECT\"),\n(\"aabbbbbbccccddd\", \"REJECT\"),\n(\"aabcd\", \"REJECT\"),\n(\"aabbbbbbccccddddd\", \"REJECT\"),\n(\"abbbbbbbccccddd\", \"REJECT\"),\n(\"abbbccddd\", \"REJECT\"),\n(\"abbcddd\", \"REJECT\"),\n(\"abbbbbbbccccddddd\", \"REJECT\"),\n(\"aabbbccdddd\", \"REJECT\"),\n(\"abbcd\", \"REJECT\"),\n(\"aabbccddd\", \"REJECT\"),\n(\"abbbbbcccdddd\", \"REJECT\"),\n(\"abcdd\", \"REJECT\"),",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA, qB1, qB, qC1, qC, qD1, qD, qF}\n Σ = {a, b, c, d}\n Γ = {Z, X}\n q₀ = q₀\n Z₀ = Z\n F = {qF}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qA, XZ)\n \n δ(qA, a, X) = (qA, XX)\n δ(qA, b, X) = (qB1, XX)\n \n δ(qB1, b, X) = (qB, XX)\n δ(qB, b, X) = (qB, XX)\n \n δ(qB1, c, X) = (qC1, ε)\n δ(qB, c, X) = (qC1, ε)\n \n δ(qC1, c, X) = (qC, ε)\n δ(qC, c, X) = (qC, ε)\n \n δ(qC1, d, X) = (qD1, ε)\n δ(qC, d, X) = (qD1, ε)\n \n δ(qD1, d, X) = (qD, ε)\n δ(qD, d, X) = (qD, ε)\n \n δ(qD1, ε, Z) = (qF, Z)\n δ(qD, ε, Z) = (qF, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA, qB, qC, qD, qF}\n Σ = {a, b, c, d}\n Γ = {Z, X}\n q₀ = q₀\n Z₀ = Z\n F = {qF}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qA, XZ)\n \n δ(qA, a, Z) = (qA, XZ)\n δ(qA, a, X) = (qA, XX)\n δ(qA, b, Z) = (qB, XZ)\n δ(qA, b, X) = (qB, XX)\n \n δ(qB, b, Z) = (qB, XZ)\n δ(qB, b, X) = (qB, XX)\n δ(qB, c, X) = (qC, ε)\n \n δ(qC, c, X) = (qC, ε)\n δ(qC, d, X) = (qD, ε)\n \n δ(qD, d, X) = (qD, ε)\n δ(qD, ε, Z) = (qF, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, q₄, q_f}\n Σ = {a, b, c, d}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {q_f}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₁, AZ)\n \n δ(q₁, a, A) = (q₁, AA)\n δ(q₁, b, A) = (q₂, AA)\n \n δ(q₂, b, A) = (q₂, AA)\n δ(q₂, c, A) = (q₃, ε)\n \n δ(q₃, c, A) = (q₃, ε)\n δ(q₃, d, A) = (q₄, ε)\n \n δ(q₄, d, A) = (q₄, ε)\n δ(q₄, ε, Z) = (q_f, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "cfl": "L = {aⁿbᵐ | m ≠ n}",
+    "test_cases": "(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"bb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aabbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaabbbb\", \"REJECT\"),\n(\"b\", \"ACCEPT\"),\n(\"aaaaaabbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaabbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaab\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aabb\", \"REJECT\"),\n(\"ab\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaab\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaabbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaabbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"\", \"REJECT\"),\n(\"aaaaaaabbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaabbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"a\", \"ACCEPT\"),\n(\"aa\", \"ACCEPT\"),\n(\"aaabbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaab\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaabbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaabbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaabbbbbbbbb\", \"REJECT\"),",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qB, qMoreB, qAcc}\n Σ = {a, b}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qAcc}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, b, A) = (qB, ε)\n δ(q₀, b, Z) = (qMoreB, Z)\n δ(q₀, ε, A) = (qAcc, A)\n \n δ(qB, b, A) = (qB, ε)\n δ(qB, b, Z) = (qMoreB, Z)\n δ(qB, ε, A) = (qAcc, A)\n \n δ(qMoreB, b, Z) = (qMoreB, Z)\n δ(qMoreB, ε, Z) = (qAcc, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qL_a, qL_b, qG_a, qG_b, qG_extra, qf}\n Σ = {a, b}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (qL_a, Z)\n δ(q₀, ε, Z) = (qG_a, Z)\n \n δ(qL_a, a, Z) = (qL_a, AZ)\n δ(qL_a, a, A) = (qL_a, AA)\n δ(qL_a, b, A) = (qL_b, ε)\n δ(qL_b, b, A) = (qL_b, ε)\n δ(qL_a, ε, A) = (qf, A)\n δ(qL_b, ε, A) = (qf, A)\n \n δ(qG_a, a, Z) = (qG_a, AZ)\n δ(qG_a, a, A) = (qG_a, AA)\n δ(qG_a, b, A) = (qG_b, ε)\n δ(qG_a, b, Z) = (qG_extra, Z)\n δ(qG_b, b, A) = (qG_b, ε)\n δ(qG_b, b, Z) = (qG_extra, Z)\n δ(qG_extra, b, Z) = (qG_extra, Z)\n δ(qG_extra, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "15",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₃, q₄, q₅}\n Σ = {a, b}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {q₄, q₅}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, b, A) = (q₁, ε)\n δ(q₀, b, Z) = (q₃, Z)\n δ(q₀, ε, A) = (q₄, A)\n \n δ(q₁, b, A) = (q₁, ε)\n δ(q₁, b, Z) = (q₃, Z)\n δ(q₁, ε, A) = (q₄, A)\n \n δ(q₃, b, Z) = (q₃, Z)\n δ(q₃, ε, Z) = (q₅, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "cfl": "L = {aⁿbᵐcᵏ | k = |n - m|, n ≥ 0, m ≥ 0, k ≥ 0}",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbb\", \"ACCEPT\"),\n(\"aabb\", \"ACCEPT\"),\n(\"aaaaabbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbbb\", \"ACCEPT\"),\n(\"aabb\", \"ACCEPT\"),\n(\"aaaaaaaaaacccccccccc\", \"ACCEPT\"),\n(\"aaaaaccccc\", \"ACCEPT\"),\n(\"aaaaaccccc\", \"ACCEPT\"),\n(\"bbbbbbcccccc\", \"ACCEPT\"),\n(\"bbbbbbbbcccccccc\", \"ACCEPT\"),\n(\"bbbccc\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaabbbbbbccccccc\", \"ACCEPT\"),\n(\"aaaaaaabbbbbbbbc\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaabbbbbbbcccccccc\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbcc\", \"ACCEPT\"),\n(\"aaaaaabccccc\", \"ACCEPT\"),\n(\"aaaaaaaaaaaabbbbbbbccccc\", \"ACCEPT\"),\n(\"aaaaaabbbbbbbbbccc\", \"ACCEPT\"),\n(\"aaaaaaabbbbbcc\", \"ACCEPT\"),\n(\"aaaabbbbbbbbbbbbcccccccc\", \"ACCEPT\"),\n(\"abbbbbcccc\", \"ACCEPT\"),\n(\"abbbbbbbbbbbbbbccccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaaaaaabbbbbbbbbbbbc\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaabbbbbcccccccc\", \"ACCEPT\"),\n(\"ba\", \"REJECT\"),\n(\"ca\", \"REJECT\"),\n(\"cb\", \"REJECT\"),\n(\"acb\", \"REJECT\"),\n(\"bac\", \"REJECT\"),\n(\"bca\", \"REJECT\"),\n(\"cab\", \"REJECT\"),\n(\"cba\", \"REJECT\"),\n(\"aabac\", \"REJECT\"),\n(\"aaaaaaaaaaabbbbccccccccccccc\", \"REJECT\"),\n(\"aaaaaaaaaaaabbbbbbbbbbbbbcc\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbbbbbccccccc\", \"REJECT\"),\n(\"aaaaaaaabbcc\", \"REJECT\"),\n(\"aaaaaaabbbbbbcc\", \"REJECT\"),\n(\"aaaaaaaaaaaaabbcccccccc\", \"REJECT\"),\n(\"aaaaaaaaaaaaaabbbbbbccccc\", \"REJECT\"),\n(\"aaaaabbbbbbbbbccccc\", \"REJECT\"),\n(\"abbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaabbbbbbbbbbcccccccccc\", \"REJECT\"),\n(\"aaaaabbbcccccccccccc\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbbbbbbcccccccccccccc\", \"REJECT\"),\n(\"aaaabbbbbbbccccc\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbbbcccccccccccccc\", \"REJECT\"),\n(\"aaaaaaaaaaabbbcccc\", \"REJECT\"),\n(\"aaabbbbbbbbbbbcccccccccccc\", \"REJECT\"),",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf} \n Σ = {a, b, c} \n Γ = {Z, A, B} \n q₀ = q₀ \n Z₀ = Z \n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ) \n δ(q₀, a, A) = (q₀, AA) \n \n δ(q₀, b, Z) = (q₁, BZ) \n δ(q₀, b, A) = (q₁, ε) \n \n δ(q₀, c, A) = (q₂, ε) \n \n δ(q₀, ε, Z) = (qf, Z) \n \n δ(q₁, b, A) = (q₁, ε) \n δ(q₁, b, Z) = (q₁, BZ) \n δ(q₁, b, B) = (q₁, BB) \n \n δ(q₁, c, A) = (q₂, ε) \n δ(q₁, c, B) = (q₂, ε) \n \n δ(q₁, ε, Z) = (qf, Z) \n \n δ(q₂, c, A) = (q₂, ε) \n δ(q₂, c, B) = (q₂, ε) \n \n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {a, b, c}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, b, A) = (q₁, ε)\n δ(q₀, b, Z) = (q₁, BZ)\n δ(q₀, c, A) = (q₂, ε)\n δ(q₀, ε, Z) = (qf, Z)\n \n δ(q₁, b, A) = (q₁, ε)\n δ(q₁, b, Z) = (q₁, BZ)\n δ(q₁, b, B) = (q₁, BB)\n δ(q₁, c, A) = (q₂, ε)\n δ(q₁, c, B) = (q₂, ε)\n δ(q₁, ε, Z) = (qf, Z)\n \n δ(q₂, c, A) = (q₂, ε)\n δ(q₂, c, B) = (q₂, ε)\n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q_b, q_c, q_f}\n Σ = {a, b, c}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {q_f}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n \n δ(q₀, b, Z) = (q_b, BZ)\n δ(q₀, b, A) = (q_b, ε)\n \n δ(q₀, c, A) = (q_c, ε)\n \n δ(q_b, b, A) = (q_b, ε)\n δ(q_b, b, Z) = (q_b, BZ)\n δ(q_b, b, B) = (q_b, BB)\n \n δ(q_b, c, A) = (q_c, ε)\n δ(q_b, c, B) = (q_c, ε)\n \n δ(q_c, c, A) = (q_c, ε)\n δ(q_c, c, B) = (q_c, ε)\n \n δ(q₀, ε, Z) = (q_f, Z)\n δ(q_b, ε, Z) = (q_f, Z)\n δ(q_c, ε, Z) = (q_f, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "cfl": "L = {aⁿb²ⁿ | n ≥ 0}",
+    "test_cases": "(\"baabbbbbabababbba\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"bbbbaa\", \"REJECT\"),\n(\"aabb\", \"REJECT\"),\n(\"aaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"abab\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaabbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"abb\", \"ACCEPT\"),\n(\"aaaaaabbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"abbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"ba\", \"REJECT\"),\n(\"abbababbaba\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aabbb\", \"REJECT\"),\n(\"aabaabbbabbbaaabab\", \"REJECT\"),\n(\"\", \"ACCEPT\"),\n(\"bbbababbabbbbbbbbaabbbabaaaabb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"bbaaaaabbbbbaaaa\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaabbbbbbbbbbbbb\", \"REJECT\"),\n(\"a\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aa\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"b\", \"REJECT\"),\n(\"aaaabbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aabbbb\", \"ACCEPT\"),\n(\"bbabab\", \"REJECT\"),\n(\"baaababbbaabbbbbbb\", \"REJECT\"),\n(\"bbaa\", \"REJECT\"),\n(\"ab\", \"REJECT\"),\n(\"babaaaab\", \"REJECT\"),\n(\"aaabbbbbb\", \"ACCEPT\"),\n(\"aaabbb\", \"REJECT\"),\n(\"bb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\", \"ACCEPT\"),",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf}\n Σ = {a, b}\n Γ = {Z, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (qf, Z)\n δ(q₀, a, Z) = (q₀, BBZ)\n δ(q₀, a, B) = (q₀, BBB)\n δ(q₀, b, B) = (q₁, ε)\n δ(q₁, b, B) = (q₁, ε)\n δ(q₁, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf}\n Σ = {a, b}\n Γ = {Z, X}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, XXZ)\n δ(q₀, a, X) = (q₀, XXX)\n δ(q₀, b, X) = (q₁, ε)\n δ(q₁, b, X) = (q₁, ε)\n δ(q₀, ε, Z) = (qf, Z)\n δ(q₁, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {a, b}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (q₁, Z)\n δ(q₀, ε, Z) = (qf, Z)\n \n δ(q₁, a, Z) = (q₁, AAZ)\n δ(q₁, a, A) = (q₁, AAA)\n \n δ(q₁, b, A) = (q₂, ε)\n \n δ(q₂, b, A) = (q₂, ε)\n \n δ(q₁, ε, Z) = (qf, Z)\n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "24",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "cfl": "L = {aⁱbʲcᵏ | i > j  or  j> k, i,j,k≥0}",
+    "test_cases": "(\"aaaaaaaaaaaabbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaabbbbbbbbcc\", \"ACCEPT\"),\n(\"a\", \"ACCEPT\"),\n(\"b\", \"ACCEPT\"),\n(\"ab\", \"ACCEPT\"),\n(\"ac\", \"ACCEPT\"),\n(\"bb\", \"ACCEPT\"),\n(\"aa\", \"ACCEPT\"),\n(\"aaaaab\", \"ACCEPT\"),\n(\"bbbc\", \"ACCEPT\"),\n(\"abbc\", \"ACCEPT\"),\n(\"aaabccccc\", \"ACCEPT\"),\n(\"abbbbbcc\", \"ACCEPT\"),\n(\"aaabbc\", \"ACCEPT\"),\n(\"aaaabbbc\", \"ACCEPT\"),\n(\"bbbbcc\", \"ACCEPT\"),\n(\"aabbc\", \"ACCEPT\"),\n(\"aaaaaabbbbbbc\", \"ACCEPT\"),\n(\"aaaaaaabbbccc\", \"ACCEPT\"),\n(\"aaaaaaaaabbccc\", \"ACCEPT\"),\n(\"aabbbbbbbbbccccc\", \"ACCEPT\"),\n(\"abbbbbbbbbccc\", \"ACCEPT\"),\n(\"bbbbbbbbbcccc\", \"ACCEPT\"),\n(\"aaaaaabbcccc\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbcccccc\", \"ACCEPT\"),\n(\"\", \"REJECT\"),\n(\"c\", \"REJECT\"),\n(\"bc\", \"REJECT\"),\n(\"cc\", \"REJECT\"),\n(\"abc\", \"REJECT\"),\n(\"aabbcc\", \"REJECT\"),\n(\"aabbbccc\", \"REJECT\"),\n(\"bbccccc\", \"REJECT\"),\n(\"aaabbbbbcccccccccc\", \"REJECT\"),\n(\"ccccc\", \"REJECT\"),\n(\"bbbbbccccc\", \"REJECT\"),\n(\"aabbbcccccc\", \"REJECT\"),\n(\"aaaabbbbbccccccccc\", \"REJECT\"),\n(\"aaaaabbbbbbccccccccccc\", \"REJECT\"),\n(\"bbbbbbccccccc\", \"REJECT\"),\n(\"aaaaaaaabbbbbbbbccccccccc\", \"REJECT\"),\n(\"aabbccccc\", \"REJECT\"),\n(\"abbcccc\", \"REJECT\"),\n(\"aaabbbccccccc\", \"REJECT\"),\n(\"bccccc\", \"REJECT\"),\n(\"aabbbbcccccccc\", \"REJECT\"),\n(\"aacbcbaa\", \"REJECT\"),\n(\"bcaaaaa\", \"REJECT\"),\n(\"babbba\", \"REJECT\"),\n(\"cababcaaca\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA cannot be constructed.",
+        "build_status": "Fail",
+        "test_cases_failed": "",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA cannot be constructed.",
+        "build_status": "Fail",
+        "test_cases_failed": "",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA cannot be constructed.",
+        "build_status": "Fail",
+        "test_cases_failed": "",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "cfl": "L= { all strings that have some number of a’s, followed by some number of b’s, followed by the same number of c’s as b’s, followed by the same number of d’s as a’s (with at least one a and at least one b) }",
+    "test_cases": "(\"abcd\", \"ACCEPT\"),\n(\"aabbbbbbbbbcccccccccdd\", \"ACCEPT\"),\n(\"abbbbccccd\", \"ACCEPT\"),\n(\"aaaaaaaaabbbbbbbbccccccccddddddddd\", \"ACCEPT\"),\n(\"aabbbbbbbbccccccccdd\", \"ACCEPT\"),\n(\"abbbbbbbcccccccd\", \"ACCEPT\"),\n(\"aaaabbbbbbbbbbccccccccccdddd\", \"ACCEPT\"),\n(\"aaaabbbbbcccccdddd\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbbbbccccccccccdddddddd\", \"ACCEPT\"),\n(\"aaabbbbbbbbbcccccccccddd\", \"ACCEPT\"),\n(\"aaabbbbbbbbbbccccccccccddd\", \"ACCEPT\"),\n(\"aaaaaabbbbccccdddddd\", \"ACCEPT\"),\n(\"aaabbbbbbbbccccccccddd\", \"ACCEPT\"),\n(\"aaaaaaaaabbbbbbccccccddddddddd\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbbbccccccccccdddddddddd\", \"ACCEPT\"),\n(\"abbbbccccd\", \"ACCEPT\"),\n(\"aaabbbbbbbcccccccddd\", \"ACCEPT\"),\n(\"aaaaaaaaaabcdddddddddd\", \"ACCEPT\"),\n(\"aaaaabbbbbbbbccccccccddddd\", \"ACCEPT\"),\n(\"aaaaabbbbbbbbbcccccccccddddd\", \"ACCEPT\"),\n(\"aaaaaaabbccddddddd\", \"ACCEPT\"),\n(\"aaaabbbbbbbbbbccccccccccdddd\", \"ACCEPT\"),\n(\"aaaabcdddd\", \"ACCEPT\"),\n(\"aaabbbcccddd\", \"ACCEPT\"),\n(\"aaaaabbbbbbccccccddddd\", \"ACCEPT\"),\n(\"\", \"REJECT\"),\n(\"ad\", \"REJECT\"),\n(\"bc\", \"REJECT\"),\n(\"bcd\", \"REJECT\"),\n(\"acd\", \"REJECT\"),\n(\"abd\", \"REJECT\"),\n(\"abc\", \"REJECT\"),\n(\"aaaaaaaabbbbbbbbbcccccccdddddddd\", \"REJECT\"),\n(\"aaaaaaaccccccccbbbbbbbbddddddd\", \"REJECT\"),\n(\"aaaaaaaabbbbbbbcccccccdddddddddd\", \"REJECT\"),\n(\"aaacbddd\", \"REJECT\"),\n(\"aaaaaaaabbbbbbbbbcccccccccddddddd\", \"REJECT\"),\n(\"aaaaaaaabbbcdddddddd\", \"REJECT\"),\n(\"aacdddbbcbdcba\", \"REJECT\"),\n(\"aaaaaaaaaaccbbdddddddddd\", \"REJECT\"),\n(\"aaaaaaabbbbbccccccddddddd\", \"REJECT\"),\n(\"aaaaaaaaaabbccddddddd\", \"REJECT\"),\n(\"aaaaaaccccccccccbbbbbbbbbbdddddd\", \"REJECT\"),\n(\"aaaaaaaabbbbbbbbccccccccccdddddddd\", \"REJECT\"),\n(\"dcaadcbdbc\", \"REJECT\"),\n(\"abbbbbbccccccdd\", \"REJECT\"),\n(\"cbcbdbcacadcdacba\", \"REJECT\"),\n(\"daaaddabaaddccaccd\", \"REJECT\"),\n(\"aaaaaaaaabbbbbbccccccddddddddddd\", \"REJECT\"),\n(\"abbbbcccccd\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA, qB, qC, qD, qf}\n Σ = {a, b, c, d}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qA, AZ)\n \n δ(qA, a, A) = (qA, AA)\n δ(qA, b, A) = (qB, BA)\n \n δ(qB, b, B) = (qB, BB)\n δ(qB, c, B) = (qC, ε)\n \n δ(qC, c, B) = (qC, ε)\n δ(qC, ε, A) = (qD, A)\n \n δ(qD, d, A) = (qD, ε)\n δ(qD, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, q₄, q_f}\n Σ = {a, b, c, d}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {q_f}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₁, AZ)\n \n δ(q₁, a, A) = (q₁, AA)\n δ(q₁, b, A) = (q₂, BA)\n \n δ(q₂, b, B) = (q₂, BB)\n δ(q₂, c, B) = (q₃, ε)\n \n δ(q₃, c, B) = (q₃, ε)\n δ(q₃, ε, A) = (q₄, A)\n \n δ(q₄, d, A) = (q₄, ε)\n δ(q₄, ε, Z) = (q_f, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": " PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA, qB, qC, qD, qf}\n Σ = {a, b, c, d}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qA, AZ)\n \n δ(qA, a, A) = (qA, AA)\n δ(qA, b, A) = (qB, BA)\n \n δ(qB, b, B) = (qB, BB)\n δ(qB, c, B) = (qC, ε)\n \n δ(qC, c, B) = (qC, ε)\n δ(qC, d, A) = (qD, ε)\n \n δ(qD, d, A) = (qD, ε)\n δ(qD, ε, Z) = (qf, Z)\n",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "cfl": "L= { all strings of the form w, then a # symbol, then w written backwards, where w is any string made only of a, b, and c }",
+    "test_cases": "(\"acbb#bbca\", \"ACCEPT\"),\n(\"ccbcaaabbb#bbbaaacbcc\", \"ACCEPT\"),\n(\"a#a\", \"ACCEPT\"),\n(\"aab#baa\", \"ACCEPT\"),\n(\"aabb#bbaa\", \"ACCEPT\"),\n(\"#\", \"ACCEPT\"),\n(\"cacab#bacac\", \"ACCEPT\"),\n(\"ca#ac\", \"ACCEPT\"),\n(\"bbcbcbbacbbbbbb#bbbbbbcabbcbcbb\", \"ACCEPT\"),\n(\"ccabb#bbacc\", \"ACCEPT\"),\n(\"bcb#bcb\", \"ACCEPT\"),\n(\"ccccabccabccaac#caaccbaccbacccc\", \"ACCEPT\"),\n(\"ccacbacbba#abbcabcacc\", \"ACCEPT\"),\n(\"ccc#ccc\", \"ACCEPT\"),\n(\"accaccbbacbbcaa#aacbbcabbccacca\", \"ACCEPT\"),\n(\"bcaca#acacb\", \"ACCEPT\"),\n(\"ca#ac\", \"ACCEPT\"),\n(\"bccbcbbbaaaaccc#cccaaaabbbcbccb\", \"ACCEPT\"),\n(\"bcaccacaac#caacaccacb\", \"ACCEPT\"),\n(\"cccca#acccc\", \"ACCEPT\"),\n(\"b#b\", \"ACCEPT\"),\n(\"abcbaaaaacbbaca#acabbcaaaaabcba\", \"ACCEPT\"),\n(\"cbbcaababbbccba#abccbbbabaacbbc\", \"ACCEPT\"),\n(\"acaabcbacbccccc#cccccbcabcbaaca\", \"ACCEPT\"),\n(\"acaabbabca#acbabbaaca\", \"ACCEPT\"),\n(\"bbacd#dcabb\", \"REJECT\"),\n(\"abaaca\", \"REJECT\"),\n(\"bcabd#dbacb\", \"REJECT\"),\n(\"ccaac#ccaac#caacc\", \"REJECT\"),\n(\"accbd#dbcca\", \"REJECT\"),\n(\"cccd#dccc\", \"REJECT\"),\n(\"aabaccbab#aabccabaa\", \"REJECT\"),\n(\"caaaccaccbbbba\", \"REJECT\"),\n(\"ccc#ccc#ccc\", \"REJECT\"),\n(\"bbaacaabaaca\", \"REJECT\"),\n(\"aabbbd#dbbbaa\", \"REJECT\"),\n(\"aacacaa#aacacaa#aacacaa\", \"REJECT\"),\n(\"ccaa#aaccc\", \"REJECT\"),\n(\"abcaaaacbaba\", \"REJECT\"),\n(\"bba#bbb\", \"REJECT\"),\n(\"ccbbbba#ccbbbba#abbbbcc\", \"REJECT\"),\n(\"acaa#acaa#aaca\", \"REJECT\"),\n(\"ccaaaaaabacaaab\", \"REJECT\"),\n(\"ccabbc#cabacc\", \"REJECT\"),\n(\"bbcbd#dbcbb\", \"REJECT\"),\n(\"bcaacc#bcaacc#ccaacb\", \"REJECT\"),\n(\"bacccbaca#acabcccabb\", \"REJECT\"),\n(\"acccaba#abaccaa\", \"REJECT\"),\n(\"bcacb#bcacb#bcacb\", \"REJECT\"),\n(\"abcc#abcc#ccba\", \"REJECT\"),",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q_f}\n Σ = {a, b, c, #}\n Γ = {Z, A, B, C}\n q₀ = q₀\n Z₀ = Z\n F = {q_f}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, b, Z) = (q₀, BZ)\n δ(q₀, c, Z) = (q₀, CZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, b, A) = (q₀, BA)\n δ(q₀, c, A) = (q₀, CA)\n δ(q₀, a, B) = (q₀, AB)\n δ(q₀, b, B) = (q₀, BB)\n δ(q₀, c, B) = (q₀, CB)\n δ(q₀, a, C) = (q₀, AC)\n δ(q₀, b, C) = (q₀, BC)\n δ(q₀, c, C) = (q₀, CC)\n \n δ(q₀, #, Z) = (q₁, Z)\n δ(q₀, #, A) = (q₁, A)\n δ(q₀, #, B) = (q₁, B)\n δ(q₀, #, C) = (q₁, C)\n \n δ(q₁, a, A) = (q₁, ε)\n δ(q₁, b, B) = (q₁, ε)\n δ(q₁, c, C) = (q₁, ε)\n \n δ(q₁, ε, Z) = (q_f, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q_f}\n Σ = {a, b, c, #}\n Γ = {Z, A, B, C}\n q₀ = q₀\n Z₀ = Z\n F = {q_f}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, b, Z) = (q₀, BZ)\n δ(q₀, c, Z) = (q₀, CZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, a, B) = (q₀, AB)\n δ(q₀, a, C) = (q₀, AC)\n δ(q₀, b, A) = (q₀, BA)\n δ(q₀, b, B) = (q₀, BB)\n δ(q₀, b, C) = (q₀, BC)\n δ(q₀, c, A) = (q₀, CA)\n δ(q₀, c, B) = (q₀, CB)\n δ(q₀, c, C) = (q₀, CC)\n \n δ(q₀, #, Z) = (q₁, Z)\n δ(q₀, #, A) = (q₁, A)\n δ(q₀, #, B) = (q₁, B)\n δ(q₀, #, C) = (q₁, C)\n \n δ(q₁, a, A) = (q₁, ε)\n δ(q₁, b, B) = (q₁, ε)\n δ(q₁, c, C) = (q₁, ε)\n \n δ(q₁, ε, Z) = (q_f, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q_f}\n Σ = {a, b, c, #}\n Γ = {Z, a, b, c}\n q₀ = q₀\n Z₀ = Z\n F = {q_f}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (q₁, Z)\n \n δ(q₁, a, Z) = (q₁, aZ)\n δ(q₁, b, Z) = (q₁, bZ)\n δ(q₁, c, Z) = (q₁, cZ)\n δ(q₁, a, a) = (q₁, aa)\n δ(q₁, a, b) = (q₁, ab)\n δ(q₁, a, c) = (q₁, ac)\n δ(q₁, b, a) = (q₁, ba)\n δ(q₁, b, b) = (q₁, bb)\n δ(q₁, b, c) = (q₁, bc)\n δ(q₁, c, a) = (q₁, ca)\n δ(q₁, c, b) = (q₁, cb)\n δ(q₁, c, c) = (q₁, cc)\n \n δ(q₁, #, Z) = (q₂, Z)\n δ(q₁, #, a) = (q₂, a)\n δ(q₁, #, b) = (q₂, b)\n δ(q₁, #, c) = (q₂, c)\n \n δ(q₂, a, a) = (q₂, ε)\n δ(q₂, b, b) = (q₂, ε)\n δ(q₂, c, c) = (q₂, ε)\n \n δ(q₂, ε, Z) = (q_f, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "cfl": "L= { all strings that are one or more chunks stuck together, where each chunk is: some number of a’s followed by the same number of b’s (and each chunk has at least one a and one b) }",
+    "test_cases": "(\"aaabbbaabbaaaaaaaaabbbbbbbbbaaaaaabbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbbabaaaaaabbbbbbaabb\", \"ACCEPT\"),\n(\"aaaaaaabbbbbbbaaaabbbbaaaaaaaaaabbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaabbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbbbaaaaaaaaaabbbbbbbbbbaabb\", \"ACCEPT\"),\n(\"aabb\", \"ACCEPT\"),\n(\"aaabbbaaaaaabbbbbbaaaaaaaaabbbbbbbbb\", \"ACCEPT\"),\n(\"aaabbbaabbabaaaaaaaaabbbbbbbbb\", \"ACCEPT\"),\n(\"aaabbbaaaabbbbaaaaaaaaaabbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaabbbbbbb\", \"ACCEPT\"),\n(\"aaaaabbbbbaabbaaaabbbbaaaaaaabbbbbbb\", \"ACCEPT\"),\n(\"aaaaaabbbbbbaabb\", \"ACCEPT\"),\n(\"aaaaabbbbb\", \"ACCEPT\"),\n(\"aabb\", \"ACCEPT\"),\n(\"aaaaaaabbbbbbbaaaaaaaaaabbbbbbbbbbaaaaaaabbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaabbbbbbbaabbaaaaaaabbbbbbbaaaaaaaaabbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbbbaabbaaaaaaabbbbbbbaaaaaaaaabbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbbaaaaaaaaabbbbbbbbb\", \"ACCEPT\"),\n(\"aabbaaaaaaaabbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbbbaaaaaabbbbbbaaabbb\", \"ACCEPT\"),\n(\"aaaaabbbbb\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbbaabb\", \"ACCEPT\"),\n(\"aaaaaabbbbbbaabbab\", \"ACCEPT\"),\n(\"aaaaaaaaabbbbbbbbb\", \"ACCEPT\"),\n(\"abaaabbbaabbab\", \"ACCEPT\"),\n(\"b\", \"REJECT\"),\n(\"aaaaaaaaabbbbbbbbba\", \"REJECT\"),\n(\"abba\", \"REJECT\"),\n(\"aba\", \"REJECT\"),\n(\"abb\", \"REJECT\"),\n(\"bbbbbaaaaa\", \"REJECT\"),\n(\"aab\", \"REJECT\"),\n(\"aba\", \"REJECT\"),\n(\"abbbb\", \"REJECT\"),\n(\"aaaaaabbbbb\", \"REJECT\"),\n(\"aaaaaaaaabb\", \"REJECT\"),\n(\"aaaaaaaabbbbb\", \"REJECT\"),\n(\"aaaabbbba\", \"REJECT\"),\n(\"bbbbbaaaaa\", \"REJECT\"),\n(\"b\", \"REJECT\"),\n(\"abba\", \"REJECT\"),\n(\"aba\", \"REJECT\"),\n(\"aaaab\", \"REJECT\"),\n(\"bbaa\", \"REJECT\"),\n(\"\", \"REJECT\"),\n(\"ba\", \"REJECT\"),\n(\"aaaaaaaaabbbb\", \"REJECT\"),\n(\"bbbbbaaaaa\", \"REJECT\"),\n(\"bababbbbbbaabbaaaa\", \"REJECT\"),\n(\"aabbbbbb\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA, qB, qf}\n Σ = {a, b}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qA, AZ)\n \n δ(qA, a, A) = (qA, AA)\n δ(qA, b, A) = (qB, ε)\n \n δ(qB, b, A) = (qB, ε)\n δ(qB, ε, Z) = (q₀, Z)\n δ(qB, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "18",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA, qB, qC, qf}\n Σ = {a, b}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qA, AZ)\n \n δ(qA, a, A) = (qA, AA)\n δ(qA, b, A) = (qB, ε)\n \n δ(qB, b, A) = (qB, ε)\n δ(qB, ε, Z) = (qC, Z)\n \n δ(qC, a, Z) = (qA, AZ)\n δ(qC, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA, qB, qC, qf}\n Σ = {a, b}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qA, AZ)\n \n δ(qA, a, A) = (qA, AA)\n δ(qA, b, A) = (qB, ε)\n \n δ(qB, b, A) = (qB, ε)\n δ(qB, ε, Z) = (qC, Z)\n \n δ(qC, a, Z) = (qA, AZ)\n δ(qC, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "cfl": "L= { all strings that look like: some number of a’s, then some number of b’s, then the same number of a’s as the previous b’s, then the same number of b’s as the first a’s }",
+    "test_cases": "(\"aaaaaaaabbbbbbbbbbaaaaaaaaaabbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbb\", \"ACCEPT\"),\n(\"aaaaabbaabbbbb\", \"ACCEPT\"),\n(\"aaaaaabbbbbb\", \"ACCEPT\"),\n(\"\", \"ACCEPT\"),\n(\"aaaaaabbbbaaaabbbbbb\", \"ACCEPT\"),\n(\"aaaaaabbbaaabbbbbb\", \"ACCEPT\"),\n(\"ab\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbbbaaaaaaaaaabbbbbbbbbb\", \"ACCEPT\"),\n(\"\", \"ACCEPT\"),\n(\"aaaaaaaaabbbaaabbbbbbbbb\", \"ACCEPT\"),\n(\"bbbbaaaa\", \"ACCEPT\"),\n(\"bbbbbbbbaaaaaaaa\", \"ACCEPT\"),\n(\"aaabbaabbb\", \"ACCEPT\"),\n(\"bbbbbbbbbbaaaaaaaaaa\", \"ACCEPT\"),\n(\"aabbbbbaaaaabb\", \"ACCEPT\"),\n(\"aaabbb\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaabbbbaaaabbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaabbbbbbbbaaaaaaaabbbbbbbbb\", \"ACCEPT\"),\n(\"bbbbbbaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbbb\", \"ACCEPT\"),\n(\"\", \"ACCEPT\"),\n(\"aaaabbbbbbbbbaaaaaaaaabbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaababbbbbbbbbb\", \"ACCEPT\"),\n(\"aabbab\", \"REJECT\"),\n(\"bbabaaaaabbabbab\", \"REJECT\"),\n(\"aabbaaaabaabbabbaaabbbbb\", \"REJECT\"),\n(\"bbbaaabbbababbaaaaaabb\", \"REJECT\"),\n(\"aaaaaaabbbbaaaabbbbbb\", \"REJECT\"),\n(\"abbbb\", \"REJECT\"),\n(\"bbaaaaaaaababaababaa\", \"REJECT\"),\n(\"aabbab\", \"REJECT\"),\n(\"aaabbbbbaaaaaabbb\", \"REJECT\"),\n(\"aaaabbbbbbbbaaaaaaabbbb\", \"REJECT\"),\n(\"aaaaabbbbaaabbbbb\", \"REJECT\"),\n(\"aabbab\", \"REJECT\"),\n(\"ababab\", \"REJECT\"),\n(\"aaaaaaaaaababbbbbbbbb\", \"REJECT\"),\n(\"aaaaaabbbbbbbbbaaaaaaaabbbbbb\", \"REJECT\"),\n(\"aaaaaaabbbaaabbbbbb\", \"REJECT\"),\n(\"aabbbbbbbaaaaaabb\", \"REJECT\"),\n(\"bababbbababbbababababaaabaabaaaabb\", \"REJECT\"),\n(\"aaabbbbbbbbaaaaaaaabbbb\", \"REJECT\"),\n(\"aaaaabbbbaaaabbbb\", \"REJECT\"),\n(\"aaaaaaaaabbbbbbbaaaaaaabbbbbbbb\", \"REJECT\"),\n(\"aabbab\", \"REJECT\"),\n(\"b\", \"REJECT\"),\n(\"aaaaaabbbbaaaaabbbbbb\", \"REJECT\"),\n(\"aabbab\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, qf}\n Σ = {a, b}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, b, Z) = (q₁, BZ)\n δ(q₀, b, A) = (q₁, BA)\n δ(q₀, b, A) = (q₃, ε)\n δ(q₀, ε, Z) = (qf, Z)\n \n δ(q₁, b, Z) = (q₁, BZ)\n δ(q₁, b, A) = (q₁, BA)\n δ(q₁, b, B) = (q₁, BB)\n δ(q₁, a, B) = (q₂, ε)\n \n δ(q₂, a, B) = (q₂, ε)\n δ(q₂, ε, A) = (q₃, A)\n δ(q₂, ε, Z) = (qf, Z)\n \n δ(q₃, b, A) = (q₃, ε)\n δ(q₃, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "12",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, qf}\n Σ = {a, b}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, ε, Z) = (q₁, Z)\n δ(q₀, ε, A) = (q₁, A)\n \n δ(q₁, b, Z) = (q₁, BZ)\n δ(q₁, b, A) = (q₁, BA)\n δ(q₁, b, B) = (q₁, BB)\n δ(q₁, ε, Z) = (q₂, Z)\n δ(q₁, ε, A) = (q₂, A)\n δ(q₁, ε, B) = (q₂, B)\n \n δ(q₂, a, B) = (q₂, ε)\n δ(q₂, ε, A) = (q₃, A)\n δ(q₂, ε, Z) = (q₃, Z)\n \n δ(q₃, b, A) = (q₃, ε)\n δ(q₃, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, qf}\n Σ = {a, b}\n Γ = {Z, X, Y}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, XZ)\n δ(q₀, a, X) = (q₀, XX)\n \n δ(q₀, b, Z) = (q₁, YZ)\n δ(q₀, b, X) = (q₁, YX)\n \n δ(q₀, ε, Z) = (q₃, Z)\n δ(q₀, ε, X) = (q₃, X)\n \n δ(q₁, b, Z) = (q₁, YZ)\n δ(q₁, b, X) = (q₁, YX)\n δ(q₁, b, Y) = (q₁, YY)\n \n δ(q₁, a, Y) = (q₂, ε)\n \n δ(q₂, a, Y) = (q₂, ε)\n δ(q₂, ε, X) = (q₃, X)\n δ(q₂, ε, Z) = (qf, Z)\n \n δ(q₃, b, X) = (q₃, ε)\n δ(q₃, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "cfl": "L= { all strings made only of ( ) [ ] that are correctly balanced and correctly typed, meaning every opening symbol is eventually closed by the matching kind, and nesting is always consistent }",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"()[([])]\", \"ACCEPT\"),\n(\"[]\", \"ACCEPT\"),\n(\"(((())))\", \"ACCEPT\"),\n(\"(([()]))\", \"ACCEPT\"),\n(\"((([(())])))\", \"ACCEPT\"),\n(\"()\", \"ACCEPT\"),\n(\"[[][()]]\", \"ACCEPT\"),\n(\"(([[()()]]))\", \"ACCEPT\"),\n(\"[][()]\", \"ACCEPT\"),\n(\"[([])]\", \"ACCEPT\"),\n(\"()[]\", \"ACCEPT\"),\n(\"([()]()[][])\", \"ACCEPT\"),\n(\"((([][])))\", \"ACCEPT\"),\n(\"[[[][[]]]]\", \"ACCEPT\"),\n(\"((()))\", \"ACCEPT\"),\n(\"[[([()])]]\", \"ACCEPT\"),\n(\"(([[]]))\", \"ACCEPT\"),\n(\"((()))()\", \"ACCEPT\"),\n(\"[[]]\", \"ACCEPT\"),\n(\"(([[]]([])))\", \"ACCEPT\"),\n(\"[()]\", \"ACCEPT\"),\n(\"((([])))[[(())]]\", \"ACCEPT\"),\n(\"[([()]())]\", \"ACCEPT\"),\n(\"[(())]\", \"ACCEPT\"),\n(\"((\", \"REJECT\"),\n(\"(])\", \"REJECT\"),\n(\")])\", \"REJECT\"),\n(\"(]\", \"REJECT\"),\n(\"[()[]\", \"REJECT\"),\n(\")\", \"REJECT\"),\n(\"[(])\", \"REJECT\"),\n(\"([()][]\", \"REJECT\"),\n(\"((()()\", \"REJECT\"),\n(\"(()\", \"REJECT\"),\n(\"))\", \"REJECT\"),\n(\"[)]\", \"REJECT\"),\n(\"]]\", \"REJECT\"),\n(\"[[\", \"REJECT\"),\n(\"([)]\", \"REJECT\"),\n(\"())\", \"REJECT\"),\n(\"(\", \"REJECT\"),\n(\"()(\", \"REJECT\"),\n(\"][\", \"REJECT\"),\n(\"]\", \"REJECT\"),\n(\")(\", \"REJECT\"),\n(\"[)\", \"REJECT\"),\n(\"[])[()][[())\", \"REJECT\"),\n(\"[\", \"REJECT\"),\n(\"()[\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qf}\n Σ = {(, ), [, ]}\n Γ = {Z, (, [}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, (, Z) = (q₀, (Z)\n δ(q₀, (, () = (q₀, (()\n δ(q₀, (, [) = (q₀, ([)\n \n δ(q₀, [, Z) = (q₀, [Z)\n δ(q₀, [, () = (q₀, [()\n δ(q₀, [, [) = (q₀, [[)\n \n δ(q₀, ), () = (q₀, ε)\n δ(q₀, ], [) = (q₀, ε)\n \n δ(q₀, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "19",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q_f}\n Σ = {(, ), [, ]}\n Γ = {Z, (, [}\n q₀ = q₀\n Z₀ = Z\n F = {q_f}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, (, Z) = (q₀, (Z)\n δ(q₀, (, () = (q₀, ((\n δ(q₀, (, [) = (q₀, ([)\n \n δ(q₀, [, Z) = (q₀, [Z)\n δ(q₀, [, () = (q₀, [()\n δ(q₀, [, [) = (q₀, [[)\n \n δ(q₀, ), () = (q₀, ε)\n δ(q₀, ], [) = (q₀, ε)\n \n δ(q₀, ε, Z) = (q_f, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "19",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q_f}\n Σ = {(, ), [, ]}\n Γ = {Z, (, [}\n q₀ = q₀\n Z₀ = Z\n F = {q_f}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, (, Z) = (q₀, (Z)\n δ(q₀, (, () = (q₀, (()\n δ(q₀, (, [) = (q₀, ([)\n \n δ(q₀, [, Z) = (q₀, [Z)\n δ(q₀, [, () = (q₀, [()\n δ(q₀, [, [) = (q₀, [[)\n \n δ(q₀, ), () = (q₀, ε)\n δ(q₀, ], [) = (q₀, ε)\n \n δ(q₀, ε, Z) = (q_f, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "19",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "cfl": "L = { all strings made only of a, b, c that read the same forward and backward }\n",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"a\", \"ACCEPT\"),\n(\"b\", \"ACCEPT\"),\n(\"c\", \"ACCEPT\"),\n(\"bcaaaaaaacb\", \"ACCEPT\"),\n(\"ccbccacbabcaccbcc\", \"ACCEPT\"),\n(\"cc\", \"ACCEPT\"),\n(\"aaaacaaabbaaacaaaa\", \"ACCEPT\"),\n(\"acccaccca\", \"ACCEPT\"),\n(\"bbababaaccaabababb\", \"ACCEPT\"),\n(\"cccc\", \"ACCEPT\"),\n(\"accbcbaaabcbcca\", \"ACCEPT\"),\n(\"acacacccbbbcccacaca\", \"ACCEPT\"),\n(\"aaaa\", \"ACCEPT\"),\n(\"caccacbcaccac\", \"ACCEPT\"),\n(\"aba\", \"ACCEPT\"),\n(\"cbbc\", \"ACCEPT\"),\n(\"cccc\", \"ACCEPT\"),\n(\"aabbaaccaabbaa\", \"ACCEPT\"),\n(\"ccccbaabcbaabcccc\", \"ACCEPT\"),\n(\"baabacbacbbcabcabaab\", \"ACCEPT\"),\n(\"babbbaccabbbab\", \"ACCEPT\"),\n(\"cccacabaccabacaccc\", \"ACCEPT\"),\n(\"ccabbaabbacc\", \"ACCEPT\"),\n(\"ccacc\", \"ACCEPT\"),\n(\"ab\", \"REJECT\"),\n(\"cbaabcbcbaabbcc\", \"REJECT\"),\n(\"aaccabc\", \"REJECT\"),\n(\"acbccbbacabbaccaa\", \"REJECT\"),\n(\"baaac\", \"REJECT\"),\n(\"acbaacbccc\", \"REJECT\"),\n(\"ccbbba\", \"REJECT\"),\n(\"bacacbcccbaacaabbcb\", \"REJECT\"),\n(\"ccbcaccbbacaaacaabc\", \"REJECT\"),\n(\"cbaccbbcbc\", \"REJECT\"),\n(\"ccbabaabaabbab\", \"REJECT\"),\n(\"bba\", \"REJECT\"),\n(\"bbcca\", \"REJECT\"),\n(\"babcabbcabbabbbb\", \"REJECT\"),\n(\"caa\", \"REJECT\"),\n(\"abaabb\", \"REJECT\"),\n(\"bcbb\", \"REJECT\"),\n(\"abacbabbccbccacabcbb\", \"REJECT\"),\n(\"cbcbbbbbcbcc\", \"REJECT\"),\n(\"bbbcabacaa\", \"REJECT\"),\n(\"ababbcbaccababacaab\", \"REJECT\"),\n(\"cbbacababa\", \"REJECT\"),\n(\"bcabbcc\", \"REJECT\"),\n(\"caabbb\", \"REJECT\"),\n(\"ccaabccabcba\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf} \n Σ = {a, b, c} \n Γ = {Z, A, B, C} \n q₀ = q₀ \n Z₀ = Z \n F = {qf} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ) \n δ(q₀, a, A) = (q₀, AA) \n δ(q₀, a, B) = (q₀, AB) \n δ(q₀, a, C) = (q₀, AC) \n \n δ(q₀, b, Z) = (q₀, BZ) \n δ(q₀, b, A) = (q₀, BA) \n δ(q₀, b, B) = (q₀, BB) \n δ(q₀, b, C) = (q₀, BC) \n \n δ(q₀, c, Z) = (q₀, CZ) \n δ(q₀, c, A) = (q₀, CA) \n δ(q₀, c, B) = (q₀, CB) \n δ(q₀, c, C) = (q₀, CC) \n \n δ(q₀, ε, Z) = (q₁, Z) \n δ(q₀, ε, A) = (q₁, A) \n δ(q₀, ε, B) = (q₁, B) \n δ(q₀, ε, C) = (q₁, C) \n \n δ(q₀, a, Z) = (q₁, Z) \n δ(q₀, a, A) = (q₁, A) \n δ(q₀, a, B) = (q₁, B) \n δ(q₀, a, C) = (q₁, C) \n \n δ(q₀, b, Z) = (q₁, Z) \n δ(q₀, b, A) = (q₁, A) \n δ(q₀, b, B) = (q₁, B) \n δ(q₀, b, C) = (q₁, C) \n \n δ(q₀, c, Z) = (q₁, Z) \n δ(q₀, c, A) = (q₁, A) \n δ(q₀, c, B) = (q₁, B) \n δ(q₀, c, C) = (q₁, C) \n \n δ(q₁, a, A) = (q₁, ε) \n δ(q₁, b, B) = (q₁, ε) \n δ(q₁, c, C) = (q₁, ε) \n \n δ(q₁, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "21",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf}\n Σ = {a, b, c}\n Γ = {Z, A, B, C}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, a, B) = (q₀, AB)\n δ(q₀, a, C) = (q₀, AC)\n δ(q₀, b, Z) = (q₀, BZ)\n δ(q₀, b, A) = (q₀, BA)\n δ(q₀, b, B) = (q₀, BB)\n δ(q₀, b, C) = (q₀, BC)\n δ(q₀, c, Z) = (q₀, CZ)\n δ(q₀, c, A) = (q₀, CA)\n δ(q₀, c, B) = (q₀, CB)\n δ(q₀, c, C) = (q₀, CC)\n \n δ(q₀, a, Z) = (q₁, Z)\n δ(q₀, a, A) = (q₁, A)\n δ(q₀, a, B) = (q₁, B)\n δ(q₀, a, C) = (q₁, C)\n δ(q₀, b, Z) = (q₁, Z)\n δ(q₀, b, A) = (q₁, A)\n δ(q₀, b, B) = (q₁, B)\n δ(q₀, b, C) = (q₁, C)\n δ(q₀, c, Z) = (q₁, Z)\n δ(q₀, c, A) = (q₁, A)\n δ(q₀, c, B) = (q₁, B)\n δ(q₀, c, C) = (q₁, C)\n \n δ(q₀, ε, Z) = (q₁, Z)\n δ(q₀, ε, A) = (q₁, A)\n δ(q₀, ε, B) = (q₁, B)\n δ(q₀, ε, C) = (q₁, C)\n \n δ(q₁, a, A) = (q₁, ε)\n δ(q₁, b, B) = (q₁, ε)\n δ(q₁, c, C) = (q₁, ε)\n \n δ(q₁, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "21",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q_push, q_pop, q_acc}\n Σ = {a, b, c}\n Γ = {Z, a, b, c}\n q₀ = q₀\n Z₀ = Z\n F = {q_acc}\n \n δ: Q × (Σ ∪ {ε}) × Γ → P(Q × Γ*)\n \n δ(q₀, ε, Z) = {(q_push, Z)}\n \n δ(q_push, a, Z) = {(q_push, aZ), (q_pop, Z)}\n δ(q_push, a, a) = {(q_push, aa), (q_pop, a)}\n δ(q_push, a, b) = {(q_push, ab), (q_pop, b)}\n δ(q_push, a, c) = {(q_push, ac), (q_pop, c)}\n \n δ(q_push, b, Z) = {(q_push, bZ), (q_pop, Z)}\n δ(q_push, b, a) = {(q_push, ba), (q_pop, a)}\n δ(q_push, b, b) = {(q_push, bb), (q_pop, b)}\n δ(q_push, b, c) = {(q_push, bc), (q_pop, c)}\n \n δ(q_push, c, Z) = {(q_push, cZ), (q_pop, Z)}\n δ(q_push, c, a) = {(q_push, ca), (q_pop, a)}\n δ(q_push, c, b) = {(q_push, cb), (q_pop, b)}\n δ(q_push, c, c) = {(q_push, cc), (q_pop, c)}\n \n δ(q_push, ε, Z) = {(q_pop, Z)}\n δ(q_push, ε, a) = {(q_pop, a)}\n δ(q_push, ε, b) = {(q_pop, b)}\n δ(q_push, ε, c) = {(q_pop, c)}\n \n δ(q_pop, a, a) = {(q_pop, ε)}\n δ(q_pop, b, b) = {(q_pop, ε)}\n δ(q_pop, c, c) = {(q_pop, ε)}\n \n δ(q_pop, ε, Z) = {(q_acc, Z)}",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "cfl": "L = { all strings over {0,1} that contain more 1’s than 0’s }",
+    "test_cases": "(\"1\", \"ACCEPT\"),\n(\"11\", \"ACCEPT\"),\n(\"011\", \"ACCEPT\"),\n(\"00111110111\", \"ACCEPT\"),\n(\"1110011001010111000\", \"ACCEPT\"),\n(\"010101111101011100110\", \"ACCEPT\"),\n(\"1111110100110\", \"ACCEPT\"),\n(\"1110110011101001\", \"ACCEPT\"),\n(\"0111101101001\", \"ACCEPT\"),\n(\"01111010110100111110110\", \"ACCEPT\"),\n(\"0011101001001111110010110\", \"ACCEPT\"),\n(\"01001110101001111\", \"ACCEPT\"),\n(\"111011011110000010110110\", \"ACCEPT\"),\n(\"10110010110101001011110\", \"ACCEPT\"),\n(\"111101111110000010111\", \"ACCEPT\"),\n(\"1011010010001011001111010\", \"ACCEPT\"),\n(\"10001111\", \"ACCEPT\"),\n(\"1011001111101011010101\", \"ACCEPT\"),\n(\"001010011111\", \"ACCEPT\"),\n(\"110001010011110001111\", \"ACCEPT\"),\n(\"1010011111011111\", \"ACCEPT\"),\n(\"0011111\", \"ACCEPT\"),\n(\"101100111100100\", \"ACCEPT\"),\n(\"1110\", \"ACCEPT\"),\n(\"1011101010100110001\", \"ACCEPT\"),\n(\"\", \"REJECT\"),\n(\"0\", \"REJECT\"),\n(\"01\", \"REJECT\"),\n(\"10\", \"REJECT\"),\n(\"0011\", \"REJECT\"),\n(\"1001100000000001001\", \"REJECT\"),\n(\"0000010010000\", \"REJECT\"),\n(\"0000000010000000\", \"REJECT\"),\n(\"100\", \"REJECT\"),\n(\"10000110001011100\", \"REJECT\"),\n(\"00\", \"REJECT\"),\n(\"00010110010011100\", \"REJECT\"),\n(\"10110010001100100\", \"REJECT\"),\n(\"01010000\", \"REJECT\"),\n(\"001111000010110100011\", \"REJECT\"),\n(\"1100110000001010\", \"REJECT\"),\n(\"100011\", \"REJECT\"),\n(\"00001100001010110\", \"REJECT\"),\n(\"0111001110001100\", \"REJECT\"),\n(\"0100011\", \"REJECT\"),\n(\"011100100101100010100100\", \"REJECT\"),\n(\"1100010011001010001100011\", \"REJECT\"),\n(\"00100000101101\", \"REJECT\"),\n(\"1101001010001100100\", \"REJECT\"),\n(\"010111110101000100100\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qf}\n Σ = {0, 1}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, 1, Z) = (q₀, AZ)\n δ(q₀, 1, A) = (q₀, AA)\n δ(q₀, 1, B) = (q₀, ε)\n \n δ(q₀, 0, Z) = (q₀, BZ)\n δ(q₀, 0, B) = (q₀, BB)\n δ(q₀, 0, A) = (q₀, ε)\n \n δ(q₀, ε, A) = (qf, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qf}\n Σ = {0, 1}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, 1, Z) = (q₀, AZ)\n δ(q₀, 1, A) = (q₀, AA)\n δ(q₀, 1, B) = (q₀, ε)\n \n δ(q₀, 0, Z) = (q₀, BZ)\n δ(q₀, 0, B) = (q₀, BB)\n δ(q₀, 0, A) = (q₀, ε)\n \n δ(q₀, ε, A) = (qf, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf}\n Σ = {0, 1}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, 1, Z) = (q₀, AZ)\n δ(q₀, 1, A) = (q₀, AA)\n δ(q₀, 1, B) = (q₀, ε)\n \n δ(q₀, 0, Z) = (q₀, BZ)\n δ(q₀, 0, B) = (q₀, BB)\n δ(q₀, 0, A) = (q₀, ε)\n \n δ(q₀, ε, Z) = (q₁, Z)\n δ(q₀, ε, A) = (q₁, A)\n δ(q₀, ε, B) = (q₁, B)\n \n δ(q₁, ε, A) = (qf, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "cfl": "L = { strings that look like: some a’s, then some b’s, then the same number of c’s as the a’s }",
+    "test_cases": "(\"bc\", \"REJECT\"),\n(\"aaaaaaaaaabcccccccccc\", \"ACCEPT\"),\n(\"aaaaaaaaabbbbbbbcccccccccccc\", \"REJECT\"),\n(\"aaaaaaaabbbbbbcccccccc\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbccccccccccccccc\", \"REJECT\"),\n(\"aaaaaaaaaabbbbbbbbbccccccccccccc\", \"REJECT\"),\n(\"aabbbbbbbcc\", \"ACCEPT\"),\n(\"aaaaaaaaabbbbbbccccccccc\", \"ACCEPT\"),\n(\"aaaaaccccc\", \"REJECT\"),\n(\"b\", \"REJECT\"),\n(\"aabcc\", \"ACCEPT\"),\n(\"aaaaaaaaaaabbbbbbbccccccccccc\", \"ACCEPT\"),\n(\"a\", \"REJECT\"),\n(\"aaaaaaaaaabbbbbcccccccccc\", \"ACCEPT\"),\n(\"aaaaaabbbbbbbbbbbbbbbcccccc\", \"ACCEPT\"),\n(\"aaabccc\", \"ACCEPT\"),\n(\"bbaacc\", \"REJECT\"),\n(\"bbaa\", \"REJECT\"),\n(\"abbc\", \"ACCEPT\"),\n(\"cca\", \"REJECT\"),\n(\"ac\", \"REJECT\"),\n(\"aaaaaaaaaaaaabbbbbbbbccccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaabbbbbccccccc\", \"ACCEPT\"),\n(\"cccacabbbcccccaaa\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaabbbccccccccccccccc\", \"ACCEPT\"),\n(\"abc\", \"ACCEPT\"),\n(\"aaacc\", \"REJECT\"),\n(\"abcabc\", \"REJECT\"),\n(\"aaaaaaaaaaaaaabbbcccccccccccccc\", \"ACCEPT\"),\n(\"ab\", \"REJECT\"),\n(\"aaaacccc\", \"REJECT\"),\n(\"aaabbc\", \"REJECT\"),\n(\"aaaabbbbbbbbcccc\", \"ACCEPT\"),\n(\"bbbbaaaacccc\", \"REJECT\"),\n(\"c\", \"REJECT\"),\n(\"aabbbbbbbbbbcc\", \"ACCEPT\"),\n(\"bbbaaaccc\", \"REJECT\"),\n(\"\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaabbbbbbbbbbbbccccccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaaaaaabbbccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaabbbbccccccc\", \"ACCEPT\"),\n(\"abbbbbbbbbbbbc\", \"ACCEPT\"),\n(\"aaaaabbbbbbbbbcccccccccc\", \"REJECT\"),\n(\"aabbbbbbbbbbbbbbbcc\", \"ACCEPT\"),\n(\"aabbcc\", \"ACCEPT\"),\n(\"aabb\", \"REJECT\"),\n(\"abbbbbbbbbbc\", \"ACCEPT\"),\n(\"cba\", \"REJECT\"),\n(\"aaaaaaaabbbbbbbbbbcccccccc\", \"ACCEPT\"),\n(\"abbccc\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {a, b, c}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n \n δ(q₀, b, Z) = (q₁, Z)\n δ(q₀, b, A) = (q₁, A)\n \n δ(q₀, c, A) = (q₂, ε)\n \n δ(q₁, b, Z) = (q₁, Z)\n δ(q₁, b, A) = (q₁, A)\n \n δ(q₁, c, A) = (q₂, ε)\n \n δ(q₂, c, A) = (q₂, ε)\n \n δ(q₀, ε, Z) = (qf, Z)\n δ(q₁, ε, Z) = (qf, Z)\n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "5",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qB, qC, qf}\n Σ = {a, b, c}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n \n δ(q₀, b, Z) = (qB, Z)\n δ(q₀, b, A) = (qB, A)\n \n δ(q₀, c, A) = (qC, ε)\n \n δ(qB, b, Z) = (qB, Z)\n δ(qB, b, A) = (qB, A)\n \n δ(qB, c, A) = (qC, ε)\n \n δ(qC, c, A) = (qC, ε)\n \n δ(q₀, ε, Z) = (qf, Z)\n δ(qB, ε, Z) = (qf, Z)\n δ(qC, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "5",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {a, b, c}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n \n δ(q₀, b, Z) = (q₁, Z)\n δ(q₀, b, A) = (q₁, A)\n δ(q₁, b, Z) = (q₁, Z)\n δ(q₁, b, A) = (q₁, A)\n \n δ(q₀, c, A) = (q₂, ε)\n δ(q₁, c, A) = (q₂, ε)\n δ(q₂, c, A) = (q₂, ε)\n \n δ(q₀, ε, Z) = (qf, Z)\n δ(q₁, ε, Z) = (qf, Z)\n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "5",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "cfl": "L = { strings that look like: some a’s followed by some b’s, where #a ≥ #b }",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"a\", \"ACCEPT\"),\n(\"aaaaa\", \"ACCEPT\"),\n(\"ab\", \"ACCEPT\"),\n(\"aaabbb\", \"ACCEPT\"),\n(\"aabb\", \"ACCEPT\"),\n(\"aa\", \"ACCEPT\"),\n(\"aaaaaaaaaa\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaabbbbbbbb\", \"ACCEPT\"),\n(\"aaaaabbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaabbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaabb\", \"ACCEPT\"),\n(\"aaaaaaab\", \"ACCEPT\"),\n(\"aaaaabbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaab\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaabbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaabbbbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaabb\", \"ACCEPT\"),\n(\"aaaabb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaabbbbbbbbbbbbb\", \"ACCEPT\"),\n(\"aaab\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaabbbbbbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaabbb\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbb\", \"ACCEPT\"),\n(\"b\", \"REJECT\"),\n(\"abb\", \"REJECT\"),\n(\"ba\", \"REJECT\"),\n(\"aba\", \"REJECT\"),\n(\"bba\", \"REJECT\"),\n(\"abc\", \"REJECT\"),\n(\"aab c\", \"REJECT\"),\n(\"baba\", \"REJECT\"),\n(\"abaababb\", \"REJECT\"),\n(\"baabab\", \"REJECT\"),\n(\"aabbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aabbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaaaaaaabbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaabbbbbbb\", \"REJECT\"),\n(\"baabba\", \"REJECT\"),\n(\"bb\", \"REJECT\"),\n(\"aaaaabbbbbb\", \"REJECT\"),\n(\"baaabb\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaabbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaabbbbbbbbbbbbbbbbbbb\", \"REJECT\"),\n(\"aaaaaaaaabbbbbbbbbb\", \"REJECT\"),\n(\"ababba\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf}\n Σ = {a, b}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n \n δ(q₀, b, A) = (q₁, ε)\n δ(q₁, b, A) = (q₁, ε)\n \n δ(q₀, ε, Z) = (qf, Z)\n δ(q₀, ε, A) = (qf, A)\n δ(q₁, ε, Z) = (qf, Z)\n δ(q₁, ε, A) = (qf, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q_f}\n Σ = {a, b}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {q_f}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, b, A) = (q₁, ε)\n \n δ(q₁, b, A) = (q₁, ε)\n \n δ(q₀, ε, Z) = (q_f, Z)\n δ(q₀, ε, A) = (q_f, A)\n δ(q₁, ε, Z) = (q_f, Z)\n δ(q₁, ε, A) = (q_f, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf} \n Σ = {a, b} \n Γ = {Z, A} \n q₀ = q₀ \n Z₀ = Z \n F = {qf} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ* \n \n δ(q₀, a, Z) = (q₀, AZ) \n δ(q₀, a, A) = (q₀, AA) \n \n δ(q₀, b, A) = (q₁, ε) \n δ(q₁, b, A) = (q₁, ε) \n \n δ(q₀, ε, Z) = (qf, Z) \n δ(q₀, ε, A) = (qf, A) \n δ(q₁, ε, Z) = (qf, Z) \n δ(q₁, ε, A) = (qf, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "cfl": "L = { strings that look like: some 1’s, then some 0’s, then 1’s again (allowing either block to be empty), where the last #1 = (first #1) + 2·(#0) }",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"11\", \"ACCEPT\"),\n(\"011\", \"ACCEPT\"),\n(\"001111\", \"ACCEPT\"),\n(\"1101111\", \"ACCEPT\"),\n(\"1100000000111111111111111111\", \"ACCEPT\"),\n(\"1111111111111111\", \"ACCEPT\"),\n(\"1111111100000001111111111111111111111\", \"ACCEPT\"),\n(\"1111111100000000001111111111111111111111111111\", \"ACCEPT\"),\n(\"11111110000000000111111111111111111111111111\", \"ACCEPT\"),\n(\"000001111111111\", \"ACCEPT\"),\n(\"000000011111111111111\", \"ACCEPT\"),\n(\"111111111111000000011111111111111111111111111\", \"ACCEPT\"),\n(\"11110000000000000111111111111111111111111111111\", \"ACCEPT\"),\n(\"1111111111111111111111111111\", \"ACCEPT\"),\n(\"1111111111100000000000011111111111111111111111111111111111\", \"ACCEPT\"),\n(\"111000000011111111111111111\", \"ACCEPT\"),\n(\"1111111100000000111111111111111111111111\", \"ACCEPT\"),\n(\"111111111111111011111111111111111\", \"ACCEPT\"),\n(\"1111100000000000111111111111111111111111111\", \"ACCEPT\"),\n(\"11111111110000000111111111111111111111111\", \"ACCEPT\"),\n(\"111111111111111000000111111111111111111111111111\", \"ACCEPT\"),\n(\"11110000000001111111111111111111111\", \"ACCEPT\"),\n(\"10011111\", \"ACCEPT\"),\n(\"1100001111111111\", \"ACCEPT\"),\n(\"1010\", \"REJECT\"),\n(\"010\", \"REJECT\"),\n(\"111000\", \"REJECT\"),\n(\"00000\", \"REJECT\"),\n(\"1\", \"REJECT\"),\n(\"111\", \"REJECT\"),\n(\"101\", \"REJECT\"),\n(\"1110\", \"REJECT\"),\n(\"000\", \"REJECT\"),\n(\"0000011111111\", \"REJECT\"),\n(\"0011\", \"REJECT\"),\n(\"1111000000000000011111111111111111111111111111111111\", \"REJECT\"),\n(\"11111111100000000000111111111111111111111111111111111111\", \"REJECT\"),\n(\"000010010101\", \"REJECT\"),\n(\"0011010100000111\", \"REJECT\"),\n(\"11111001111\", \"REJECT\"),\n(\"111111111100000011111111111111111\", \"REJECT\"),\n(\"11010011000101\", \"REJECT\"),\n(\"10111100101000001\", \"REJECT\"),\n(\"1101111010\", \"REJECT\"),\n(\"01001000010111010011\", \"REJECT\"),\n(\"0\", \"REJECT\"),\n(\"11111010111100\", \"REJECT\"),\n(\"001001110111\", \"REJECT\"),\n(\"11111100000000001111111111111111111111111\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {0, 1}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, 1, Z) = (q₀, AZ)\n δ(q₀, 1, A) = (q₀, AA)\n δ(q₀, 0, Z) = (q₁, AAZ)\n δ(q₀, 0, A) = (q₁, AAA)\n δ(q₀, ε, Z) = (q₂, Z)\n δ(q₀, ε, A) = (q₂, A)\n \n δ(q₁, 0, Z) = (q₁, AAZ)\n δ(q₁, 0, A) = (q₁, AAA)\n δ(q₁, 1, A) = (q₂, ε)\n \n δ(q₂, 1, A) = (q₂, ε)\n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, qf}\n Σ = {0, 1}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (q₁, Z)\n \n δ(q₁, 1, Z) = (q₁, AZ)\n δ(q₁, 1, A) = (q₁, AA)\n δ(q₁, 0, Z) = (q₂, AAZ)\n δ(q₁, 0, A) = (q₂, AAA)\n δ(q₁, ε, Z) = (q₃, Z)\n δ(q₁, ε, A) = (q₃, A)\n \n δ(q₂, 0, Z) = (q₂, AAZ)\n δ(q₂, 0, A) = (q₂, AAA)\n δ(q₂, 1, A) = (q₃, ε)\n \n δ(q₃, 1, A) = (q₃, ε)\n δ(q₃, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf} \n Σ = {0, 1} \n Γ = {Z, A} \n q₀ = q₀ \n Z₀ = Z \n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, 1, Z) = (q₀, AZ) \n δ(q₀, 1, A) = (q₀, AA) \n δ(q₀, 0, Z) = (q₁, AAZ) \n δ(q₀, 0, A) = (q₁, AAA) \n δ(q₀, ε, Z) = (q₂, Z) \n δ(q₀, ε, A) = (q₂, A)\n \n δ(q₁, 0, Z) = (q₁, AAZ) \n δ(q₁, 0, A) = (q₁, AAA) \n δ(q₁, 1, A) = (q₂, ε)\n \n δ(q₂, 1, A) = (q₂, ε) \n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "cfl": "L = { strings that look like: 0’s then 1’s then 2’s, where (#2 ≤ #0) OR (#2 ≤ #1) }",
+    "test_cases": "('', 'ACCEPT'),\n('00011', 'ACCEPT'),\n('000001111111122', 'ACCEPT'),\n('00011111111112222222', 'ACCEPT'),\n('0000000022', 'ACCEPT'),\n('000000011111112', 'ACCEPT'),\n('00001111111111222222', 'ACCEPT'),\n('00000001111111111222222', 'ACCEPT'),\n('12', 'ACCEPT'),\n('000000112', 'ACCEPT'),\n('1', 'ACCEPT'),\n('011112222', 'ACCEPT'),\n('1111111222222', 'ACCEPT'),\n('00000000001222222', 'ACCEPT'),\n('0111111112', 'ACCEPT'),\n('00000000001111112', 'ACCEPT'),\n('00000011111222222', 'ACCEPT'),\n('0000000111112', 'ACCEPT'),\n('00001111111112222', 'ACCEPT'),\n('00000001111', 'ACCEPT'),\n('000000000111122', 'ACCEPT'),\n('0111112', 'ACCEPT'),\n('0000000111111222', 'ACCEPT'),\n('00122', 'ACCEPT'),\n('0000000111111111222222222', 'ACCEPT'),\n('000000001111111222222222', 'REJECT'),\n('000000022222222222', 'REJECT'),\n('000000111112222222', 'REJECT'),\n('00111111222222222', 'REJECT'),\n('0011111112222222222', 'REJECT'),\n('00001111112222222222', 'REJECT'),\n('0000000111122222222222', 'REJECT'),\n('00222222', 'REJECT'),\n('000011122222222', 'REJECT'),\n('11112222222222', 'REJECT'),\n('000000022222222', 'REJECT'),\n('0000111112222222222', 'REJECT'),\n('0000001122222222', 'REJECT'),\n('01111222222', 'REJECT'),\n('00000011112222222222', 'REJECT'),\n('0102', 'REJECT'),\n('102', 'REJECT'),\n('210', 'REJECT'),\n('021', 'REJECT'),\n('1201', 'REJECT'),\n('201', 'REJECT'),\n('00110022', 'REJECT'),\n('0121', 'REJECT'),\n('0120', 'REJECT'),\n('000112222', 'REJECT'),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q0, Z0, F)\n \n Q = {q0, qa0, qa1, qa2, qb0, qb1, qb2, qf}\n Σ = {0, 1, 2}\n Γ = {Z, A, B}\n q0 = q0\n Z0 = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q0, ε, Z) = (qa0, Z)\n δ(q0, ε, Z) = (qb0, Z)\n \n δ(qa0, 0, Z) = (qa0, AZ)\n δ(qa0, 0, A) = (qa0, AA)\n δ(qa0, 1, Z) = (qa1, Z)\n δ(qa0, 1, A) = (qa1, A)\n δ(qa0, 2, A) = (qa2, ε)\n δ(qa0, ε, Z) = (qf, Z)\n δ(qa0, ε, A) = (qf, A)\n \n δ(qa1, 1, Z) = (qa1, Z)\n δ(qa1, 1, A) = (qa1, A)\n δ(qa1, 2, A) = (qa2, ε)\n δ(qa1, ε, Z) = (qf, Z)\n δ(qa1, ε, A) = (qf, A)\n \n δ(qa2, 2, A) = (qa2, ε)\n δ(qa2, ε, Z) = (qf, Z)\n δ(qa2, ε, A) = (qf, A)\n \n δ(qb0, 0, Z) = (qb0, Z)\n δ(qb0, 0, B) = (qb0, B)\n δ(qb0, 1, Z) = (qb1, BZ)\n δ(qb0, 1, B) = (qb1, BB)\n δ(qb0, ε, Z) = (qf, Z)\n δ(qb0, ε, B) = (qf, B)\n \n δ(qb1, 1, Z) = (qb1, BZ)\n δ(qb1, 1, B) = (qb1, BB)\n δ(qb1, 2, B) = (qb2, ε)\n δ(qb1, ε, Z) = (qf, Z)\n δ(qb1, ε, B) = (qf, B)\n \n δ(qb2, 2, B) = (qb2, ε)\n δ(qb2, ε, Z) = (qf, Z)\n δ(qb2, ε, B) = (qf, B)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA0, qA1, qA2, qB0, qB1, qB2, qf}\n Σ = {0, 1, 2}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (qA0, Z)\n δ(q₀, ε, Z) = (qB0, Z)\n \n δ(qA0, 0, Z) = (qA0, AZ)\n δ(qA0, 0, A) = (qA0, AA)\n δ(qA0, 1, Z) = (qA1, Z)\n δ(qA0, 1, A) = (qA1, A)\n δ(qA0, 2, A) = (qA2, ε)\n δ(qA0, ε, Z) = (qf, Z)\n δ(qA0, ε, A) = (qf, A)\n \n δ(qA1, 1, Z) = (qA1, Z)\n δ(qA1, 1, A) = (qA1, A)\n δ(qA1, 2, A) = (qA2, ε)\n δ(qA1, ε, Z) = (qf, Z)\n δ(qA1, ε, A) = (qf, A)\n \n δ(qA2, 2, A) = (qA2, ε)\n δ(qA2, ε, Z) = (qf, Z)\n δ(qA2, ε, A) = (qf, A)\n \n δ(qB0, 0, Z) = (qB0, Z)\n δ(qB0, 1, Z) = (qB1, BZ)\n δ(qB0, ε, Z) = (qf, Z)\n \n δ(qB1, 1, Z) = (qB1, BZ)\n δ(qB1, 1, B) = (qB1, BB)\n δ(qB1, 2, B) = (qB2, ε)\n δ(qB1, ε, Z) = (qf, Z)\n δ(qB1, ε, B) = (qf, B)\n \n δ(qB2, 2, B) = (qB2, ε)\n δ(qB2, ε, Z) = (qf, Z)\n δ(qB2, ε, B) = (qf, B)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA0, qA1, qA2, qB0, qB1, qB2, qf} \n Σ = {0, 1, 2} \n Γ = {Z, A, B} \n q₀ = q₀ \n Z₀ = Z \n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (qA0, Z) \n δ(q₀, ε, Z) = (qB0, Z)\n \n δ(qA0, 0, Z) = (qA0, AZ) \n δ(qA0, 0, A) = (qA0, AA) \n δ(qA0, 1, Z) = (qA1, Z) \n δ(qA0, 1, A) = (qA1, A) \n δ(qA0, 2, A) = (qA2, ε) \n δ(qA0, ε, Z) = (qf, Z) \n δ(qA0, ε, A) = (qf, A)\n \n δ(qA1, 1, Z) = (qA1, Z) \n δ(qA1, 1, A) = (qA1, A) \n δ(qA1, 2, A) = (qA2, ε) \n δ(qA1, ε, Z) = (qf, Z) \n δ(qA1, ε, A) = (qf, A)\n \n δ(qA2, 2, A) = (qA2, ε) \n δ(qA2, ε, Z) = (qf, Z) \n δ(qA2, ε, A) = (qf, A)\n \n δ(qB0, 0, Z) = (qB0, Z) \n δ(qB0, 0, B) = (qB0, B) \n δ(qB0, 1, Z) = (qB1, BZ) \n δ(qB0, 1, B) = (qB1, BB) \n δ(qB0, ε, Z) = (qf, Z) \n δ(qB0, ε, B) = (qf, B)\n \n δ(qB1, 1, Z) = (qB1, BZ) \n δ(qB1, 1, B) = (qB1, BB) \n δ(qB1, 2, B) = (qB2, ε) \n δ(qB1, ε, Z) = (qf, Z) \n δ(qB1, ε, B) = (qf, B)\n \n δ(qB2, 2, B) = (qB2, ε) \n δ(qB2, ε, Z) = (qf, Z) \n δ(qB2, ε, B) = (qf, B)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "cfl": "L = { strings that look like: zero or more a’s, followed by zero or more b’s, followed by zero or more c’s, where (#a + #b) > #c }",
+    "test_cases": "(\"aaaaabbbbbbbbbbbccccccccc\", \"ACCEPT\"),\n(\"aaaaaabbbbbbbbbbcccccccccccccc\", \"ACCEPT\"),\n(\"bbbb\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaaacccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaabbbccccccccccccc\", \"ACCEPT\"),\n(\"abbbbbbbbbccc\", \"ACCEPT\"),\n(\"aabbbcccc\", \"ACCEPT\"),\n(\"aaaaaaabbcccccc\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaaaaaabbbbbccccccccccccc\", \"ACCEPT\"),\n(\"aaabbbbbbbbbccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaabbbbbbbbccccccccccccc\", \"ACCEPT\"),\n(\"aaaaaabbbbbbbbbccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaabbbc\", \"ACCEPT\"),\n(\"aaaaaaaaaaaabbbbcccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbccccccccc\", \"ACCEPT\"),\n(\"aaabbb\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbbbbcccccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbccccc\", \"ACCEPT\"),\n(\"aaaaaaaabcccccccc\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbcccccc\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaaccccccc\", \"ACCEPT\"),\n(\"aaaaaaaaaaaaaabbbbcccccccccc\", \"ACCEPT\"),\n(\"a\", \"ACCEPT\"),\n(\"aa\", \"ACCEPT\"),\n(\"aaaaaaaaabbbbbbbbcccccc\", \"ACCEPT\"),\n(\"acbbab\", \"REJECT\"),\n(\"c\", \"REJECT\"),\n(\"babaaac\", \"REJECT\"),\n(\"bbbcaabbcbaa\", \"REJECT\"),\n(\"bbbcbaa\", \"REJECT\"),\n(\"baabba\", \"REJECT\"),\n(\"bbac\", \"REJECT\"),\n(\"bbacbbab\", \"REJECT\"),\n(\"acbb\", \"REJECT\"),\n(\"ccabcbaba\", \"REJECT\"),\n(\"bbaccbba\", \"REJECT\"),\n(\"caccababa\", \"REJECT\"),\n(\"cbbcbcbacb\", \"REJECT\"),\n(\"accacac\", \"REJECT\"),\n(\"aacbaab\", \"REJECT\"),\n(\"cccabab\", \"REJECT\"),\n(\"aaabbbbbbbccccccccccc\", \"REJECT\"),\n(\"bbccbabaaaca\", \"REJECT\"),\n(\"cabb\", \"REJECT\"),\n(\"accabcbbbbbbba\", \"REJECT\"),\n(\"cccccaa\", \"REJECT\"),\n(\"abbbbbbbbbbbccccccccccccccc\", \"REJECT\"),\n(\"abbbcabcccbabab\", \"REJECT\"),\n(\"bccbbabbaacb\", \"REJECT\"),\n(\"ccbacaabcbabcc\", \"REJECT\"),\n\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q_a, q_b, q_c, q_acc}\n Σ = {a, b, c}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {q_acc}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q_a, AZ)\n δ(q₀, b, Z) = (q_b, AZ)\n \n δ(q_a, a, A) = (q_a, AA)\n δ(q_a, b, A) = (q_b, AA)\n δ(q_a, c, A) = (q_c, ε)\n δ(q_a, ε, A) = (q_acc, A)\n \n δ(q_b, b, A) = (q_b, AA)\n δ(q_b, c, A) = (q_c, ε)\n δ(q_b, ε, A) = (q_acc, A)\n \n δ(q_c, c, A) = (q_c, ε)\n δ(q_c, ε, A) = (q_acc, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {a, b, c}\n Γ = {Z, X}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, XZ)\n δ(q₀, a, X) = (q₀, XX)\n \n δ(q₀, b, Z) = (q₁, XZ)\n δ(q₀, b, X) = (q₁, XX)\n \n δ(q₁, b, Z) = (q₁, XZ)\n δ(q₁, b, X) = (q₁, XX)\n \n δ(q₀, c, X) = (q₂, ε)\n δ(q₁, c, X) = (q₂, ε)\n δ(q₂, c, X) = (q₂, ε)\n \n δ(q₀, ε, X) = (qf, X)\n δ(q₁, ε, X) = (qf, X)\n δ(q₂, ε, X) = (qf, X)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {a, b, c}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, ε, Z) = (q₁, Z)\n δ(q₀, ε, A) = (q₁, A)\n \n δ(q₁, b, Z) = (q₁, AZ)\n δ(q₁, b, A) = (q₁, AA)\n δ(q₁, ε, Z) = (q₂, Z)\n δ(q₁, ε, A) = (q₂, A)\n \n δ(q₂, c, A) = (q₂, ε)\n δ(q₂, ε, A) = (qf, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "cfl": "L = { strings that look like: zero or more a’s, followed by zero or more b’s, followed by zero or more c’s, where (#c) = (#a) + 2·(#b) }",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"ac\", \"ACCEPT\"),\n(\"bcc\", \"ACCEPT\"),\n(\"aabbcccccc\", \"ACCEPT\"),\n(\"aabbccccc\", \"REJECT\"),\n(\"aaaaabbbbbbbbbccccccccccccccccccccccc\", \"ACCEPT\"),\n(\"aaaaabbbccccccccccc\", \"ACCEPT\"),\n(\"aaabbccccccc\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbbbbcccccccccccccccccccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbbcccccccccccccccccccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbbbcccccccccccccccccccccccccc\", \"ACCEPT\"),\n(\"bbcccc\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbbbbbbcccccccccccccccccccccccccc\", \"ACCEPT\"),\n(\"aaaabbbbcccccccccccc\", \"ACCEPT\"),\n(\"aabbbbbbcccccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaaaabbbbbccccccccccccccccccc\", \"ACCEPT\"),\n(\"aaaabbbbbbbbbbcccccccccccccccccccccccc\", \"ACCEPT\"),\n(\"aaaccc\", \"ACCEPT\"),\n(\"aaaaaaabbbbbccccccccccccccccc\", \"ACCEPT\"),\n(\"aaaaaabcccccccc\", \"ACCEPT\"),\n(\"aaaaaaabccccccccc\", \"ACCEPT\"),\n(\"aaaaaccccc\", \"ACCEPT\"),\n(\"aaaaaaabbbbccccccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbbbbcccccccccccccccccccccccc\", \"ACCEPT\"),\n(\"aaaaaaaccccccc\", \"ACCEPT\"),\n(\"a\", \"REJECT\"),\n(\"b\", \"REJECT\"),\n(\"c\", \"REJECT\"),\n(\"abc\", \"REJECT\"),\n(\"bac\", \"REJECT\"),\n(\"acb\", \"REJECT\"),\n(\"cba\", \"REJECT\"),\n(\"abab\", \"REJECT\"),\n(\"abbbbbbbbccccccccccccccccccccccc\", \"REJECT\"),\n(\"aaaabbbbbbbbbccccccccccccccccccccccc\", \"REJECT\"),\n(\"aaaaabbbbbbbbccccccccccccc\", \"REJECT\"),\n(\"bbbbbbbbbccccccccccccccccc\", \"REJECT\"),\n(\"aaaaaaaaabbbbbbbbbccccccccccccccccc\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbccccccccccccccccccc\", \"REJECT\"),\n(\"aaabcccccccccccccccc\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbcccccccccccccccccccccccccc\", \"REJECT\"),\n(\"aaaaabbbbccccccccccccccccccccccccccccc\", \"REJECT\"),\n(\"aaaaaaaaabbbbbbbbbcccccccccccc\", \"REJECT\"),\n(\"bbcccccccccccccccccccccccc\", \"REJECT\"),\n(\"bbbbbbbbbbcccccccccccccccccccccccccc\", \"REJECT\"),\n(\"aaabbbbbbcccccccccccccccccccccccccc\", \"REJECT\"),\n(\"aaaaaaaaabbbbbbbbbccccccccccccccccccccccc\", \"REJECT\"),\n(\"acaacccacaaaaccccccacccacccccc\", \"REJECT\"),\n(\"aabbbbbbcccccccccc\", \"REJECT\"),\n(\"abbbbbbccccccccccccccccccccccccccccc\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q_f}\n Σ = {a, b, c}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {q_f}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n \n δ(q₀, b, Z) = (q₁, AAZ)\n δ(q₀, b, A) = (q₁, AAA)\n δ(q₁, b, Z) = (q₁, AAZ)\n δ(q₁, b, A) = (q₁, AAA)\n \n δ(q₀, c, A) = (q₂, ε)\n δ(q₁, c, A) = (q₂, ε)\n δ(q₂, c, A) = (q₂, ε)\n \n δ(q₀, ε, Z) = (q_f, Z)\n δ(q₂, ε, Z) = (q_f, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {a, b, c}\n Γ = {Z, X}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, XZ)\n δ(q₀, a, X) = (q₀, XX)\n δ(q₀, b, Z) = (q₁, XXZ)\n δ(q₀, b, X) = (q₁, XXX)\n δ(q₀, c, X) = (q₂, ε)\n δ(q₀, ε, Z) = (qf, Z)\n \n δ(q₁, b, Z) = (q₁, XXZ)\n δ(q₁, b, X) = (q₁, XXX)\n δ(q₁, c, X) = (q₂, ε)\n \n δ(q₂, c, X) = (q₂, ε)\n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, qf}\n Σ = {a, b, c}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n \n δ(q₀, b, Z) = (q₁, AAZ)\n δ(q₀, b, A) = (q₁, AAA)\n \n δ(q₁, b, A) = (q₁, AAA)\n \n δ(q₀, c, A) = (q₂, ε)\n δ(q₁, c, A) = (q₂, ε)\n δ(q₂, c, A) = (q₂, ε)\n \n δ(q₀, ε, Z) = (qf, Z)\n δ(q₂, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "cfl": "L = { all syntactically valid arithmetic expressions made from identifiers/numbers, +, ×, and parentheses }",
+    "test_cases": "\"(\"\"67\"\", \"\"ACCEPT\"\"),\n(\"\"1\"\", \"\"ACCEPT\"\"),\n(\"\"54\"\", \"\"ACCEPT\"\"),\n(\"\"(((w)))*e\"\", \"\"ACCEPT\"\"),\n(\"\"6\"\", \"\"ACCEPT\"\"),\n(\"\"98+83+8+43+(m)*(13)+29*82+i+46+b\"\", \"\"ACCEPT\"\"),\n(\"\"a+b\"\", \"\"ACCEPT\"\"),\n(\"\"e\"\", \"\"ACCEPT\"\"),\n(\"\"17+(y)*79*p+((p))\"\", \"\"ACCEPT\"\"),\n(\"\"(69+t+91)+y\"\", \"\"ACCEPT\"\"),\n(\"\"86\"\", \"\"ACCEPT\"\"),\n(\"\"82*95*46+c+13+l*g\"\", \"\"ACCEPT\"\"),\n(\"\"(n)\"\", \"\"ACCEPT\"\"),\n(\"\"(49*7+20*i+2*x*s)\"\", \"\"ACCEPT\"\"),\n(\"\"40+(81*b)*15*92+78*35*82\"\", \"\"ACCEPT\"\"),\n(\"\"b\"\", \"\"ACCEPT\"\"),\n(\"\"16+q+89\"\", \"\"ACCEPT\"\"),\n(\"\"(y)+(45)\"\", \"\"ACCEPT\"\"),\n(\"\"k\"\", \"\"ACCEPT\"\"),\n(\"\"o\"\", \"\"ACCEPT\"\"),\n(\"\"f\"\", \"\"ACCEPT\"\"),\n(\"\"(65*j)*h*(88)*37\"\", \"\"ACCEPT\"\"),\n(\"\"30+9\"\", \"\"ACCEPT\"\"),\n(\"\"a\"\", \"\"ACCEPT\"\"),\n(\"\"(d*(82)+a)\"\", \"\"ACCEPT\"\"),\n(\"\"\"\", \"\"REJECT\"\"),\n(\"\"(f\"\", \"\"REJECT\"\"),\n(\"\"b+\"\", \"\"REJECT\"\"),\n(\"\"*\"\", \"\"REJECT\"\"),\n(\"\"q(xmqa\"\", \"\"REJECT\"\"),\n(\"\"fa*\"\", \"\"REJECT\"\"),\n(\"\"n)\"\", \"\"REJECT\"\"),\n(\"\"67+\"\", \"\"REJECT\"\"),\n(\"\"backr+\"\", \"\"REJECT\"\"),\n(\"\"zifr)(\"\", \"\"REJECT\"\"),\n(\"\")\"\", \"\"REJECT\"\"),\n(\"\"86+\"\", \"\"REJECT\"\"),\n(\"\"i+n(por\"\", \"\"REJECT\"\"),\n(\"\"(16+q+89\"\", \"\"REJECT\"\"),\n(\"\"pltz(t+dj\"\", \"\"REJECT\"\"),\n(\"\"(o\"\", \"\"REJECT\"\"),\n(\"\"(\"\", \"\"REJECT\"\"),\n(\"\"40+(81*b)*15*92+78*35*82)\"\", \"\"REJECT\"\"),\n(\"\"(65*j)*h*(88)*37+\"\", \"\"REJECT\"\"),\n(\"\"a+b)\"\", \"\"REJECT\"\"),\n(\"\"a+\"\", \"\"REJECT\"\"),\n(\"\"+\"\", \"\"REJECT\"\"),\n(\"\"(54\"\", \"\"REJECT\"\"),\n(\"\"30+*9\"\", \"\"REJECT\"\"),\n(\"\"(y)+(45)+\"\", \"\"REJECT\"\"),\n\"",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qacc}\n Σ = {i, n, +, ×, (, )}\n Γ = {Z, E, Ep, T, Tp, F, i, n, +, ×, (, )}\n q₀ = q₀\n Z₀ = Z\n F = {qacc}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (q₁, E Z)\n \n δ(q₁, ε, E) = (q₁, T Ep)\n \n δ(q₁, ε, Ep) = (q₁, + T Ep)\n δ(q₁, ε, Ep) = (q₁, ε)\n \n δ(q₁, ε, T) = (q₁, F Tp)\n \n δ(q₁, ε, Tp) = (q₁, × F Tp)\n δ(q₁, ε, Tp) = (q₁, ε)\n \n δ(q₁, ε, F) = (q₁, ( E ))\n δ(q₁, ε, F) = (q₁, i)\n δ(q₁, ε, F) = (q₁, n)\n \n δ(q₁, i, i) = (q₁, ε)\n δ(q₁, n, n) = (q₁, ε)\n δ(q₁, +, +) = (q₁, ε)\n δ(q₁, ×, ×) = (q₁, ε)\n δ(q₁, (, () = (q₁, ε)\n δ(q₁, ), )) = (q₁, ε)\n \n δ(q₁, ε, Z) = (qacc, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q, qf}\n Σ = {i, n, +, ×, (, )}\n Γ = {Z, E, R, T, S, F, i, n, +, ×, (, )}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (q, EZ)\n \n δ(q, ε, E) = (q, TR)\n δ(q, ε, R) = (q, +TR)\n δ(q, ε, R) = (q, ε)\n \n δ(q, ε, T) = (q, FS)\n δ(q, ε, S) = (q, ×FS)\n δ(q, ε, S) = (q, ε)\n \n δ(q, ε, F) = (q, (E))\n δ(q, ε, F) = (q, i)\n δ(q, ε, F) = (q, n)\n \n δ(q, i, i) = (q, ε)\n δ(q, n, n) = (q, ε)\n δ(q, +, +) = (q, ε)\n δ(q, ×, ×) = (q, ε)\n δ(q, (, () = (q, ε)\n δ(q, ), )) = (q, ε)\n \n δ(q, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf}\n Σ = {id, num, '+', '×', '(', ')'}\n Γ = {Z, E, E', T, T', F, id, num, '+', '×', '(', ')'}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (q₁, EZ)\n \n δ(q₁, ε, E) = (q₁, TE')\n δ(q₁, ε, E') = (q₁, '+TE'')\n δ(q₁, ε, E') = (q₁, ε)\n \n δ(q₁, ε, T) = (q₁, FT')\n δ(q₁, ε, T') = (q₁, '×FT''')\n δ(q₁, ε, T') = (q₁, ε)\n \n δ(q₁, ε, F) = (q₁, '(E)')\n δ(q₁, ε, F) = (q₁, id)\n δ(q₁, ε, F) = (q₁, num)\n \n δ(q₁, id, id) = (q₁, ε)\n δ(q₁, num, num) = (q₁, ε)\n δ(q₁, '+', '+') = (q₁, ε)\n δ(q₁, '×', '×') = (q₁, ε)\n δ(q₁, '(', '(') = (q₁, ε)\n δ(q₁, ')', ')') = (q₁, ε)\n \n δ(q₁, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "cfl": "L = { strings where every prefix has at least as many a’s as b’s }",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"a\", \"ACCEPT\"),\n(\"aa\", \"ACCEPT\"),\n(\"ab\", \"ACCEPT\"),\n(\"aab\", \"ACCEPT\"),\n(\"aabb\", \"ACCEPT\"),\n(\"aaaaaaaaba\", \"ACCEPT\"),\n(\"aababaabbba\", \"ACCEPT\"),\n(\"abaabaababaaaba\", \"ACCEPT\"),\n(\"ababababaaa\", \"ACCEPT\"),\n(\"aabbaabaabaaa\", \"ACCEPT\"),\n(\"ababaaabb\", \"ACCEPT\"),\n(\"abababaabbabaababaab\", \"ACCEPT\"),\n(\"abaabaa\", \"ACCEPT\"),\n(\"abaabbaabb\", \"ACCEPT\"),\n(\"ababaabbaba\", \"ACCEPT\"),\n(\"abaaabaab\", \"ACCEPT\"),\n(\"aabaababbbabababaabb\", \"ACCEPT\"),\n(\"abaababbaa\", \"ACCEPT\"),\n(\"aaaabaaaaba\", \"ACCEPT\"),\n(\"aaaabbbabab\", \"ACCEPT\"),\n(\"abaabbaabaaabaaabbbb\", \"ACCEPT\"),\n(\"abababaabbaba\", \"ACCEPT\"),\n(\"abaaaab\", \"ACCEPT\"),\n(\"abababa\", \"ACCEPT\"),\n(\"b\", \"REJECT\"),\n(\"ba\", \"REJECT\"),\n(\"bb\", \"REJECT\"),\n(\"abbb\", \"REJECT\"),\n(\"abbaababbbbabb\", \"REJECT\"),\n(\"bbabbbbaabaaba\", \"REJECT\"),\n(\"baaaaababaab\", \"REJECT\"),\n(\"bbbbbbbbbbbb\", \"REJECT\"),\n(\"bbb\", \"REJECT\"),\n(\"baaaabbbabb\", \"REJECT\"),\n(\"bbbbbaab\", \"REJECT\"),\n(\"bbaaa\", \"REJECT\"),\n(\"ababbabaaaabbabaabbb\", \"REJECT\"),\n(\"babbbaabaabaabaaaa\", \"REJECT\"),\n(\"bababbaaab\", \"REJECT\"),\n(\"abaaabbbbabaabaa\", \"REJECT\"),\n(\"baa\", \"REJECT\"),\n(\"bbaaabbbaabbbabb\", \"REJECT\"),\n(\"bbababb\", \"REJECT\"),\n(\"ababbbb\", \"REJECT\"),\n(\"abababbaabbaaaab\", \"REJECT\"),\n(\"abbbaabaa\", \"REJECT\"),\n(\"bbbaaaabaaab\", \"REJECT\"),\n(\"bababaabbbbbaaa\", \"REJECT\"),\n(\"bbaaaababaababbabaa\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q_f}\n Σ = {a, b}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {q_f}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, b, A) = (q₀, ε)\n δ(q₀, ε, Z) = (q_f, Z)\n δ(q₀, ε, A) = (q_f, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁}\n Σ = {a, b}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {q₁}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, b, A) = (q₀, ε)\n δ(q₀, ε, Z) = (q₁, Z)\n δ(q₀, ε, A) = (q₁, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qf}\n Σ = {a, b}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (q₀, AZ)\n δ(q₀, a, A) = (q₀, AA)\n δ(q₀, b, A) = (q₀, ε)\n δ(q₀, ε, Z) = (qf, Z)\n δ(q₀, ε, A) = (qf, A)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "cfl": "L = { all strings over {a,b} that can be split into two parts xy, where x (non-empty) has equal numbers of a’s and b’s, and y (non-empty) is a palindrome }",
+    "test_cases": "(\"bbbb\", \"REJECT\"),\n(\"baaab\", \"REJECT\"),\n(\"baabbbbbbbb\", \"ACCEPT\"),\n(\"babaabababbabab\", \"ACCEPT\"),\n(\"bbbbbbbaa\", \"REJECT\"),\n(\"aababbaabbbaa\", \"ACCEPT\"),\n(\"bbaabbbbbabbba\", \"REJECT\"),\n(\"ababaaabbbbabab\", \"ACCEPT\"),\n(\"aabaa\", \"REJECT\"),\n(\"bababbbabaaba\", \"REJECT\"),\n(\"aaabbb\", \"REJECT\"),\n(\"baabbabbaaa\", \"ACCEPT\"),\n(\"bbaabbbabbaaabba\", \"REJECT\"),\n(\"ababaaba\", \"ACCEPT\"),\n(\"bbabaaaaabbbaaabbabb\", \"REJECT\"),\n(\"ababb\", \"ACCEPT\"),\n(\"baabbbbbaabbbb\", \"ACCEPT\"),\n(\"abbbbabbbabaaabbaabb\", \"REJECT\"),\n(\"bbaaaabbbaa\", \"ACCEPT\"),\n(\"abaaaaaaaaa\", \"ACCEPT\"),\n(\"babbbaaba\", \"REJECT\"),\n(\"babaababababa\", \"ACCEPT\"),\n(\"ababbaababbaab\", \"ACCEPT\"),\n(\"aabbbabbaaabb\", \"ACCEPT\"),\n(\"bbaabbbabbbbbbbaba\", \"REJECT\"),\n(\"bbabbaababababbaab\", \"REJECT\"),\n(\"b\", \"REJECT\"),\n(\"ababbbaaaababbaabaab\", \"REJECT\"),\n(\"aabbb\", \"ACCEPT\"),\n(\"bbbaaaabbaaabbbbbbaa\", \"ACCEPT\"),\n(\"a\", \"REJECT\"),\n(\"bbaaabba\", \"ACCEPT\"),\n(\"aabbaabaabaaa\", \"REJECT\"),\n(\"aa\", \"REJECT\"),\n(\"baabababbbbaba\", \"ACCEPT\"),\n(\"abaaaaa\", \"ACCEPT\"),\n(\"ababa\", \"ACCEPT\"),\n(\"ab\", \"REJECT\"),\n(\"ababbaabbbbbabbbab\", \"REJECT\"),\n(\"babbaaa\", \"ACCEPT\"),\n(\"aabbbbbaaaabbb\", \"ACCEPT\"),\n(\"abbaaabbbbaabb\", \"ACCEPT\"),\n(\"ababaabaaaabbaaba\", \"REJECT\"),\n(\"abbabbbab\", \"ACCEPT\"),\n(\"babaaabbbaabaaba\", \"ACCEPT\"),\n(\"baabbaaaaaaabb\", \"REJECT\"),\n(\"bbaabbaabbabab\", \"REJECT\"),\n(\"bbaaabbbbaababababb\", \"REJECT\"),\n(\"\", \"REJECT\"),\n(\"aaaaaabbbbbbbbb\", \"ACCEPT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qx, qy_start, qy_push, qy_pop, qf}\n Σ = {a, b}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qx, AZ)\n δ(q₀, a, A) = (qx, AA)\n δ(q₀, a, B) = (qx, ε)\n δ(q₀, b, Z) = (qx, BZ)\n δ(q₀, b, B) = (qx, BB)\n δ(q₀, b, A) = (qx, ε)\n \n δ(qx, a, Z) = (qx, AZ)\n δ(qx, a, A) = (qx, AA)\n δ(qx, a, B) = (qx, ε)\n δ(qx, b, Z) = (qx, BZ)\n δ(qx, b, B) = (qx, BB)\n δ(qx, b, A) = (qx, ε)\n \n δ(qx, ε, Z) = (qy_start, Z)\n \n δ(qy_start, a, Z) = (qy_push, AZ)\n δ(qy_start, b, Z) = (qy_push, BZ)\n δ(qy_start, a, Z) = (qy_pop, Z)\n δ(qy_start, b, Z) = (qy_pop, Z)\n \n δ(qy_push, a, Z) = (qy_push, AZ)\n δ(qy_push, a, A) = (qy_push, AA)\n δ(qy_push, a, B) = (qy_push, AB)\n δ(qy_push, b, Z) = (qy_push, BZ)\n δ(qy_push, b, A) = (qy_push, BA)\n δ(qy_push, b, B) = (qy_push, BB)\n \n δ(qy_push, ε, Z) = (qy_pop, Z)\n δ(qy_push, ε, A) = (qy_pop, A)\n δ(qy_push, ε, B) = (qy_pop, B)\n \n δ(qy_push, a, Z) = (qy_pop, Z)\n δ(qy_push, a, A) = (qy_pop, A)\n δ(qy_push, a, B) = (qy_pop, B)\n δ(qy_push, b, Z) = (qy_pop, Z)\n δ(qy_push, b, A) = (qy_pop, A)\n δ(qy_push, b, B) = (qy_pop, B)\n \n δ(qy_pop, a, A) = (qy_pop, ε)\n δ(qy_pop, b, B) = (qy_pop, ε)\n \n δ(qy_pop, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "14",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qx, qy0, qy_push, qy_pop, qf}\n Σ = {a, b}\n Γ = {Z, A, B, a, b}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qx, AZ)\n δ(q₀, b, Z) = (qx, BZ)\n \n δ(qx, a, Z) = (qx, AZ)\n δ(qx, a, A) = (qx, AA)\n δ(qx, a, B) = (qx, ε)\n δ(qx, b, Z) = (qx, BZ)\n δ(qx, b, B) = (qx, BB)\n δ(qx, b, A) = (qx, ε)\n \n δ(qx, ε, Z) = (qy0, Z)\n \n δ(qy0, a, Z) = (qy_pop, Z)\n δ(qy0, b, Z) = (qy_pop, Z)\n δ(qy0, a, Z) = (qy_push, aZ)\n δ(qy0, b, Z) = (qy_push, bZ)\n \n δ(qy_push, a, a) = (qy_push, aa)\n δ(qy_push, a, b) = (qy_push, ab)\n δ(qy_push, b, a) = (qy_push, ba)\n δ(qy_push, b, b) = (qy_push, bb)\n \n δ(qy_push, ε, a) = (qy_pop, a)\n δ(qy_push, ε, b) = (qy_pop, b)\n \n δ(qy_push, a, a) = (qy_pop, a)\n δ(qy_push, b, a) = (qy_pop, a)\n δ(qy_push, a, b) = (qy_pop, b)\n δ(qy_push, b, b) = (qy_pop, b)\n \n δ(qy_pop, a, a) = (qy_pop, ε)\n δ(qy_pop, b, b) = (qy_pop, ε)\n δ(qy_pop, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "18",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qx0, qx, qy0, qy_push, qy_pop, qf}\n Σ = {a, b}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (qx0, Z)\n \n δ(qx0, a, Z) = (qx, AZ)\n δ(qx0, a, A) = (qx, AA)\n δ(qx0, a, B) = (qx, ε)\n δ(qx0, b, Z) = (qx, BZ)\n δ(qx0, b, B) = (qx, BB)\n δ(qx0, b, A) = (qx, ε)\n \n δ(qx, a, Z) = (qx, AZ)\n δ(qx, a, A) = (qx, AA)\n δ(qx, a, B) = (qx, ε)\n δ(qx, b, Z) = (qx, BZ)\n δ(qx, b, B) = (qx, BB)\n δ(qx, b, A) = (qx, ε)\n \n δ(qx, ε, Z) = (qy0, Z)\n \n δ(qy0, a, Z) = (qy_pop, Z)\n δ(qy0, b, Z) = (qy_pop, Z)\n δ(qy0, a, Z) = (qy_push, AZ)\n δ(qy0, b, Z) = (qy_push, BZ)\n \n δ(qy_push, a, Z) = (qy_push, AZ)\n δ(qy_push, a, A) = (qy_push, AA)\n δ(qy_push, a, B) = (qy_push, AB)\n δ(qy_push, b, Z) = (qy_push, BZ)\n δ(qy_push, b, A) = (qy_push, BA)\n δ(qy_push, b, B) = (qy_push, BB)\n \n δ(qy_push, ε, A) = (qy_pop, A)\n δ(qy_push, ε, B) = (qy_pop, B)\n \n δ(qy_push, a, A) = (qy_pop, A)\n δ(qy_push, a, B) = (qy_pop, B)\n δ(qy_push, b, A) = (qy_pop, A)\n δ(qy_push, b, B) = (qy_pop, B)\n \n δ(qy_pop, a, A) = (qy_pop, ε)\n δ(qy_pop, b, B) = (qy_pop, ε)\n \n δ(qy_pop, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "18",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "cfl": "L = { all strings over {a, b} that can be split into two non-empty parts 𝑤 = 𝑥𝑦, where 𝑥 contains an equal (and non-zero) number of a’s and b’s, and 𝑦 also contains an equal (and non-zero) number of a’s and b’s }",
+    "test_cases": "(\"abab\", \"ACCEPT\"),\n(\"abbaab\", \"ACCEPT\"),\n(\"babaab\", \"ACCEPT\"),\n(\"baba\", \"ACCEPT\"),\n(\"ababab\", \"ACCEPT\"),\n(\"baababab\", \"ACCEPT\"),\n(\"bbbaaaabbaabbaab\", \"ACCEPT\"),\n(\"bbababaabbaa\", \"ACCEPT\"),\n(\"baaabb\", \"ACCEPT\"),\n(\"ababbbabaa\", \"ACCEPT\"),\n(\"abbaaabbbaba\", \"ACCEPT\"),\n(\"ababba\", \"ACCEPT\"),\n(\"bababbabaaaabb\", \"ACCEPT\"),\n(\"aabbba\", \"ACCEPT\"),\n(\"abba\", \"ACCEPT\"),\n(\"aaabbbaabbbbababaa\", \"ACCEPT\"),\n(\"baabab\", \"ACCEPT\"),\n(\"baaaaabbbb\", \"ACCEPT\"),\n(\"baabaabb\", \"ACCEPT\"),\n(\"ababbbaa\", \"ACCEPT\"),\n(\"abbaaabb\", \"ACCEPT\"),\n(\"bbabaabbaa\", \"ACCEPT\"),\n(\"abaaaabbaababbbb\", \"ACCEPT\"),\n(\"bbbbaaaabbaaabab\", \"ACCEPT\"),\n(\"baababba\", \"ACCEPT\"),\n(\"\", \"REJECT\"),\n(\"a\", \"REJECT\"),\n(\"b\", \"REJECT\"),\n(\"ab\", \"REJECT\"),\n(\"ba\", \"REJECT\"),\n(\"aabb\", \"REJECT\"),\n(\"aaabbb\", \"REJECT\"),\n(\"abbbbbabbbbabbaaabb\", \"REJECT\"),\n(\"babbba\", \"REJECT\"),\n(\"aaaaaaaaaa\", \"REJECT\"),\n(\"aabaabaaabbb\", \"REJECT\"),\n(\"bbaaaaaabb\", \"REJECT\"),\n(\"bbbabaabba\", \"REJECT\"),\n(\"ababbbaabbaabbaba\", \"REJECT\"),\n(\"bbbaaba\", \"REJECT\"),\n(\"abbb\", \"REJECT\"),\n(\"bbbaabbbaaabaaaab\", \"REJECT\"),\n(\"aaabbbbbabbababaa\", \"REJECT\"),\n(\"bbaa\", \"REJECT\"),\n(\"bbab\", \"REJECT\"),\n(\"aaab\", \"REJECT\"),\n(\"bbabbbabbbba\", \"REJECT\"),\n(\"aabbbb\", \"REJECT\"),\n(\"bbbbbbbabbbabbbab\", \"REJECT\"),\n(\"ababaabaaabaa\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q0, q1, q2, q3, qf}\n Σ = {a, b}\n Γ = {Z, A, B}\n q₀ = q0\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q0, a, Z) = (q1, AZ)\n δ(q0, b, Z) = (q1, BZ)\n \n δ(q1, a, Z) = (q1, AZ)\n δ(q1, a, A) = (q1, AA)\n δ(q1, a, B) = (q1, ε)\n δ(q1, b, Z) = (q1, BZ)\n δ(q1, b, B) = (q1, BB)\n δ(q1, b, A) = (q1, ε)\n δ(q1, ε, Z) = (q2, Z)\n \n δ(q2, a, Z) = (q3, AZ)\n δ(q2, b, Z) = (q3, BZ)\n \n δ(q3, a, Z) = (q3, AZ)\n δ(q3, a, A) = (q3, AA)\n δ(q3, a, B) = (q3, ε)\n δ(q3, b, Z) = (q3, BZ)\n δ(q3, b, B) = (q3, BB)\n δ(q3, b, A) = (q3, ε)\n δ(q3, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {qX0, qXa, qXb, qXab, qY0, qYa, qYb, qYab, qf}\n Σ = {a, b}\n Γ = {Z, A, B}\n q₀ = qX0\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(qX0, a, Z) = (qXa, AZ)\n δ(qX0, a, A) = (qXa, AA)\n δ(qX0, a, B) = (qXa, ε)\n δ(qX0, b, Z) = (qXb, BZ)\n δ(qX0, b, B) = (qXb, BB)\n δ(qX0, b, A) = (qXb, ε)\n \n δ(qXa, a, Z) = (qXa, AZ)\n δ(qXa, a, A) = (qXa, AA)\n δ(qXa, a, B) = (qXa, ε)\n δ(qXa, b, Z) = (qXab, BZ)\n δ(qXa, b, B) = (qXab, BB)\n δ(qXa, b, A) = (qXab, ε)\n \n δ(qXb, b, Z) = (qXb, BZ)\n δ(qXb, b, B) = (qXb, BB)\n δ(qXb, b, A) = (qXb, ε)\n δ(qXb, a, Z) = (qXab, AZ)\n δ(qXb, a, A) = (qXab, AA)\n δ(qXb, a, B) = (qXab, ε)\n \n δ(qXab, a, Z) = (qXab, AZ)\n δ(qXab, a, A) = (qXab, AA)\n δ(qXab, a, B) = (qXab, ε)\n δ(qXab, b, Z) = (qXab, BZ)\n δ(qXab, b, B) = (qXab, BB)\n δ(qXab, b, A) = (qXab, ε)\n δ(qXab, ε, Z) = (qY0, Z)\n \n δ(qY0, a, Z) = (qYa, AZ)\n δ(qY0, a, A) = (qYa, AA)\n δ(qY0, a, B) = (qYa, ε)\n δ(qY0, b, Z) = (qYb, BZ)\n δ(qY0, b, B) = (qYb, BB)\n δ(qY0, b, A) = (qYb, ε)\n \n δ(qYa, a, Z) = (qYa, AZ)\n δ(qYa, a, A) = (qYa, AA)\n δ(qYa, a, B) = (qYa, ε)\n δ(qYa, b, Z) = (qYab, BZ)\n δ(qYa, b, B) = (qYab, BB)\n δ(qYa, b, A) = (qYab, ε)\n \n δ(qYb, b, Z) = (qYb, BZ)\n δ(qYb, b, B) = (qYb, BB)\n δ(qYb, b, A) = (qYb, ε)\n δ(qYb, a, Z) = (qYab, AZ)\n δ(qYb, a, A) = (qYab, AA)\n δ(qYb, a, B) = (qYab, ε)\n \n δ(qYab, a, Z) = (qYab, AZ)\n δ(qYab, a, A) = (qYab, AA)\n δ(qYab, a, B) = (qYab, ε)\n δ(qYab, b, Z) = (qYab, BZ)\n δ(qYab, b, B) = (qYab, BB)\n δ(qYab, b, A) = (qYab, ε)\n δ(qYab, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {qx_start, qx_a, qx_b, qx_ab, qy_start, qy_a, qy_b, qy_ab, qf}\n Σ = {a, b}\n Γ = {Z, A, B}\n q₀ = qx_start\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(qx_start, a, Z) = (qx_a, AZ)\n δ(qx_start, b, Z) = (qx_b, BZ)\n \n δ(qx_a, a, Z) = (qx_a, AZ)\n δ(qx_a, a, A) = (qx_a, AA)\n δ(qx_a, a, B) = (qx_a, ε)\n δ(qx_a, b, Z) = (qx_ab, BZ)\n δ(qx_a, b, A) = (qx_ab, ε)\n δ(qx_a, b, B) = (qx_ab, BB)\n \n δ(qx_b, b, Z) = (qx_b, BZ)\n δ(qx_b, b, B) = (qx_b, BB)\n δ(qx_b, b, A) = (qx_b, ε)\n δ(qx_b, a, Z) = (qx_ab, AZ)\n δ(qx_b, a, B) = (qx_ab, ε)\n δ(qx_b, a, A) = (qx_ab, AA)\n \n δ(qx_ab, a, Z) = (qx_ab, AZ)\n δ(qx_ab, a, A) = (qx_ab, AA)\n δ(qx_ab, a, B) = (qx_ab, ε)\n δ(qx_ab, b, Z) = (qx_ab, BZ)\n δ(qx_ab, b, B) = (qx_ab, BB)\n δ(qx_ab, b, A) = (qx_ab, ε)\n δ(qx_ab, ε, Z) = (qy_start, Z)\n \n δ(qy_start, a, Z) = (qy_a, AZ)\n δ(qy_start, b, Z) = (qy_b, BZ)\n \n δ(qy_a, a, Z) = (qy_a, AZ)\n δ(qy_a, a, A) = (qy_a, AA)\n δ(qy_a, a, B) = (qy_a, ε)\n δ(qy_a, b, Z) = (qy_ab, BZ)\n δ(qy_a, b, A) = (qy_ab, ε)\n δ(qy_a, b, B) = (qy_ab, BB)\n \n δ(qy_b, b, Z) = (qy_b, BZ)\n δ(qy_b, b, B) = (qy_b, BB)\n δ(qy_b, b, A) = (qy_b, ε)\n δ(qy_b, a, Z) = (qy_ab, AZ)\n δ(qy_b, a, B) = (qy_ab, ε)\n δ(qy_b, a, A) = (qy_ab, AA)\n \n δ(qy_ab, a, Z) = (qy_ab, AZ)\n δ(qy_ab, a, A) = (qy_ab, AA)\n δ(qy_ab, a, B) = (qy_ab, ε)\n δ(qy_ab, b, Z) = (qy_ab, BZ)\n δ(qy_ab, b, B) = (qy_ab, BB)\n δ(qy_ab, b, A) = (qy_ab, ε)\n δ(qy_ab, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "0",
+        "verdict": "Correct"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "cfl": "L = { all strings over the characters a, b, 0, 1, and + that form valid expressions made from identifiers/numbers and the operator +, with no parentheses, where parsing can group in multiple ways }",
+    "test_cases": "(\"b+1+1+b+0+a\", \"ACCEPT\"),\n(\"10+a1+0+a1+10\", \"ACCEPT\"),\n(\"a1+bb+b+a\", \"ACCEPT\"),\n(\"1+10+a+bb+a1+bb\", \"ACCEPT\"),\n(\"a1+bb+10+aa\", \"ACCEPT\"),\n(\"aa+1+aa+1\", \"ACCEPT\"),\n(\"1+10+bb+a1+b\", \"ACCEPT\"),\n(\"1+10+a\", \"ACCEPT\"),\n(\"10+b+a1\", \"ACCEPT\"),\n(\"a+1+0+a1+1+aa\", \"ACCEPT\"),\n(\"10+10+0\", \"ACCEPT\"),\n(\"1+0+b\", \"ACCEPT\"),\n(\"b+a1+1+bb+a+1\", \"ACCEPT\"),\n(\"a1+1+bb+0\", \"ACCEPT\"),\n(\"10+1+a1+b+a1+1\", \"ACCEPT\"),\n(\"0+a+bb+0+a+bb\", \"ACCEPT\"),\n(\"0+aa+aa\", \"ACCEPT\"),\n(\"b+a+a+b\", \"ACCEPT\"),\n(\"a1+1+10+bb+10+b\", \"ACCEPT\"),\n(\"b+a+0+1+bb+a\", \"ACCEPT\"),\n(\"0+aa+0+a+b\", \"ACCEPT\"),\n(\"a+1+0+bb+aa+bb\", \"ACCEPT\"),\n(\"1+b+b+10+10\", \"ACCEPT\"),\n(\"0+a+a+1+a\", \"ACCEPT\"),\n(\"aa+bb+a+0+b\", \"ACCEPT\"),\n(\"10\", \"REJECT\"),\n(\"a1+aa++a1+aa+bb+a1\", \"REJECT\"),\n(\"+10+0+1+a1+a1+1\", \"REJECT\"),\n(\"b\", \"REJECT\"),\n(\"b+b\", \"REJECT\"),\n(\"10+0+a1+1+\", \"REJECT\"),\n(\"a+b+1+bb++b\", \"REJECT\"),\n(\"\", \"REJECT\"),\n(\"aa+10\", \"REJECT\"),\n(\"0+b+a1+\", \"REJECT\"),\n(\"bbbb\", \"REJECT\"),\n(\"b+1+a+1\", \"ACCEPT\"),\n(\"0+b\", \"REJECT\"),\n(\"1\", \"REJECT\"),\n(\"+aa+aa+a+a1+bb\", \"REJECT\"),\n(\"aabb\", \"REJECT\"),\n(\"1++0+0+0\", \"REJECT\"),\n(\"a10\", \"REJECT\"),\n(\"b1\", \"REJECT\"),\n(\"1++bb+b+0+a1+0\", \"REJECT\"),\n(\"a1+1+b++b+bb\", \"REJECT\"),\n(\"a1++bb+b+b+10+a1\", \"REJECT\"),\n(\"10+a++aa\", \"REJECT\"),\n(\"1+a\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA, qN, qPlus, qf}\n Σ = {a, b, 0, 1, +}\n Γ = {Z}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qA, Z)\n δ(q₀, b, Z) = (qA, Z)\n δ(q₀, 0, Z) = (qN, Z)\n δ(q₀, 1, Z) = (qN, Z)\n \n δ(qA, a, Z) = (qA, Z)\n δ(qA, b, Z) = (qA, Z)\n δ(qA, +, Z) = (qPlus, Z)\n δ(qA, ε, Z) = (qf, Z)\n \n δ(qN, 0, Z) = (qN, Z)\n δ(qN, 1, Z) = (qN, Z)\n δ(qN, +, Z) = (qPlus, Z)\n δ(qN, ε, Z) = (qf, Z)\n \n δ(qPlus, a, Z) = (qA, Z)\n δ(qPlus, b, Z) = (qA, Z)\n δ(qPlus, 0, Z) = (qN, Z)\n δ(qPlus, 1, Z) = (qN, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "20",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, qf} \n Σ = {a, b, 0, 1, +} \n Γ = {Z} \n q₀ = q₀ \n Z₀ = Z \n F = {qf} \n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ* \n \n δ(q₀, a, Z) = (q₁, Z) \n δ(q₀, b, Z) = (q₁, Z) \n δ(q₀, 0, Z) = (q₁, Z) \n δ(q₀, 1, Z) = (q₁, Z) \n \n δ(q₁, a, Z) = (q₁, Z) \n δ(q₁, b, Z) = (q₁, Z) \n δ(q₁, 0, Z) = (q₁, Z) \n δ(q₁, 1, Z) = (q₁, Z) \n \n δ(q₁, +, Z) = (q₀, Z) \n \n δ(q₁, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "11",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA, qN, qPlus, qf}\n Σ = {a, b, 0, 1, +}\n Γ = {Z}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, a, Z) = (qA, Z)\n δ(q₀, b, Z) = (qA, Z)\n δ(q₀, 0, Z) = (qN, Z)\n δ(q₀, 1, Z) = (qN, Z)\n \n δ(qA, a, Z) = (qA, Z)\n δ(qA, b, Z) = (qA, Z)\n δ(qA, +, Z) = (qPlus, Z)\n δ(qA, ε, Z) = (qf, Z)\n \n δ(qN, 0, Z) = (qN, Z)\n δ(qN, 1, Z) = (qN, Z)\n δ(qN, +, Z) = (qPlus, Z)\n δ(qN, ε, Z) = (qf, Z)\n \n δ(qPlus, a, Z) = (qA, Z)\n δ(qPlus, b, Z) = (qA, Z)\n δ(qPlus, 0, Z) = (qN, Z)\n δ(qPlus, 1, Z) = (qN, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "20",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "cfl": "L = { strings that look like: some 0’s, then some 1’s, then some 2’s, where (#0 = #1 + #2) OR (#0 = 2·#1 + #2) }",
+    "test_cases": "(\"\", \"ACCEPT\"),\n(\"0\", \"REJECT\"),\n(\"1\", \"REJECT\"),\n(\"2\", \"REJECT\"),\n(\"01\", \"ACCEPT\"),\n(\"02\", \"ACCEPT\"),\n(\"001\", \"ACCEPT\"),\n(\"0000000001111111111222\", \"REJECT\"),\n(\"201012\", \"REJECT\"),\n(\"000000000111222222\", \"ACCEPT\"),\n(\"212100\", \"REJECT\"),\n(\"000000000000000111111112222222\", \"ACCEPT\"),\n(\"022110\", \"REJECT\"),\n(\"210201\", \"REJECT\"),\n(\"000000222222\", \"ACCEPT\"),\n(\"000000000000111111111122\", \"ACCEPT\"),\n(\"0000000000000000000000000011111111122222222\", \"ACCEPT\"),\n(\"000000000000000000000000112222\", \"REJECT\"),\n(\"000000000000000000000001111111111222\", \"ACCEPT\"),\n(\"000000000000000111111111222222\", \"ACCEPT\"),\n(\"00000001111122\", \"ACCEPT\"),\n(\"000000000000000000000011222\", \"REJECT\"),\n(\"00000000000111111\", \"REJECT\"),\n(\"021201\", \"REJECT\"),\n(\"110220\", \"REJECT\"),\n(\"00000000000000001111111\", \"REJECT\"),\n(\"000000000122222222\", \"ACCEPT\"),\n(\"000222\", \"ACCEPT\"),\n(\"0102\", \"REJECT\"),\n(\"000000011222\", \"ACCEPT\"),\n(\"000111\", \"ACCEPT\"),\n(\"00000000000000000000001112222222222\", \"REJECT\"),\n(\"201021\", \"REJECT\"),\n(\"000000000000000111111122222222\", \"ACCEPT\"),\n(\"12222\", \"REJECT\"),\n(\"00000000000000000000000000001111111112222222222\", \"ACCEPT\"),\n(\"00000000001112222222\", \"ACCEPT\"),\n(\"00000000000000000111112222222\", \"ACCEPT\"),\n(\"000000000000000000000011111111222222\", \"ACCEPT\"),\n(\"0000000000000011111122\", \"ACCEPT\"),\n(\"0000000000000000000000001112222222\", \"REJECT\"),\n(\"00000000000000000000000001111222\", \"REJECT\"),\n(\"0000000000000000000000111111111122\", \"ACCEPT\"),\n(\"000000000000000000111111111\", \"ACCEPT\"),\n(\"0000000000000000000000000111111112222222222\", \"REJECT\"),\n(\"00000000012222222222\", \"REJECT\"),\n(\"210210\", \"REJECT\"),\n(\"0111222222\", \"REJECT\"),\n(\"000000000000001112222222222\", \"REJECT\"),\n(\"0000000000000000000001111111222\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, q₄, q₅, q₆, q₇, q₈}\n Σ = {0, 1, 2}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {q₈}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (q₁, Z)\n δ(q₀, ε, Z) = (q₄, Z)\n \n δ(q₁, 0, Z) = (q₁, AZ)\n δ(q₁, 0, A) = (q₁, AA)\n δ(q₁, 1, A) = (q₂, ε)\n δ(q₁, 2, A) = (q₃, ε)\n δ(q₁, ε, Z) = (q₈, Z)\n \n δ(q₂, 1, A) = (q₂, ε)\n δ(q₂, 2, A) = (q₃, ε)\n δ(q₂, ε, Z) = (q₈, Z)\n \n δ(q₃, 2, A) = (q₃, ε)\n δ(q₃, ε, Z) = (q₈, Z)\n \n δ(q₄, 0, Z) = (q₄, AZ)\n δ(q₄, 0, A) = (q₄, AA)\n δ(q₄, 1, A) = (q₆, ε)\n δ(q₄, 2, A) = (q₇, ε)\n δ(q₄, ε, Z) = (q₈, Z)\n \n δ(q₆, ε, A) = (q₅, ε)\n \n δ(q₅, 1, A) = (q₆, ε)\n δ(q₅, 2, A) = (q₇, ε)\n δ(q₅, ε, Z) = (q₈, Z)\n \n δ(q₇, 2, A) = (q₇, ε)\n δ(q₇, ε, Z) = (q₈, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "10",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA0, qA1, qA2, qB0, qB1, qB1p, qB2, qacc}\n Σ = {0, 1, 2}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qacc}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (qA0, Z)\n δ(q₀, ε, Z) = (qB0, Z)\n \n δ(qA0, 0, Z) = (qA0, AZ)\n δ(qA0, 0, A) = (qA0, AA)\n δ(qA0, 1, A) = (qA1, ε)\n δ(qA0, 2, A) = (qA2, ε)\n δ(qA0, ε, Z) = (qacc, Z)\n \n δ(qA1, 1, A) = (qA1, ε)\n δ(qA1, 2, A) = (qA2, ε)\n δ(qA1, ε, Z) = (qacc, Z)\n \n δ(qA2, 2, A) = (qA2, ε)\n δ(qA2, ε, Z) = (qacc, Z)\n \n δ(qB0, 0, Z) = (qB0, AZ)\n δ(qB0, 0, A) = (qB0, AA)\n δ(qB0, 1, A) = (qB1p, ε)\n δ(qB0, 2, A) = (qB2, ε)\n δ(qB0, ε, Z) = (qacc, Z)\n \n δ(qB1p, ε, A) = (qB1, ε)\n \n δ(qB1, 1, A) = (qB1p, ε)\n δ(qB1, 2, A) = (qB2, ε)\n δ(qB1, ε, Z) = (qacc, Z)\n \n δ(qB2, 2, A) = (qB2, ε)\n δ(qB2, ε, Z) = (qacc, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "10",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, qA0, qA1, qA2, qB0, qB1, qB1p, qB2, qf}\n Σ = {0, 1, 2}\n Γ = {Z, A}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (qA0, Z)\n δ(q₀, ε, Z) = (qB0, Z)\n \n δ(qA0, 0, Z) = (qA0, AZ)\n δ(qA0, 0, A) = (qA0, AA)\n δ(qA0, 1, A) = (qA1, ε)\n δ(qA1, 1, A) = (qA1, ε)\n δ(qA0, 2, A) = (qA2, ε)\n δ(qA1, 2, A) = (qA2, ε)\n δ(qA2, 2, A) = (qA2, ε)\n δ(qA0, ε, Z) = (qf, Z)\n δ(qA1, ε, Z) = (qf, Z)\n δ(qA2, ε, Z) = (qf, Z)\n \n δ(qB0, 0, Z) = (qB0, AZ)\n δ(qB0, 0, A) = (qB0, AA)\n δ(qB0, 1, A) = (qB1p, ε)\n δ(qB1, 1, A) = (qB1p, ε)\n δ(qB1p, ε, A) = (qB1, ε)\n δ(qB0, 2, A) = (qB2, ε)\n δ(qB1, 2, A) = (qB2, ε)\n δ(qB2, 2, A) = (qB2, ε)\n δ(qB0, ε, Z) = (qf, Z)\n δ(qB1, ε, Z) = (qf, Z)\n δ(qB2, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "10",
+        "verdict": "Incorrect"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "cfl": "L = { all strings that look like: some a’s, then some b’s, then some c’s, where either (#a = #b) OR (#b = #c) }",
+    "test_cases": "(\"\", \"REJECT\"),\n(\"abccccc\", \"ACCEPT\"),\n(\"aaaaabc\", \"ACCEPT\"),\n(\"abbccc\", \"REJECT\"),\n(\"aabccc\", \"REJECT\"),\n(\"aaabbc\", \"REJECT\"),\n(\"aabbbbcccc\", \"ACCEPT\"),\n(\"aaaaaaaabbbbbccccc\", \"ACCEPT\"),\n(\"aaabbbccccc\", \"ACCEPT\"),\n(\"aaabbcc\", \"ACCEPT\"),\n(\"aaaaabbbbbcccccccccc\", \"ACCEPT\"),\n(\"aabbcc\", \"ACCEPT\"),\n(\"aaaabbbbccccccc\", \"ACCEPT\"),\n(\"abbbbbccccc\", \"ACCEPT\"),\n(\"abc\", \"ACCEPT\"),\n(\"aaaaaaaaaabbbccc\", \"ACCEPT\"),\n(\"aabbcccccc\", \"ACCEPT\"),\n(\"aaabbbccccccccc\", \"ACCEPT\"),\n(\"abcccc\", \"ACCEPT\"),\n(\"ccccc\", \"REJECT\"),\n(\"aaaaaaabbbbbbbccccccccc\", \"ACCEPT\"),\n(\"aaabbbbbbcccccc\", \"ACCEPT\"),\n(\"aabbbccc\", \"ACCEPT\"),\n(\"aaabbbbbccccc\", \"ACCEPT\"),\n(\"abbbccc\", \"ACCEPT\"),\n(\"aaaaaaaaabbbbbccccc\", \"ACCEPT\"),\n(\"aaaaaaaaabbbbbbbbbcc\", \"ACCEPT\"),\n(\"aaaabbbbccccc\", \"ACCEPT\"),\n(\"aaaaaaaabcccccccc\", \"REJECT\"),\n(\"aaaaaabbbcc\", \"REJECT\"),\n(\"aaab\", \"REJECT\"),\n(\"aabbbbbbbcccccccccc\", \"REJECT\"),\n(\"aaaaaabbcccccccc\", \"REJECT\"),\n(\"aaaaaaaaacccc\", \"REJECT\"),\n(\"aaaaabbb\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbbccccccccc\", \"REJECT\"),\n(\"abbbbbbbccccc\", \"REJECT\"),\n(\"aaaaabbbbbbbbccc\", \"REJECT\"),\n(\"aaaaaaaaabbbbbbbcccccc\", \"REJECT\"),\n(\"aaaaaaaaaccccccccc\", \"REJECT\"),\n(\"aabbbbbbcc\", \"REJECT\"),\n(\"aaaaaabbbbcccccccc\", \"REJECT\"),\n(\"aaaabbbbbbbbbbccccccccc\", \"REJECT\"),\n(\"aaaaaabbbbbccccccc\", \"REJECT\"),\n(\"aaaabbcccccccccc\", \"REJECT\"),\n(\"aaaaaaabbbbbbbbbccccccc\", \"REJECT\"),\n(\"aacc\", \"REJECT\"),\n(\"aaaaabbbbccccccccc\", \"REJECT\"),\n(\"aaaabbbbbbbcccccc\", \"REJECT\"),\n(\"aaaaaaaabbccc\", \"REJECT\"),\n",
+    "turns": [
+      {
+        "turn": 1,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁a, q₁b, q₁c, q₂a, q₂b, q₂c, qf}\n Σ = {a, b, c}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (q₁a, Z)\n δ(q₀, ε, Z) = (q₂a, Z)\n \n δ(q₁a, a, Z) = (q₁a, AZ)\n δ(q₁a, a, A) = (q₁a, AA)\n δ(q₁a, ε, Z) = (q₁b, Z)\n δ(q₁a, ε, A) = (q₁b, A)\n \n δ(q₁b, b, A) = (q₁b, ε)\n δ(q₁b, ε, Z) = (q₁c, Z)\n \n δ(q₁c, c, Z) = (q₁c, Z)\n δ(q₁c, ε, Z) = (qf, Z)\n \n δ(q₂a, a, Z) = (q₂a, Z)\n δ(q₂a, ε, Z) = (q₂b, Z)\n δ(q₂a, ε, Z) = (qf, Z)\n \n δ(q₂b, b, Z) = (q₂b, BZ)\n δ(q₂b, b, B) = (q₂b, BB)\n δ(q₂b, ε, Z) = (q₂c, Z)\n δ(q₂b, ε, B) = (q₂c, B)\n \n δ(q₂c, c, B) = (q₂c, ε)\n δ(q₂c, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "24",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 2,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q0, q1, q2, q3, q4, q5, q6, qf}\n Σ = {a, b, c}\n Γ = {Z, A, B}\n q₀ = q0\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q0, ε, Z) = (q1, Z)\n δ(q0, ε, Z) = (q4, Z)\n \n δ(q1, a, Z) = (q1, AZ)\n δ(q1, a, A) = (q1, AA)\n δ(q1, b, A) = (q2, ε)\n δ(q1, c, Z) = (q3, Z)\n δ(q1, ε, Z) = (qf, Z)\n \n δ(q2, b, A) = (q2, ε)\n δ(q2, ε, Z) = (q3, Z)\n \n δ(q3, c, Z) = (q3, Z)\n δ(q3, ε, Z) = (qf, Z)\n \n δ(q4, a, Z) = (q4, Z)\n δ(q4, b, Z) = (q5, BZ)\n δ(q4, ε, Z) = (qf, Z)\n \n δ(q5, b, B) = (q5, BB)\n δ(q5, c, B) = (q6, ε)\n \n δ(q6, c, B) = (q6, ε)\n δ(q6, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "11",
+        "verdict": "Incorrect"
+      },
+      {
+        "turn": 3,
+        "response": "PDA = (Q, Σ, Γ, δ, q₀, Z₀, F)\n \n Q = {q₀, q₁, q₂, q₃, q₄, q₅, q₆, qf}\n Σ = {a, b, c}\n Γ = {Z, A, B}\n q₀ = q₀\n Z₀ = Z\n F = {qf}\n \n δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*\n \n δ(q₀, ε, Z) = (q₁, Z)\n δ(q₀, ε, Z) = (q₄, Z)\n \n δ(q₁, a, Z) = (q₁, AZ)\n δ(q₁, a, A) = (q₁, AA)\n δ(q₁, b, A) = (q₂, ε)\n δ(q₁, ε, Z) = (q₃, Z)\n \n δ(q₂, b, A) = (q₂, ε)\n δ(q₂, ε, Z) = (q₃, Z)\n \n δ(q₃, c, Z) = (q₃, Z)\n δ(q₃, ε, Z) = (qf, Z)\n \n δ(q₄, a, Z) = (q₄, Z)\n δ(q₄, b, Z) = (q₅, BZ)\n δ(q₄, ε, Z) = (qf, Z)\n \n δ(q₅, b, B) = (q₅, BB)\n δ(q₅, c, B) = (q₆, ε)\n \n δ(q₆, c, B) = (q₆, ε)\n δ(q₆, ε, Z) = (qf, Z)",
+        "build_status": "Pass",
+        "test_cases_failed": "11",
+        "verdict": "Incorrect"
+      }
+    ]
+  }
+]
