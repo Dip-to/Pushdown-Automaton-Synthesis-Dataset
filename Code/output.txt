@@ -1,0 +1,90 @@
+PDA Parser and Validator
+============================================================
+Parsing formal PDA from input.txt...
+
+============================================================
+FORMAL PDA DEFINITION
+============================================================
+Q = {q0, q1, q2, q₄, q₅}
+Σ = {a, b, c}
+Γ = {A, B, Z}
+q₀ = q0
+Z₀ = Z
+F = {q2, q₅}
+
+δ: Q × (Σ ∪ {ε}) × Γ → Q × Γ*
+δ(q0, ε, Z) = (q₅, Z)
+δ(q0, a, Z) = (q0, Z)
+δ(q0, a, A) = (q0, AA)
+δ(q0, b, Z) = (q₄, BZ)
+δ(q0, b, A) = (q1, ε)
+δ(q1, b, A) = (q1, ε)
+δ(q1, c, Z) = (q2, Z)
+δ(q2, c, Z) = (q2, Z)
+δ(q₄, ε, Z) = (q₅, Z)
+δ(q₄, b, B) = (q₄, BB)
+δ(q₄, c, B) = (q₅, ε)
+δ(q₅, c, B) = (q₅, ε)
+============================================================
+
+PDA Type: NPDA
+✓ PDA created successfully!
+NPDA(states={'q₄', 'q2', 'q₅', 'q1', 'q0'}, input_symbols={'a', 'c', 'b'}, stack_symbols={'Z', 'A', 'B'}, transitions={'q0': {'a': {'Z': {('q0', ('Z',))}, 'A': {('q0', ('A', 'A'))}}, '': {'Z': {('q₅', ('Z',))}}, 'b': {'Z': {('q₄', ('B', 'Z'))}, 'A': {('q1', '')}}}, 'q1': {'b': {'A': {('q1', '')}}, 'c': {'Z': {('q2', ('Z',))}}}, 'q2': {'c': {'Z': {('q2', ('Z',))}}}, 'q₄': {'b': {'B': {('q₄', ('B', 'B'))}}, 'c': {'B': {('q₅', '')}}, '': {'Z': {('q₅', ('Z',))}}}, 'q₅': {'c': {'B': {('q₅', '')}}}}, initial_state='q0', initial_stack_symbol='Z', final_states={'q2', 'q₅'}, acceptance_mode='final_state')
+✓ Python code saved to pda_output.py
+
+============================================================
+TESTING PDA
+============================================================
+✗ FAIL | '' → ACCEPT (expected: REJECT)
+✗ FAIL | 'abccccc' → REJECT (expected: ACCEPT)
+✓ PASS | 'aaaaabc' → ACCEPT (expected: ACCEPT)
+✓ PASS | 'abbccc' → REJECT (expected: REJECT)
+✓ PASS | 'aabccc' → REJECT (expected: REJECT)
+✗ FAIL | 'aaabbc' → ACCEPT (expected: REJECT)
+✓ PASS | 'aabbbbcccc' → ACCEPT (expected: ACCEPT)
+✓ PASS | 'aaaaaaaabbbbbccccc' → ACCEPT (expected: ACCEPT)
+✗ FAIL | 'aaabbbccccc' → REJECT (expected: ACCEPT)
+✓ PASS | 'aaabbcc' → ACCEPT (expected: ACCEPT)
+✗ FAIL | 'aaaaabbbbbcccccccccc' → REJECT (expected: ACCEPT)
+✓ PASS | 'aabbcc' → ACCEPT (expected: ACCEPT)
+✗ FAIL | 'aaaabbbbccccccc' → REJECT (expected: ACCEPT)
+✓ PASS | 'abbbbbccccc' → ACCEPT (expected: ACCEPT)
+✓ PASS | 'abc' → ACCEPT (expected: ACCEPT)
+✓ PASS | 'aaaaaaaaaabbbccc' → ACCEPT (expected: ACCEPT)
+✗ FAIL | 'aabbcccccc' → REJECT (expected: ACCEPT)
+✗ FAIL | 'aaabbbccccccccc' → REJECT (expected: ACCEPT)
+✗ FAIL | 'abcccc' → REJECT (expected: ACCEPT)
+✓ PASS | 'ccccc' → REJECT (expected: REJECT)
+✗ FAIL | 'aaaaaaabbbbbbbccccccccc' → REJECT (expected: ACCEPT)
+✓ PASS | 'aaabbbbbbcccccc' → ACCEPT (expected: ACCEPT)
+✓ PASS | 'aabbbccc' → ACCEPT (expected: ACCEPT)
+✓ PASS | 'aaabbbbbccccc' → ACCEPT (expected: ACCEPT)
+✓ PASS | 'abbbccc' → ACCEPT (expected: ACCEPT)
+✓ PASS | 'aaaaaaaaabbbbbccccc' → ACCEPT (expected: ACCEPT)
+✓ PASS | 'aaaaaaaaabbbbbbbbbcc' → ACCEPT (expected: ACCEPT)
+✗ FAIL | 'aaaabbbbccccc' → REJECT (expected: ACCEPT)
+✓ PASS | 'aaaaaaaabcccccccc' → REJECT (expected: REJECT)
+✗ FAIL | 'aaaaaabbbcc' → ACCEPT (expected: REJECT)
+✓ PASS | 'aaab' → REJECT (expected: REJECT)
+✓ PASS | 'aabbbbbbbcccccccccc' → REJECT (expected: REJECT)
+✓ PASS | 'aaaaaabbcccccccc' → REJECT (expected: REJECT)
+✓ PASS | 'aaaaaaaaacccc' → REJECT (expected: REJECT)
+✓ PASS | 'aaaaabbb' → REJECT (expected: REJECT)
+✗ FAIL | 'aaaaaaabbbbbbbbbbccccccccc' → ACCEPT (expected: REJECT)
+✗ FAIL | 'abbbbbbbccccc' → ACCEPT (expected: REJECT)
+✗ FAIL | 'aaaaabbbbbbbbccc' → ACCEPT (expected: REJECT)
+✗ FAIL | 'aaaaaaaaabbbbbbbcccccc' → ACCEPT (expected: REJECT)
+✓ PASS | 'aaaaaaaaaccccccccc' → REJECT (expected: REJECT)
+✗ FAIL | 'aabbbbbbcc' → ACCEPT (expected: REJECT)
+✓ PASS | 'aaaaaabbbbcccccccc' → REJECT (expected: REJECT)
+✗ FAIL | 'aaaabbbbbbbbbbccccccccc' → ACCEPT (expected: REJECT)
+✓ PASS | 'aaaaaabbbbbccccccc' → REJECT (expected: REJECT)
+✓ PASS | 'aaaabbcccccccccc' → REJECT (expected: REJECT)
+✗ FAIL | 'aaaaaaabbbbbbbbbccccccc' → ACCEPT (expected: REJECT)
+✓ PASS | 'aacc' → REJECT (expected: REJECT)
+✓ PASS | 'aaaaabbbbccccccccc' → REJECT (expected: REJECT)
+✗ FAIL | 'aaaabbbbbbbcccccc' → ACCEPT (expected: REJECT)
+✓ PASS | 'aaaaaaaabbccc' → REJECT (expected: REJECT)
+============================================================
+Results: 30/50 passed
+
